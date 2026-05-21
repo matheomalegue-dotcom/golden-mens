@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07090D" />
+  <title>Golden Mens — Montreal's Luxury Barbershop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --black:   #07090D;
+      --black2:  #0E1118;
+      --gold:    #C9A048;
+      --gold2:   #A07830;
+      --gold3:   #F8F2E4;
+      --gold4:   #FDF9F0;
+      --white:   #FFFFFF;
+      --off:     #F5F3EF;
+      --text:    #141414;
+      --muted:   #6B6560;
+      --border:  #E5DDD0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+
+    /* ── NAV ──────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 1240px;
+      z-index: 100;
+      background: rgba(7, 9, 13, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 14px;
+      border: 1px solid rgba(201, 160, 72, 0.2);
+    }
+
+    .nav-inner {
+      padding: 0 28px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #C9A048 0%, #A07830 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-text span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-phone {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-phone:hover { color: var(--gold); }
+
+    .btn-nav {
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #C9A048 0%, #A07830 100%);
+      color: #07090D;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-nav:active { transform: translateY(0); }
+
+
+    /* ── HERO ─────────────────────────────── */
+    .hero {
+      position: relative;
+      height: calc(100vh - 24px);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      border-radius: 24px;
+      margin: 12px;
+      border: none;
+      box-shadow:
+        0 0 0 1px rgba(201, 160, 72, 0.10),
+        0 0 28px rgba(201, 160, 72, 0.22),
+        0 0 60px rgba(160, 120, 48, 0.13),
+        0 0 120px rgba(120, 80, 12, 0.07),
+        0 32px 80px rgba(0, 0, 0, 0.70),
+        0 12px 28px rgba(0, 0, 0, 0.50);
+      background: var(--black);
+    }
+
+    /* Dissolve the bottom edge into the page background */
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent 0%, var(--black) 100%);
+      z-index: 20;
+      pointer-events: none;
+      border-radius: 0 0 24px 24px;
+    }
+
+    /* Premium conic gradient border — light wraps the beveled edge */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1.5px;
+      background: conic-gradient(
+        from 220deg,
+        #E2BC62 0deg,
+        #D4AE5A 20deg,
+        #C9A048 45deg,
+        #8A6022 90deg,
+        #3A2800 130deg,
+        #07090D 165deg,
+        #0A0C10 185deg,
+        #07090D 205deg,
+        #251A00 250deg,
+        #6B4A14 295deg,
+        #B08838 330deg,
+        #C9A048 350deg,
+        #E2BC62 360deg
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Left: text floats over full-bleed image */
+    .hero-left {
+      flex: 0 0 58%;
+      display: flex;
+      align-items: center;
+      padding: 90px 56px 80px 140px;
+      position: relative;
+      z-index: 10;
+      background: transparent;
+    }
+
+    .hero-left::before { display: none; }
+    .hero-left::after  { display: none; }
+
+    /* Right: full-bleed — image covers the entire hero */
+    .hero-right {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      position: absolute;
+      height: 140%;
+      width: auto;
+      right: -220px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      filter: grayscale(95%) contrast(1.28) brightness(0.68) sepia(8%);
+    }
+
+    /* Primary reading gradient: left text zone darkens heavily, opens right */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        100deg,
+        rgba(7,9,13,0.98) 0%,
+        rgba(7,9,13,0.92) 30%,
+        rgba(7,9,13,0.55) 52%,
+        rgba(7,9,13,0.15) 70%,
+        transparent 88%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Editorial vignette: top, bottom, and soft edge burn */
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(0,0,0,0.72) 0%,
+          transparent 28%,
+          transparent 58%,
+          rgba(0,0,0,0.60) 100%
+        ),
+        radial-gradient(ellipse at 75% 50%,
+          transparent 25%,
+          rgba(0,0,0,0.52) 100%
+        );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Film grain overlay — the texture that makes it feel printed */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 220px 220px;
+      mix-blend-mode: overlay;
+    }
+
+    .hero-inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Eyebrow tag */
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(201, 160, 72, 0.75);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-tag::before,
+    .hero-tag::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(201, 160, 72, 0.45);
+      flex-shrink: 0;
+    }
+
+    .hero-tag-dot { display: none; }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.65); }
+    }
+
+    /* Headline */
+    .hero-h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(36px, 4.8vw, 66px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .hero-h1 .line-fade,
+    .hero-h1 .word-fade {
+      background: linear-gradient(to bottom, #FFFFFF 65%, #9A9A9A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-h1 .line-fade { display: block; }
+
+    .hero-h1 .accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-h1 .last-line {
+      display: block;
+      margin-top: 0.1em;
+      background: linear-gradient(to bottom, #FFFFFF 65%, #9A9A9A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Gold divider line */
+    .hero-divider {
+      width: 56px;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 22px 0;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 440px;
+      margin-bottom: 40px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* CTAs */
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
+      color: #07090D;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.25) inset,
+        0 6px 28px rgba(201, 160, 72, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 12px 36px rgba(201, 160, 72, 0.55),
+        0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-primary:active { transform: translateY(0) scale(0.99); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      background: transparent;
+      color: var(--gold);
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(201, 160, 72, 0.55);
+      cursor: pointer;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+
+    .btn-ghost::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,160,72,0.12) 0%, rgba(201,160,72,0.04) 100%);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .btn-ghost:hover::before { opacity: 1; }
+
+    .btn-ghost:hover {
+      border-color: rgba(201, 160, 72, 0.9);
+      color: #F2D878;
+      transform: translateY(-2px);
+    }
+
+    /* Trust credentials */
+    .hero-trust {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    /* Review pill */
+    .hero-stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      backdrop-filter: blur(8px);
+    }
+
+    .stars-row {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .stars-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+    }
+
+    /* Credential badges */
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      backdrop-filter: blur(6px);
+    }
+
+    .badge-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C9A048, #A07830);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-badge span {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─────────────── NAV ─────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <img src="logo.png" alt="Golden Mens" style="height: 64px; width: auto; display: block; mix-blend-mode: screen;" />
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:20px;">
+        <a href="tel:+14389928101" class="nav-phone">✦ (438) 992-8101</a>
+        <a href="#contact" class="btn-nav">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ─────────────── HERO ─────────────── -->
+  <section class="hero">
+
+    <!-- Left: text content -->
+    <div class="hero-left">
+      <div class="hero-inner">
+
+        <!-- Eyebrow -->
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Montreal's #1 Luxury Barbershop
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-h1">
+          <span class="line-fade">Montreal's</span>
+          <span class="word-fade">Best</span> <span class="accent">Barbershop</span><br>
+          <span class="last-line">Experience</span>
+        </h1>
+
+        <!-- Gold rule -->
+        <div class="hero-divider"></div>
+
+        <!-- Sub -->
+        <p class="hero-sub">
+          Where precision meets artistry. Premium cuts, straight razor shaves, and an elevated grooming experience crafted exclusively for the modern gentleman.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">
+            Book Appointment
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+          <a href="tel:+14389928101" class="btn-ghost">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.32 2 2 0 0 1 3.62 1.14h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            Call Now
+          </a>
+        </div>
+
+        <!-- Trust block -->
+        <div class="hero-trust">
+
+          <!-- Google stars pill -->
+          <div class="hero-stars">
+            <div class="stars-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A048" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A048" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A048" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A048" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A048" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span class="stars-text">200+ Five-Star Reviews</span>
+          </div>
+
+          <!-- Credential badges -->
+          <div class="hero-badges">
+            <div class="hero-badge">
+              <div class="badge-dot">
+                <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="#07090D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+              </div>
+              <span>Master Barbers</span>
+            </div>
+            <div class="hero-badge">
+              <div class="badge-dot">
+                <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="#07090D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+              </div>
+              <span>Premium Products</span>
+            </div>
+            <div class="hero-badge">
+              <div class="badge-dot">
+                <svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="#07090D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg>
+              </div>
+              <span>Walk-ins Welcome</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: image panel -->
+    <div class="hero-right">
+      <img src="goldenmens1.png" alt="Golden Mens Barbershop" />
+    </div>
+    <div class="hero-grain"></div>
+
+  </section>
+
+
+  <script>
+    // Nav subtle gold border on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 40) {
+        nav.style.borderColor = 'rgba(201, 160, 72, 0.30)';
+        nav.style.background = 'rgba(7, 9, 13, 0.96)';
+      } else {
+        nav.style.borderColor = 'rgba(201, 160, 72, 0.20)';
+        nav.style.background = 'rgba(7, 9, 13, 0.88)';
+      }
+    });
+  </script>
+
+</body>
+</html>

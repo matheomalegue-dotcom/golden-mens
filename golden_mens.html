@@ -781,6 +781,24 @@
       animation: fadeIn 1.4s ease 0.1s forwards;
     }
 
+    /* ── SCROLL REVEAL ───────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal[data-delay="1"] { transition-delay: 0.08s; }
+    .reveal[data-delay="2"] { transition-delay: 0.16s; }
+    .reveal[data-delay="3"] { transition-delay: 0.24s; }
+
 
     /* ── SERVICES ─────────────────────────── */
     .services {
@@ -1151,15 +1169,15 @@
 
   <!-- ─────────────── HOURS ─────────────── -->
   <div class="hours">
-    <div class="hours-item">
+    <div class="hours-item reveal">
       <span class="hours-label">Open</span>
       <span class="hours-value">Monday — Sunday</span>
     </div>
-    <div class="hours-item">
+    <div class="hours-item reveal" data-delay="1">
       <span class="hours-label">Hours</span>
       <span class="hours-value">11 AM — 8 PM</span>
     </div>
-    <div class="hours-item">
+    <div class="hours-item reveal" data-delay="2">
       <span class="hours-label">Walk-ins</span>
       <span class="hours-value">Always Welcome</span>
     </div>
@@ -1170,9 +1188,9 @@
   <section class="work" id="gallery">
 
     <div class="work-header">
-      <div class="work-eyebrow">Our Work</div>
-      <h2 class="work-title">Crafted With <span class="accent">Precision</span></h2>
-      <p class="work-sub">Every cut, a signature</p>
+      <div class="work-eyebrow reveal">Our Work</div>
+      <h2 class="work-title reveal" data-delay="1">Crafted With <span class="accent">Precision</span></h2>
+      <p class="work-sub reveal" data-delay="2">Every cut, a signature</p>
     </div>
 
     <div class="carousel-mask">
@@ -1230,15 +1248,15 @@
   <section class="services" id="services">
 
     <div class="services-header">
-      <div class="services-eyebrow">Our Services</div>
-      <h2 class="services-title">The Shop <span class="accent">Specialities</span></h2>
-      <p class="services-sub">Crafted for the modern gentleman</p>
+      <div class="services-eyebrow reveal">Our Services</div>
+      <h2 class="services-title reveal" data-delay="1">The Shop <span class="accent">Specialities</span></h2>
+      <p class="services-sub reveal" data-delay="2">Crafted for the modern gentleman</p>
     </div>
 
     <div class="services-grid">
 
       <!-- Card 1: Haircuts -->
-      <div class="service-card">
+      <div class="service-card reveal">
         <img src="hair.jpg" alt="Haircuts & Hairstyling" />
         <div class="service-card-overlay"></div>
         <div class="service-card-border"></div>
@@ -1258,7 +1276,7 @@
       </div>
 
       <!-- Card 2: Beard -->
-      <div class="service-card">
+      <div class="service-card reveal" data-delay="1">
         <img src="beard.jpg" alt="Beard Styling" />
         <div class="service-card-overlay"></div>
         <div class="service-card-border"></div>
@@ -1283,6 +1301,18 @@
 
 
   <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     // Nav subtle gold border on scroll
     window.addEventListener('scroll', () => {
       const nav = document.querySelector('nav');

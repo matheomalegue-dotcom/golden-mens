@@ -546,13 +546,39 @@
       color: rgba(255, 255, 255, 0.75);
       letter-spacing: 0.02em;
     }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .anim {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .anim-img {
+      opacity: 0;
+      animation: fadeIn 1.4s ease forwards;
+    }
+
+    .anim-1 { animation-delay: 0.1s; }
+    .anim-2 { animation-delay: 0.25s; }
+    .anim-3 { animation-delay: 0.45s; }
+    .anim-4 { animation-delay: 0.6s; }
+    .anim-5 { animation-delay: 0.75s; }
+    .anim-6 { animation-delay: 0.9s; }
+    .anim-img { animation-delay: 0.05s; }
   </style>
 </head>
 
 <body>
 
   <!-- ─────────────── NAV ─────────────── -->
-  <nav>
+  <nav class="anim anim-1" style="animation-duration:0.7s">
     <div class="nav-inner">
       <a href="#" class="logo">
         <img src="logo.png" alt="Golden Mens" style="height: 64px; width: auto; display: block; mix-blend-mode: screen;" />
@@ -581,28 +607,28 @@
       <div class="hero-inner">
 
         <!-- Eyebrow -->
-        <div class="hero-tag">
+        <div class="hero-tag anim anim-1">
           <span class="hero-tag-dot"></span>
           Montreal's #1 Luxury Barbershop
         </div>
 
         <!-- Headline -->
-        <h1 class="hero-h1">
+        <h1 class="hero-h1 anim anim-2">
           <span class="line-fade">Montreal's</span>
           <span class="word-fade">Best</span> <span class="accent">Barbershop</span><br>
           <span class="last-line">Experience</span>
         </h1>
 
         <!-- Gold rule -->
-        <div class="hero-divider"></div>
+        <div class="hero-divider anim anim-3"></div>
 
         <!-- Sub -->
-        <p class="hero-sub">
+        <p class="hero-sub anim anim-4">
           Where precision meets artistry. Premium cuts, straight razor shaves, and an elevated grooming experience crafted exclusively for the modern gentleman.
         </p>
 
         <!-- CTAs -->
-        <div class="hero-ctas">
+        <div class="hero-ctas anim anim-5">
           <a href="#contact" class="btn-primary">
             Book Appointment
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
@@ -621,7 +647,7 @@
         </div>
 
         <!-- Trust block -->
-        <div class="hero-trust">
+        <div class="hero-trust anim anim-6">
 
           <!-- Google stars pill -->
           <div class="hero-stars">
@@ -662,7 +688,7 @@
     </div>
 
     <!-- Right: image panel -->
-    <div class="hero-right">
+    <div class="hero-right anim-img">
       <img src="goldenmens1.png" alt="Golden Mens Barbershop" />
     </div>
     <div class="hero-grain"></div>

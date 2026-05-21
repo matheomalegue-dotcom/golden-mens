@@ -780,6 +780,207 @@
       opacity: 0;
       animation: fadeIn 1.4s ease 0.1s forwards;
     }
+
+
+    /* ── SERVICES ─────────────────────────── */
+    .services {
+      padding: 100px 40px 120px;
+      background: var(--black);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .services-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(201, 160, 72, 0.75);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .services-eyebrow::before,
+    .services-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(201, 160, 72, 0.45);
+    }
+
+    .services-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: white;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .services-title .accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .services-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      position: relative;
+      height: 580px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(50%) brightness(0.52) contrast(1.1);
+      transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.04);
+      filter: grayscale(25%) brightness(0.48) contrast(1.12);
+    }
+
+    .service-card-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top,
+          rgba(7,9,13,0.97) 0%,
+          rgba(7,9,13,0.65) 35%,
+          rgba(7,9,13,0.18) 65%,
+          transparent 100%
+        );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .service-card-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      border: 1px solid rgba(201,160,72,0.22);
+      z-index: 3;
+      pointer-events: none;
+      transition: border-color 0.4s;
+    }
+
+    .service-card:hover .service-card-border {
+      border-color: rgba(201,160,72,0.50);
+    }
+
+    .service-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 44px;
+      z-index: 2;
+    }
+
+    .service-number {
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(201,160,72,0.6);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .service-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px, 2.6vw, 40px);
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.08;
+    }
+
+    .service-name .accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(201,160,72,0.75), transparent);
+      margin: 20px 0;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.48);
+      font-weight: 400;
+      margin-bottom: 28px;
+      max-width: 340px;
+    }
+
+    .service-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: gap 0.25s ease, color 0.2s;
+    }
+
+    .service-cta svg {
+      transition: transform 0.25s ease;
+    }
+
+    .service-cta:hover {
+      gap: 16px;
+      color: #F2D878;
+    }
+
+    .service-cta:hover svg {
+      transform: translateX(4px);
+    }
   </style>
 </head>
 
@@ -976,6 +1177,62 @@
         </div>
 
       </div>
+    </div>
+
+  </section>
+
+
+  <!-- ─────────────── SERVICES ─────────────── -->
+  <section class="services" id="services">
+
+    <div class="services-header">
+      <div class="services-eyebrow">Our Services</div>
+      <h2 class="services-title">The Art of <span class="accent">Grooming</span></h2>
+      <p class="services-sub">Crafted for the modern gentleman</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Card 1: Haircuts -->
+      <div class="service-card">
+        <img src="IMG_4178.jpg" alt="Haircuts & Hairstyling" />
+        <div class="service-card-overlay"></div>
+        <div class="service-card-border"></div>
+        <div class="service-content">
+          <span class="service-number">01 — Service</span>
+          <h3 class="service-name">Haircuts &amp; <span class="accent">Hairstyling</span></h3>
+          <div class="service-divider"></div>
+          <p class="service-desc">Precision fades, tapers, and signature cuts tailored to your style. Every line clean, every detail intentional — from classic to contemporary.</p>
+          <a href="#contact" class="service-cta">
+            Book Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Beard -->
+      <div class="service-card">
+        <img src="IMG_4183.jpg" alt="Beard Styling" />
+        <div class="service-card-overlay"></div>
+        <div class="service-card-border"></div>
+        <div class="service-content">
+          <span class="service-number">02 — Service</span>
+          <h3 class="service-name">Beard <span class="accent">Styling</span></h3>
+          <div class="service-divider"></div>
+          <p class="service-desc">Expert shaping, sculpting, and refining. Whether full beard or precise outline, we craft the silhouette that frames your face with authority.</p>
+          <a href="#contact" class="service-cta">
+            Book Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
     </div>
 
   </section>

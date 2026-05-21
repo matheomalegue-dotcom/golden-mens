@@ -550,20 +550,37 @@
 
     /* ── HOURS ───────────────────────────── */
     .hours {
-      padding: 48px 40px;
+      padding: 60px 40px;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
-      gap: 48px;
-      border-top: 1px solid rgba(201,160,72,0.10);
-      border-bottom: 1px solid rgba(201,160,72,0.10);
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
     }
 
-    .hours-item {
+    .hours-card {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      gap: 10px;
+      padding: 32px 24px;
+      background: rgba(201,160,72,0.05);
+      border: 1px solid rgba(201,160,72,0.15);
+      border-radius: 14px;
+    }
+
+    .hours-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(201,160,72,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
     }
 
     .hours-label {
@@ -571,28 +588,16 @@
       font-weight: 600;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(201,160,72,0.6);
+      color: rgba(201,160,72,0.7);
     }
 
     .hours-value {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: white;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
-    }
-
-    .hours-divider {
-      width: 1px;
-      height: 36px;
-      background: rgba(201,160,72,0.18);
-    }
-
-    .hours-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(201,160,72,0.5);
+      text-align: center;
     }
 
 
@@ -886,20 +891,31 @@
 
   <!-- ─────────────── HOURS ─────────────── -->
   <div class="hours">
-    <div class="hours-item">
-      <span class="hours-label">Days</span>
+
+    <div class="hours-card">
+      <div class="hours-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(201,160,72,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <span class="hours-label">Open</span>
       <span class="hours-value">Monday — Sunday</span>
     </div>
-    <div class="hours-divider"></div>
-    <div class="hours-item">
+
+    <div class="hours-card">
+      <div class="hours-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(201,160,72,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
       <span class="hours-label">Hours</span>
       <span class="hours-value">11 AM — 8 PM</span>
     </div>
-    <div class="hours-divider"></div>
-    <div class="hours-item">
+
+    <div class="hours-card">
+      <div class="hours-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(201,160,72,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
       <span class="hours-label">Walk-ins</span>
-      <span class="hours-value">Welcome</span>
+      <span class="hours-value">Always Welcome</span>
     </div>
+
   </div>
 
 

@@ -785,7 +785,54 @@
     /* ── SERVICES ─────────────────────────── */
     .services {
       padding: 40px 40px 120px;
-      background: var(--black);
+      position: relative;
+      background:
+        /* Gold crystal flecks — scattered across the stone */
+        radial-gradient(ellipse 3px 6px at  8% 14%, rgba(201,160,72,0.55) 0%, transparent 100%),
+        radial-gradient(ellipse 5px 2px at 13% 72%, rgba(212,174,90,0.40) 0%, transparent 100%),
+        radial-gradient(ellipse 2px 5px at 19% 38%, rgba(190,148,58,0.50) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 3px at 24% 88%, rgba(201,160,72,0.38) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 4px at 31% 21%, rgba(220,178,82,0.45) 0%, transparent 100%),
+        radial-gradient(ellipse 6px 2px at 37% 56%, rgba(201,160,72,0.35) 0%, transparent 100%),
+        radial-gradient(ellipse 2px 6px at 43% 80%, rgba(185,144,54,0.48) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 2px at 49% 10%, rgba(215,172,78,0.42) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 5px at 54% 44%, rgba(201,160,72,0.52) 0%, transparent 100%),
+        radial-gradient(ellipse 5px 3px at 61% 67%, rgba(195,154,62,0.38) 0%, transparent 100%),
+        radial-gradient(ellipse 2px 4px at 67% 28%, rgba(210,168,76,0.44) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 3px at 72% 90%, rgba(201,160,72,0.50) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 2px at 78% 52%, rgba(218,176,80,0.36) 0%, transparent 100%),
+        radial-gradient(ellipse 6px 2px at 83% 18%, rgba(192,150,60,0.46) 0%, transparent 100%),
+        radial-gradient(ellipse 2px 5px at 89% 74%, rgba(201,160,72,0.40) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 3px at 94% 36%, rgba(210,168,76,0.48) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 4px at  5% 55%, rgba(200,158,68,0.42) 0%, transparent 100%),
+        radial-gradient(ellipse 2px 3px at 46% 95%, rgba(215,172,78,0.38) 0%, transparent 100%),
+        /* Subtle gold vein lines through the stone */
+        linear-gradient(112deg, transparent 18%, rgba(201,160,72,0.06) 19%, rgba(185,144,54,0.04) 22%, transparent 24%),
+        linear-gradient(224deg, transparent 40%, rgba(201,160,72,0.05) 41%, transparent 46%),
+        linear-gradient(68deg,  transparent 58%, rgba(195,154,62,0.04) 59%, transparent 63%),
+        linear-gradient(158deg, transparent 28%, rgba(201,160,72,0.04) 29%, transparent 33%),
+        /* Stone base */
+        #07090D;
+      overflow: hidden;
+    }
+
+    /* Noise grain layer for stone realism */
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .services-header,
+    .services-grid {
+      position: relative;
+      z-index: 1;
     }
 
     .services-header {

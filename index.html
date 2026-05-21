@@ -790,6 +790,15 @@
       overflow: hidden;
     }
 
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.60);
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .services-header,
     .services-grid {
       position: relative;
@@ -799,15 +808,6 @@
     .services-header {
       text-align: center;
       margin-bottom: 72px;
-      position: relative;
-      padding: 48px 60px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .services-eyebrow {

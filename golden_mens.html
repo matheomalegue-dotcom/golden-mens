@@ -786,47 +786,65 @@
     .services {
       padding: 40px 40px 120px;
       position: relative;
-      background:
-        /* Gold crystal flecks — scattered across the stone */
-        radial-gradient(ellipse 3px 6px at  8% 14%, rgba(201,160,72,0.55) 0%, transparent 100%),
-        radial-gradient(ellipse 5px 2px at 13% 72%, rgba(212,174,90,0.40) 0%, transparent 100%),
-        radial-gradient(ellipse 2px 5px at 19% 38%, rgba(190,148,58,0.50) 0%, transparent 100%),
-        radial-gradient(ellipse 4px 3px at 24% 88%, rgba(201,160,72,0.38) 0%, transparent 100%),
-        radial-gradient(ellipse 3px 4px at 31% 21%, rgba(220,178,82,0.45) 0%, transparent 100%),
-        radial-gradient(ellipse 6px 2px at 37% 56%, rgba(201,160,72,0.35) 0%, transparent 100%),
-        radial-gradient(ellipse 2px 6px at 43% 80%, rgba(185,144,54,0.48) 0%, transparent 100%),
-        radial-gradient(ellipse 4px 2px at 49% 10%, rgba(215,172,78,0.42) 0%, transparent 100%),
-        radial-gradient(ellipse 3px 5px at 54% 44%, rgba(201,160,72,0.52) 0%, transparent 100%),
-        radial-gradient(ellipse 5px 3px at 61% 67%, rgba(195,154,62,0.38) 0%, transparent 100%),
-        radial-gradient(ellipse 2px 4px at 67% 28%, rgba(210,168,76,0.44) 0%, transparent 100%),
-        radial-gradient(ellipse 4px 3px at 72% 90%, rgba(201,160,72,0.50) 0%, transparent 100%),
-        radial-gradient(ellipse 3px 2px at 78% 52%, rgba(218,176,80,0.36) 0%, transparent 100%),
-        radial-gradient(ellipse 6px 2px at 83% 18%, rgba(192,150,60,0.46) 0%, transparent 100%),
-        radial-gradient(ellipse 2px 5px at 89% 74%, rgba(201,160,72,0.40) 0%, transparent 100%),
-        radial-gradient(ellipse 4px 3px at 94% 36%, rgba(210,168,76,0.48) 0%, transparent 100%),
-        radial-gradient(ellipse 3px 4px at  5% 55%, rgba(200,158,68,0.42) 0%, transparent 100%),
-        radial-gradient(ellipse 2px 3px at 46% 95%, rgba(215,172,78,0.38) 0%, transparent 100%),
-        /* Subtle gold vein lines through the stone */
-        linear-gradient(112deg, transparent 18%, rgba(201,160,72,0.06) 19%, rgba(185,144,54,0.04) 22%, transparent 24%),
-        linear-gradient(224deg, transparent 40%, rgba(201,160,72,0.05) 41%, transparent 46%),
-        linear-gradient(68deg,  transparent 58%, rgba(195,154,62,0.04) 59%, transparent 63%),
-        linear-gradient(158deg, transparent 28%, rgba(201,160,72,0.04) 29%, transparent 33%),
-        /* Stone base */
-        #07090D;
+      background: #07090D;
       overflow: hidden;
     }
 
-    /* Noise grain layer for stone realism */
+    /* Tier 1 — large ambient gold glows: warm zones in the stone */
     .services::before {
       content: '';
       position: absolute;
       inset: 0;
-      opacity: 0.045;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
-      background-size: 180px 180px;
-      mix-blend-mode: overlay;
       pointer-events: none;
       z-index: 0;
+      background:
+        radial-gradient(ellipse 220px 120px at  9% 20%, rgba(201,160,72,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 160px 200px at 28% 78%, rgba(201,160,72,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 180px 100px at 52% 35%, rgba(215,172,78,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 140px 180px at 74% 15%, rgba(201,160,72,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 200px 120px at 91% 68%, rgba(195,154,62,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 150px 90px  at 38% 92%, rgba(210,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 170px 130px at 63% 58%, rgba(201,160,72,0.07) 0%, transparent 70%);
+    }
+
+    /* Tier 2 — medium visible flecks + bright sparkles + veins */
+    .services::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        /* Medium gold flecks — clearly visible crystal inclusions */
+        radial-gradient(ellipse 18px 8px  at  7% 12%, rgba(212,174,90,0.80) 0%, rgba(201,160,72,0.30) 50%, transparent 100%),
+        radial-gradient(ellipse 10px 22px at 14% 66%, rgba(201,160,72,0.75) 0%, rgba(185,144,54,0.25) 55%, transparent 100%),
+        radial-gradient(ellipse 24px 10px at 22% 42%, rgba(218,178,82,0.70) 0%, rgba(201,160,72,0.20) 50%, transparent 100%),
+        radial-gradient(ellipse 12px 20px at 31% 88%, rgba(201,160,72,0.78) 0%, rgba(190,148,58,0.28) 55%, transparent 100%),
+        radial-gradient(ellipse 20px 9px  at 39% 18%, rgba(210,168,76,0.72) 0%, rgba(195,154,62,0.22) 50%, transparent 100%),
+        radial-gradient(ellipse 8px 18px  at 47% 73%, rgba(215,172,78,0.76) 0%, rgba(201,160,72,0.26) 55%, transparent 100%),
+        radial-gradient(ellipse 22px 8px  at 55% 52%, rgba(201,160,72,0.80) 0%, rgba(185,144,54,0.30) 50%, transparent 100%),
+        radial-gradient(ellipse 14px 24px at 62% 28%, rgba(212,174,90,0.74) 0%, rgba(201,160,72,0.24) 55%, transparent 100%),
+        radial-gradient(ellipse 18px 10px at 70% 84%, rgba(195,154,62,0.78) 0%, rgba(180,140,50,0.28) 50%, transparent 100%),
+        radial-gradient(ellipse 10px 20px at 79% 45%, rgba(218,176,80,0.72) 0%, rgba(201,160,72,0.22) 55%, transparent 100%),
+        radial-gradient(ellipse 26px 8px  at 85% 14%, rgba(201,160,72,0.76) 0%, rgba(190,148,58,0.26) 50%, transparent 100%),
+        radial-gradient(ellipse 9px 18px  at 93% 70%, rgba(210,168,76,0.80) 0%, rgba(195,154,62,0.30) 55%, transparent 100%),
+        radial-gradient(ellipse 16px 7px  at  3% 55%, rgba(215,172,78,0.74) 0%, rgba(201,160,72,0.24) 50%, transparent 100%),
+        radial-gradient(ellipse 11px 22px at 44% 95%, rgba(201,160,72,0.70) 0%, rgba(185,144,54,0.20) 55%, transparent 100%),
+        radial-gradient(ellipse 20px 9px  at 17% 30%, rgba(212,174,90,0.68) 0%, rgba(201,160,72,0.18) 50%, transparent 100%),
+        radial-gradient(ellipse 8px 14px  at 58% 8%,  rgba(218,178,82,0.72) 0%, rgba(201,160,72,0.22) 55%, transparent 100%),
+        /* Bright sparkle points — pure crystal glint */
+        radial-gradient(ellipse 4px 4px at 11% 48%, rgba(240,210,120,0.95) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 5px at 26% 14%, rgba(255,220,130,0.90) 0%, transparent 100%),
+        radial-gradient(ellipse 5px 3px at 48% 62%, rgba(240,210,120,0.92) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 4px at 66% 40%, rgba(255,225,140,0.88) 0%, transparent 100%),
+        radial-gradient(ellipse 3px 5px at 82% 82%, rgba(240,210,120,0.94) 0%, transparent 100%),
+        radial-gradient(ellipse 4px 3px at 97% 25%, rgba(255,220,130,0.90) 0%, transparent 100%),
+        radial-gradient(ellipse 5px 4px at 35% 50%, rgba(240,210,120,0.86) 0%, transparent 100%),
+        /* Gold veins — wider and more visible */
+        linear-gradient(118deg, transparent 22%, rgba(201,160,72,0.12) 23%, rgba(185,144,54,0.08) 26%, transparent 28%),
+        linear-gradient(232deg, transparent 38%, rgba(201,160,72,0.10) 39%, rgba(180,140,50,0.06) 43%, transparent 45%),
+        linear-gradient(72deg,  transparent 55%, rgba(210,168,76,0.09) 56%, transparent 60%),
+        linear-gradient(162deg, transparent 30%, rgba(201,160,72,0.08) 31%, transparent 35%);
     }
 
     .services-header,

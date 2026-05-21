@@ -558,21 +558,23 @@
 
     .anim {
       opacity: 0;
-      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+    .anim-fade {
+      opacity: 0;
+      animation: fadeIn 0.9s ease 0.1s forwards;
     }
     .anim-img {
       opacity: 0;
-      animation: fadeIn 1.4s ease forwards;
+      animation: fadeIn 1.4s ease 0.1s forwards;
     }
-
-    .anim, .anim-img { animation-delay: 0.1s; }
   </style>
 </head>
 
 <body>
 
   <!-- ─────────────── NAV ─────────────── -->
-  <nav class="anim">
+  <nav class="anim-fade">
     <div class="nav-inner">
       <a href="#" class="logo">
         <img src="logo.png" alt="Golden Mens" style="height: 64px; width: auto; display: block; mix-blend-mode: screen;" />

@@ -960,13 +960,30 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
+      color: #07090D;
+      border-radius: 6px;
       font-size: 11px;
-      font-weight: 700;
-      color: var(--gold);
+      font-weight: 800;
       text-decoration: none;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: gap 0.25s ease, color 0.2s;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.22) inset,
+        0 6px 24px rgba(201,160,72,0.40),
+        0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .service-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .service-cta svg {
@@ -974,12 +991,19 @@
     }
 
     .service-cta:hover {
-      gap: 16px;
-      color: #F2D878;
+      transform: translateY(-2px) scale(1.015);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.18) inset,
+        0 10px 32px rgba(201,160,72,0.55),
+        0 4px 12px rgba(0,0,0,0.6);
     }
 
     .service-cta:hover svg {
-      transform: translateX(4px);
+      transform: translateX(3px);
+    }
+
+    .service-cta:active {
+      transform: translateY(0) scale(0.99);
     }
   </style>
 </head>
@@ -1186,7 +1210,7 @@
   <section class="services" id="services">
 
     <div class="services-header">
-      <div class="services-eyebrow">Our Services</div>
+      <div class="services-eyebrow">Our Specialities</div>
       <h2 class="services-title">The Art of <span class="accent">Grooming</span></h2>
       <p class="services-sub">Crafted for the modern gentleman</p>
     </div>
@@ -1195,7 +1219,7 @@
 
       <!-- Card 1: Haircuts -->
       <div class="service-card">
-        <img src="IMG_4178.jpg" alt="Haircuts & Hairstyling" />
+        <img src="hair.jpg" alt="Haircuts & Hairstyling" />
         <div class="service-card-overlay"></div>
         <div class="service-card-border"></div>
         <div class="service-content">
@@ -1215,7 +1239,7 @@
 
       <!-- Card 2: Beard -->
       <div class="service-card">
-        <img src="IMG_4183.jpg" alt="Beard Styling" />
+        <img src="beard.jpg" alt="Beard Styling" />
         <div class="service-card-overlay"></div>
         <div class="service-card-border"></div>
         <div class="service-content">

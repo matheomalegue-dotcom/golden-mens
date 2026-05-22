@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choose Your Barber — Cartierville | Golden Mens</title>
+  <title>Choose Your Experience — Cartierville | Golden Mens</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -92,7 +92,7 @@
 
     /* ── HERO ─────────────────────────────── */
     .page-hero {
-      padding: 160px 40px 90px;
+      padding: 160px 40px 80px;
       text-align: center;
       position: relative;
     }
@@ -231,55 +231,38 @@
       color: rgba(255,255,255,0.3);
     }
 
-    /* ── BARBER CARD (unified) ────────────── */
-    .barbers-grid {
+    /* ── SERVICE GRIDS ─────────────────────── */
+    .services-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .pro-grid {
-      display: flex;
-      justify-content: center;
+    .services-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 780px;
+      margin: 0 auto;
     }
 
-    /* PRO card: same class, constrained width, gold border */
-    .pro-grid .barber-card {
-      width: 100%;
-      max-width: 360px;
-      border-color: rgba(201,160,72,0.30);
-      box-shadow:
-        0 0 0 1px rgba(201,160,72,0.06),
-        0 0 60px rgba(201,160,72,0.10),
-        0 24px 64px rgba(0,0,0,0.5);
-    }
-
-    .pro-grid .barber-card:hover {
-      border-color: rgba(201,160,72,0.55);
-      box-shadow:
-        0 0 80px rgba(201,160,72,0.18),
-        0 32px 80px rgba(0,0,0,0.6);
-    }
-
-    .pro-grid .barber-card::before {
-      width: 100px;
-      background: linear-gradient(to right, transparent, rgba(201,160,72,0.6), transparent);
-    }
-
-    .barber-card {
+    /* ── SERVICE CARD ─────────────────────── */
+    .service-card {
       position: relative;
       background:
         linear-gradient(127deg, rgba(255,255,255,0.018) 0%, transparent 40%),
         #0B0B0E;
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
-      padding: 40px 28px 36px;
-      text-align: center;
+      padding: 36px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       overflow: hidden;
       transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s, box-shadow 0.3s;
     }
 
-    .barber-card::before {
+    .service-card::before {
       content: '';
       position: absolute;
       top: 0; left: 50%; transform: translateX(-50%);
@@ -288,66 +271,33 @@
       background: linear-gradient(to right, transparent, rgba(201,160,72,0.3), transparent);
     }
 
-    .barber-card:hover {
-      transform: translateY(-5px);
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,160,72,0.22);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,160,72,0.07);
+    }
+
+    /* PRO card gold border */
+    .pro-card {
       border-color: rgba(201,160,72,0.28);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,160,72,0.08);
-    }
-
-    /* ── AVATAR RING ──────────────────────── */
-    .avatar-wrap {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
-
-    .avatar-glow {
-      position: absolute;
-      inset: -16px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,160,72,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .avatar-ring {
-      position: relative;
-      border-radius: 50%;
-      padding: 2px;
-      background: conic-gradient(
-        from 220deg,
-        #E2BC62 0deg,
-        #D4AE5A 20deg,
-        #C9A048 45deg,
-        #8A6022 90deg,
-        #3A2800 130deg,
-        #07090D 165deg,
-        #0A0C10 185deg,
-        #07090D 205deg,
-        #251A00 250deg,
-        #6B4A14 295deg,
-        #B08838 330deg,
-        #C9A048 350deg,
-        #E2BC62 360deg
-      );
       box-shadow:
-        0 0 24px rgba(201,160,72,0.28),
-        0 0 50px rgba(201,160,72,0.10);
+        0 0 0 1px rgba(201,160,72,0.05),
+        0 0 50px rgba(201,160,72,0.09),
+        0 20px 60px rgba(0,0,0,0.45);
+    }
+    .pro-card::before {
+      width: 100px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.55), transparent);
+    }
+    .pro-card:hover {
+      border-color: rgba(201,160,72,0.50);
+      box-shadow:
+        0 0 70px rgba(201,160,72,0.16),
+        0 28px 72px rgba(0,0,0,0.6);
     }
 
-    .avatar-ring img {
-      display: block;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top;
-      border: 2px solid var(--black);
-    }
-
-    /* ── CARD CONTENT ─────────────────────── */
-    .barber-tier-tag {
+    /* ── CARD TIER TAG ─────────────────────── */
+    .service-tier-tag {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -357,15 +307,16 @@
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
+      align-self: flex-start;
     }
 
-    .barber-tier-tag.pro {
+    .service-tier-tag.pro {
       background: linear-gradient(135deg, rgba(201,160,72,0.18) 0%, rgba(201,160,72,0.08) 100%);
       border: 1px solid rgba(201,160,72,0.40);
       color: var(--gold);
     }
-    .barber-tier-tag.pro::before {
+    .service-tier-tag.pro::before {
       content: '';
       width: 5px;
       height: 5px;
@@ -374,42 +325,153 @@
       flex-shrink: 0;
     }
 
-    .barber-tier-tag.standard {
+    .service-tier-tag.standard {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       color: rgba(255,255,255,0.45);
     }
 
-    .barber-name {
+    /* ── CARD NAME & META ─────────────────── */
+    .service-name {
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       color: white;
-      margin-bottom: 6px;
+      line-height: 1.2;
+      margin-bottom: 10px;
     }
 
-    .barber-exp {
-      font-size: 11px;
-      color: rgba(255,255,255,0.28);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 500;
+    .service-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 24px;
     }
 
-    .barber-divider {
-      width: 32px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
-      margin: 0 auto 24px;
+    .service-duration {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
     }
 
-    /* ── BOOK BUTTON (gold, all cards) ─────── */
+    .service-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    .service-price {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-divider {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(201,160,72,0.4), transparent);
+      margin-bottom: 20px;
+    }
+
+    /* ── DETAILS TOGGLE ─────────────────────── */
+    .details-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+    .details-toggle:hover {
+      border-color: rgba(201,160,72,0.35);
+      color: rgba(201,160,72,0.8);
+    }
+
+    .details-toggle .chevron {
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      flex-shrink: 0;
+    }
+    .details-toggle.open .chevron {
+      transform: rotate(180deg);
+    }
+    .details-toggle.open {
+      border-color: rgba(201,160,72,0.3);
+      color: rgba(201,160,72,0.75);
+    }
+
+    /* ── DETAILS DROPDOWN ─────────────────── */
+    .details-panel {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      opacity: 0;
+      margin-bottom: 0;
+    }
+    .details-panel.open {
+      max-height: 200px;
+      opacity: 1;
+      margin-bottom: 20px;
+    }
+
+    .details-list {
+      list-style: none;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .details-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+
+    .details-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(201,160,72,0.55);
+      flex-shrink: 0;
+    }
+
+    /* ── BOOK BUTTON ─────────────────────── */
     .book-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       padding: 13px 24px;
       background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
@@ -427,6 +489,7 @@
         0 1px 0 rgba(255,255,255,0.22) inset,
         0 6px 24px rgba(201,160,72,0.40),
         0 2px 8px rgba(0,0,0,0.5);
+      margin-top: auto;
     }
 
     .book-btn::before {
@@ -461,7 +524,6 @@
     .reveal[data-delay="3"] { transition-delay: 0.24s; }
     .reveal[data-delay="4"] { transition-delay: 0.32s; }
     .reveal[data-delay="5"] { transition-delay: 0.40s; }
-    .reveal[data-delay="6"] { transition-delay: 0.48s; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
@@ -522,8 +584,8 @@
   <!-- ── PAGE HERO ─────────────────────────── -->
   <div class="page-hero">
     <div class="location-eyebrow anim">Golden Mens — Cartierville</div>
-    <h1 class="page-title anim">Choose Your <span class="accent">Barber</span></h1>
-    <p class="page-subtitle anim">Choose your barber for your next experience</p>
+    <h1 class="page-title anim">Choose Your <span class="accent">Experience</span></h1>
+    <p class="page-subtitle anim">Which service are you looking for?</p>
     <div class="location-address anim">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       6007 Boul Gouin O, Montréal, QC H4J 2M8
@@ -532,7 +594,7 @@
   </div>
 
 
-  <!-- ── BARBER PRO ─────────────────────────── -->
+  <!-- ── BARBER PRO TIER ─────────────────────── -->
   <div class="tier-section">
 
     <div class="tier-header reveal">
@@ -542,32 +604,104 @@
       </div>
     </div>
 
-    <div class="pro-grid">
-      <div class="barber-card reveal">
-        <div class="avatar-wrap">
-          <div class="avatar-glow"></div>
-          <div class="avatar-ring">
-            <img src="Gouna.png" alt="Gouna" />
-          </div>
+    <div class="services-grid-3">
+
+      <!-- Pro Haircut -->
+      <div class="service-card pro-card reveal">
+        <span class="service-tier-tag pro">Barber Pro</span>
+        <div class="service-name">Pro Haircut</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$45</span>
         </div>
-        <span class="barber-tier-tag pro">Barber Pro</span>
-        <div class="barber-name">Gouna</div>
-        <div class="barber-exp">5+ Years of Experience</div>
-        <div class="barber-divider"></div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
         <a href="tel:+14389928101" class="book-btn">
-          Book with Gouna
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
-    </div>
 
+      <!-- Pro Haircut & Beard Line-Up -->
+      <div class="service-card pro-card reveal" data-delay="1">
+        <span class="service-tier-tag pro">Barber Pro</span>
+        <div class="service-name">Pro Haircut & Beard Line-Up</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$50</span>
+        </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Beard Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Pro Haircut Under 18 -->
+      <div class="service-card pro-card reveal" data-delay="2">
+        <span class="service-tier-tag pro">Barber Pro</span>
+        <div class="service-name">Pro Haircut — Under 18</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$40</span>
+        </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
   </div>
 
 
-  <!-- ── BARBERS ─────────────────────────────── -->
+  <!-- ── BARBER TIER ─────────────────────────── -->
   <div class="tier-section" style="padding-top: 10px;">
 
     <div class="tier-header reveal">
@@ -577,94 +711,84 @@
       </div>
     </div>
 
-    <div class="barbers-grid">
+    <div class="services-grid-2">
 
-      <div class="barber-card reveal">
-        <div class="avatar-wrap">
-          <div class="avatar-ring">
-            <img src="Taha.webp" alt="Taha" />
-          </div>
+      <!-- Haircut -->
+      <div class="service-card reveal">
+        <span class="service-tier-tag standard">Barber</span>
+        <div class="service-name">Haircut</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$45</span>
         </div>
-        <span class="barber-tier-tag standard">Barber</span>
-        <div class="barber-name">Taha</div>
-        <div class="barber-exp">3–4 Years of Experience</div>
-        <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn">Book with Taha</a>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
 
-      <div class="barber-card reveal" data-delay="1">
-        <div class="avatar-wrap">
-          <div class="avatar-ring">
-            <img src="Cezar.png" alt="Cezar" />
-          </div>
+      <!-- Haircut & Beard Line-Up -->
+      <div class="service-card reveal" data-delay="1">
+        <span class="service-tier-tag standard">Barber</span>
+        <div class="service-name">Haircut & Beard Line-Up</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$50</span>
         </div>
-        <span class="barber-tier-tag standard">Barber</span>
-        <div class="barber-name">Cezar</div>
-        <div class="barber-exp">3–4 Years of Experience</div>
-        <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn">Book with Cezar</a>
-      </div>
-
-      <div class="barber-card reveal" data-delay="2">
-        <div class="avatar-wrap">
-          <div class="avatar-ring">
-            <img src="Mikey.jpeg" alt="Mikey" />
-          </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Beard Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
         </div>
-        <span class="barber-tier-tag standard">Barber</span>
-        <div class="barber-name">Mikey</div>
-        <div class="barber-exp">3–4 Years of Experience</div>
-        <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn">Book with Mikey</a>
-      </div>
-
-      <div class="barber-card reveal" data-delay="3">
-        <div class="avatar-wrap">
-          <div class="avatar-ring">
-            <img src="Bilal.jpeg" alt="Bilal" />
-          </div>
-        </div>
-        <span class="barber-tier-tag standard">Barber</span>
-        <div class="barber-name">Bilal</div>
-        <div class="barber-exp">3–4 Years of Experience</div>
-        <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn">Book with Bilal</a>
-      </div>
-
-      <div class="barber-card reveal" data-delay="4">
-        <div class="avatar-wrap">
-          <div class="avatar-ring">
-            <img src="Mouad.jpeg" alt="Mouad" />
-          </div>
-        </div>
-        <span class="barber-tier-tag standard">Barber</span>
-        <div class="barber-name">Mouad</div>
-        <div class="barber-exp">3–4 Years of Experience</div>
-        <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn">Book with Mouad</a>
-      </div>
-
-      <div class="barber-card reveal" data-delay="5">
-        <div class="avatar-wrap">
-          <div class="avatar-ring">
-            <img src="Lotfi.webp" alt="Lotfi" />
-          </div>
-        </div>
-        <span class="barber-tier-tag standard">Barber</span>
-        <div class="barber-name">Lotfi</div>
-        <div class="barber-exp">3–4 Years of Experience</div>
-        <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn">Book with Lotfi</a>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
 
     </div>
-
   </div>
 
 
   <div class="page-bottom"></div>
 
   <script>
+    function toggleDetails(btn) {
+      const panel = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      btn.classList.toggle('open', !isOpen);
+      panel.classList.toggle('open', !isOpen);
+      btn.childNodes[0].textContent = isOpen ? ' Show Details' : ' Hide Details';
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
         if (el.isIntersecting) {

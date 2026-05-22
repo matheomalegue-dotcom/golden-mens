@@ -50,8 +50,13 @@
       height: 58px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav-inner .logo {
+      position: absolute;
+      left: 28px;
     }
 
     .logo {
@@ -542,6 +547,37 @@
       animation: fadeIn 0.9s ease 0.1s forwards;
     }
 
+    /* ── SCROLL ARROWS ────────────────────── */
+    .scroll-arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 0 0 52px;
+    }
+
+    .scroll-arrow {
+      width: 18px;
+      height: 18px;
+      border-right: 2px solid rgba(201,160,72,0.5);
+      border-bottom: 2px solid rgba(201,160,72,0.5);
+      transform: rotate(45deg);
+      animation: arrowBounce 1.6s ease-in-out infinite;
+    }
+    .scroll-arrow:nth-child(2) {
+      animation-delay: 0.18s;
+      border-color: rgba(201,160,72,0.32);
+    }
+    .scroll-arrow:nth-child(3) {
+      animation-delay: 0.36s;
+      border-color: rgba(201,160,72,0.16);
+    }
+
+    @keyframes arrowBounce {
+      0%, 60%, 100% { opacity: 0; transform: rotate(45deg) translate(-4px, -4px); }
+      30%            { opacity: 1; transform: rotate(45deg) translate(0, 0); }
+    }
+
     .page-bottom { height: 120px; }
 
     .page-grain {
@@ -592,6 +628,13 @@
     <div class="hero-rule"></div>
   </div>
 
+
+  <!-- ── SCROLL ARROWS ─────────────────────────── -->
+  <div class="scroll-arrows">
+    <div class="scroll-arrow"></div>
+    <div class="scroll-arrow"></div>
+    <div class="scroll-arrow"></div>
+  </div>
 
   <!-- ── BARBER PRO TIER ─────────────────────── -->
   <div class="tier-section">

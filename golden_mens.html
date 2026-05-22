@@ -823,6 +823,243 @@
       z-index: 1;
     }
 
+
+    /* ── SALONS ───────────────────────────── */
+    .salons {
+      padding: 100px 40px 120px;
+      background: var(--black);
+    }
+
+    .salons-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .salons-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(201, 160, 72, 0.75);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .salons-eyebrow::before,
+    .salons-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(201, 160, 72, 0.45);
+    }
+
+    .salons-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: white;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .salons-title .accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .salons-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .salons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .salon-card {
+      position: relative;
+      height: 620px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .salon-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .salon-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .salon-card-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top,
+          rgba(7,9,13,0.97) 0%,
+          rgba(7,9,13,0.60) 40%,
+          rgba(7,9,13,0.15) 70%,
+          transparent 100%
+        );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .salon-card-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      border: 1px solid rgba(201,160,72,0.22);
+      z-index: 3;
+      pointer-events: none;
+      transition: border-color 0.4s;
+    }
+
+    .salon-card:hover .salon-card-border {
+      border-color: rgba(201,160,72,0.55);
+    }
+
+    .salon-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 44px;
+      z-index: 2;
+    }
+
+    .salon-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(201,160,72,0.8);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .salon-tag::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .salon-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 2.8vw, 42px);
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      margin-bottom: 6px;
+    }
+
+    .salon-name .accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .salon-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(201,160,72,0.75), transparent);
+      margin: 18px 0;
+    }
+
+    .salon-address {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.48);
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .salon-address svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: rgba(201,160,72,0.6);
+    }
+
+    .salon-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
+      color: #07090D;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.22) inset,
+        0 6px 24px rgba(201,160,72,0.40),
+        0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .salon-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .salon-cta svg { transition: transform 0.25s ease; }
+
+    .salon-cta:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.18) inset,
+        0 10px 32px rgba(201,160,72,0.55),
+        0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .salon-cta:hover svg { transform: translateX(3px); }
+    .salon-cta:active { transform: translateY(0) scale(0.99); }
+
     .services-header {
       text-align: center;
       margin-bottom: 72px;
@@ -1287,6 +1524,68 @@
           <p class="service-desc">Expert shaping, sculpting, and refining. Whether full beard or precise outline, we craft the silhouette that frames your face with authority.</p>
           <a href="#contact" class="service-cta">
             Book Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ─────────────── SALONS ─────────────── -->
+  <section class="salons" id="locations">
+
+    <div class="salons-header">
+      <div class="salons-eyebrow reveal">Our Locations</div>
+      <h2 class="salons-title reveal" data-delay="1">Choose Your <span class="accent">Salon</span></h2>
+      <p class="salons-sub reveal" data-delay="2">Two locations across Greater Montreal</p>
+    </div>
+
+    <div class="salons-grid">
+
+      <!-- Cartierville -->
+      <div class="salon-card reveal">
+        <img src="cartierville.png" alt="Golden Mens Cartierville" />
+        <div class="salon-card-overlay"></div>
+        <div class="salon-card-border"></div>
+        <div class="salon-content">
+          <span class="salon-tag">Montréal</span>
+          <h3 class="salon-name">Cartier<span class="accent">ville</span></h3>
+          <div class="salon-divider"></div>
+          <p class="salon-address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            6007 Boul Gouin O<br>Montréal, QC H4J 2M8
+          </p>
+          <a href="https://maps.google.com/?q=6007+Boul+Gouin+O+Montreal+QC" target="_blank" class="salon-cta">
+            Get Directions
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Châteauguay -->
+      <div class="salon-card reveal" data-delay="1">
+        <img src="Châteauguay.png" alt="Golden Mens Châteauguay" />
+        <div class="salon-card-overlay"></div>
+        <div class="salon-card-border"></div>
+        <div class="salon-content">
+          <span class="salon-tag">Châteauguay</span>
+          <h3 class="salon-name">Château<span class="accent">guay</span></h3>
+          <div class="salon-divider"></div>
+          <p class="salon-address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            62 Bd Salaberry S, Suite B<br>Châteauguay, QC J6J 4J3
+          </p>
+          <a href="https://maps.google.com/?q=62+Bd+Salaberry+S+Chateauguay+QC" target="_blank" class="salon-cta">
+            Get Directions
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"/>
               <polyline points="12 5 19 12 12 19"/>

@@ -57,7 +57,6 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 11px;
       text-decoration: none;
       flex-shrink: 0;
     }
@@ -93,7 +92,7 @@
 
     /* ── HERO ─────────────────────────────── */
     .page-hero {
-      padding: 160px 40px 100px;
+      padding: 160px 40px 90px;
       text-align: center;
       position: relative;
     }
@@ -135,7 +134,7 @@
       text-transform: uppercase;
       color: white;
       line-height: 1.05;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
     }
 
     .page-title .accent {
@@ -164,21 +163,21 @@
       align-items: center;
       gap: 8px;
       font-size: 13px;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.35);
       font-weight: 400;
     }
-    .location-address svg { color: rgba(201,160,72,0.6); }
+    .location-address svg { color: rgba(201,160,72,0.55); }
 
     .hero-rule {
       width: 60px;
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
-      margin: 32px auto 0;
+      margin: 28px auto 0;
     }
 
     /* ── TIER SECTION ─────────────────────── */
     .tier-section {
-      padding: 60px 40px;
+      padding: 50px 40px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -187,7 +186,7 @@
       display: flex;
       align-items: center;
       gap: 24px;
-      margin-bottom: 56px;
+      margin-bottom: 48px;
     }
 
     .tier-header::before,
@@ -232,74 +231,67 @@
       color: rgba(255,255,255,0.3);
     }
 
-    /* ── PRO CARD (featured) ──────────────── */
+    /* ── BARBER CARD (unified) ────────────── */
+    .barbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
     .pro-grid {
       display: flex;
       justify-content: center;
     }
 
-    .barber-card-pro {
-      position: relative;
-      width: 340px;
-      background:
-        linear-gradient(127deg, rgba(255,255,255,0.025) 0%, transparent 40%),
-        linear-gradient(218deg, transparent 45%, rgba(180,180,190,0.03) 46%, transparent 52%),
-        #0B0B0E;
-      border: 1px solid rgba(201,160,72,0.28);
-      border-radius: 24px;
-      padding: 52px 44px 44px;
-      text-align: center;
-      overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, border-color 0.3s;
+    /* PRO card: same class, constrained width, gold border */
+    .pro-grid .barber-card {
+      width: 100%;
+      max-width: 360px;
+      border-color: rgba(201,160,72,0.30);
       box-shadow:
         0 0 0 1px rgba(201,160,72,0.06),
-        0 0 60px rgba(201,160,72,0.12),
-        0 24px 64px rgba(0,0,0,0.6);
+        0 0 60px rgba(201,160,72,0.10),
+        0 24px 64px rgba(0,0,0,0.5);
     }
 
-    .barber-card-pro::before {
+    .pro-grid .barber-card:hover {
+      border-color: rgba(201,160,72,0.55);
+      box-shadow:
+        0 0 80px rgba(201,160,72,0.18),
+        0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    .pro-grid .barber-card::before {
+      width: 100px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.6), transparent);
+    }
+
+    .barber-card {
+      position: relative;
+      background:
+        linear-gradient(127deg, rgba(255,255,255,0.018) 0%, transparent 40%),
+        #0B0B0E;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 28px 36px;
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .barber-card::before {
       content: '';
       position: absolute;
       top: 0; left: 50%; transform: translateX(-50%);
-      width: 120px;
+      width: 60px;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,160,72,0.7), transparent);
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.3), transparent);
     }
 
-    .barber-card-pro:hover {
-      transform: translateY(-6px);
-      border-color: rgba(201,160,72,0.50);
-      box-shadow:
-        0 0 0 1px rgba(201,160,72,0.10),
-        0 0 80px rgba(201,160,72,0.20),
-        0 32px 80px rgba(0,0,0,0.7);
-    }
-
-    .pro-crown {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 36px;
-    }
-
-    .pro-crown-line {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,160,72,0.5));
-    }
-    .pro-crown-line.right {
-      background: linear-gradient(to left, transparent, rgba(201,160,72,0.5));
-    }
-
-    .pro-crown-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      color: var(--gold);
-      opacity: 0.85;
+    .barber-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201,160,72,0.28);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,160,72,0.08);
     }
 
     /* ── AVATAR RING ──────────────────────── */
@@ -308,21 +300,21 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .avatar-glow {
       position: absolute;
-      inset: -20px;
+      inset: -16px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,160,72,0.18) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201,160,72,0.15) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .avatar-ring {
       position: relative;
       border-radius: 50%;
-      padding: 3px;
+      padding: 2px;
       background: conic-gradient(
         from 220deg,
         #E2BC62 0deg,
@@ -340,33 +332,21 @@
         #E2BC62 360deg
       );
       box-shadow:
-        0 0 28px rgba(201,160,72,0.30),
-        0 0 60px rgba(201,160,72,0.12);
-    }
-
-    .avatar-ring.sm {
-      padding: 2px;
+        0 0 24px rgba(201,160,72,0.28),
+        0 0 50px rgba(201,160,72,0.10);
     }
 
     .avatar-ring img {
       display: block;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
       object-position: top;
-      border: 3px solid var(--black);
+      border: 2px solid var(--black);
     }
 
-    .avatar-ring.lg img {
-      width: 180px;
-      height: 180px;
-    }
-
-    .avatar-ring.sm img {
-      width: 130px;
-      height: 130px;
-      border-width: 2px;
-    }
-
+    /* ── CARD CONTENT ─────────────────────── */
     .barber-tier-tag {
       display: inline-flex;
       align-items: center;
@@ -377,7 +357,7 @@
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .barber-tier-tag.pro {
@@ -410,29 +390,28 @@
       margin-bottom: 6px;
     }
 
-    .barber-card-pro .barber-name { font-size: 28px; }
-
     .barber-exp {
       font-size: 11px;
       color: rgba(255,255,255,0.28);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       font-weight: 500;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .barber-divider {
       width: 32px;
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
     }
 
+    /* ── BOOK BUTTON (gold, all cards) ─────── */
     .book-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 13px 28px;
+      padding: 13px 24px;
       background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
       color: #07090D;
       border-radius: 6px;
@@ -466,54 +445,7 @@
         0 4px 12px rgba(0,0,0,0.6);
     }
 
-    .book-btn.ghost {
-      background: transparent;
-      color: rgba(255,255,255,0.6);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: none;
-    }
-    .book-btn.ghost:hover {
-      border-color: rgba(201,160,72,0.5);
-      color: var(--gold);
-      box-shadow: none;
-      transform: translateY(-1px);
-    }
-    .book-btn.ghost::before { display: none; }
-
-    /* ── BARBER GRID ──────────────────────── */
-    .barbers-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .barber-card {
-      position: relative;
-      background:
-        linear-gradient(127deg, rgba(255,255,255,0.018) 0%, transparent 40%),
-        #0B0B0E;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 40px 28px 36px;
-      text-align: center;
-      overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .barber-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%; transform: translateX(-50%);
-      width: 60px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(201,160,72,0.3), transparent);
-    }
-
-    .barber-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(201,160,72,0.28);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,160,72,0.08);
-    }
+    .book-btn:active { transform: translateY(0) scale(0.99); }
 
     /* ── SCROLL REVEAL ────────────────────── */
     .reveal {
@@ -548,10 +480,8 @@
       animation: fadeIn 0.9s ease 0.1s forwards;
     }
 
-    /* ── BOTTOM SPACING ───────────────────── */
     .page-bottom { height: 120px; }
 
-    /* ── GRAIN ────────────────────────────── */
     .page-grain {
       position: fixed;
       inset: 0;
@@ -592,11 +522,8 @@
   <!-- ── PAGE HERO ─────────────────────────── -->
   <div class="page-hero">
     <div class="location-eyebrow anim">Golden Mens — Cartierville</div>
-    <h1 class="page-title anim">
-      You're At<br>
-      <span class="accent">Cartierville</span>
-    </h1>
-    <p class="page-subtitle anim">Now choose your barber before booking</p>
+    <h1 class="page-title anim">Choose Your <span class="accent">Barber</span></h1>
+    <p class="page-subtitle anim">Choose your barber for your next experience</p>
     <div class="location-address anim">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       6007 Boul Gouin O, Montréal, QC H4J 2M8
@@ -616,38 +543,17 @@
     </div>
 
     <div class="pro-grid">
-      <div class="barber-card-pro reveal">
-
-        <!-- Decorative crown ornament -->
-        <div class="pro-crown">
-          <div class="pro-crown-line"></div>
-          <div class="pro-crown-icon">
-            <!-- Gold scissors SVG -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="6" cy="6" r="3"/>
-              <circle cx="6" cy="18" r="3"/>
-              <line x1="20" y1="4" x2="8.12" y2="15.88"/>
-              <line x1="14.47" y1="14.48" x2="20" y2="20"/>
-              <line x1="8.12" y1="8.12" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <div class="pro-crown-line right"></div>
-        </div>
-
-        <!-- Avatar -->
+      <div class="barber-card reveal">
         <div class="avatar-wrap">
           <div class="avatar-glow"></div>
-          <div class="avatar-ring lg">
+          <div class="avatar-ring">
             <img src="Gouna.png" alt="Gouna" />
           </div>
         </div>
-
-        <!-- Info -->
         <span class="barber-tier-tag pro">Barber Pro</span>
         <div class="barber-name">Gouna</div>
         <div class="barber-exp">5+ Years of Experience</div>
         <div class="barber-divider"></div>
-
         <a href="tel:+14389928101" class="book-btn">
           Book with Gouna
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
@@ -655,7 +561,6 @@
             <polyline points="12 5 19 12 12 19"/>
           </svg>
         </a>
-
       </div>
     </div>
 
@@ -663,7 +568,7 @@
 
 
   <!-- ── BARBERS ─────────────────────────────── -->
-  <div class="tier-section" style="padding-top: 20px;">
+  <div class="tier-section" style="padding-top: 10px;">
 
     <div class="tier-header reveal">
       <div class="tier-badge">
@@ -674,10 +579,9 @@
 
     <div class="barbers-grid">
 
-      <!-- Taha -->
       <div class="barber-card reveal">
         <div class="avatar-wrap">
-          <div class="avatar-ring sm">
+          <div class="avatar-ring">
             <img src="Taha.webp" alt="Taha" />
           </div>
         </div>
@@ -685,13 +589,12 @@
         <div class="barber-name">Taha</div>
         <div class="barber-exp">3–4 Years of Experience</div>
         <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn ghost">Book with Taha</a>
+        <a href="tel:+14389928101" class="book-btn">Book with Taha</a>
       </div>
 
-      <!-- Cezar -->
       <div class="barber-card reveal" data-delay="1">
         <div class="avatar-wrap">
-          <div class="avatar-ring sm">
+          <div class="avatar-ring">
             <img src="Cezar.png" alt="Cezar" />
           </div>
         </div>
@@ -699,13 +602,12 @@
         <div class="barber-name">Cezar</div>
         <div class="barber-exp">3–4 Years of Experience</div>
         <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn ghost">Book with Cezar</a>
+        <a href="tel:+14389928101" class="book-btn">Book with Cezar</a>
       </div>
 
-      <!-- Mikey -->
       <div class="barber-card reveal" data-delay="2">
         <div class="avatar-wrap">
-          <div class="avatar-ring sm">
+          <div class="avatar-ring">
             <img src="Mikey.jpeg" alt="Mikey" />
           </div>
         </div>
@@ -713,13 +615,12 @@
         <div class="barber-name">Mikey</div>
         <div class="barber-exp">3–4 Years of Experience</div>
         <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn ghost">Book with Mikey</a>
+        <a href="tel:+14389928101" class="book-btn">Book with Mikey</a>
       </div>
 
-      <!-- Bilal -->
       <div class="barber-card reveal" data-delay="3">
         <div class="avatar-wrap">
-          <div class="avatar-ring sm">
+          <div class="avatar-ring">
             <img src="Bilal.jpeg" alt="Bilal" />
           </div>
         </div>
@@ -727,13 +628,12 @@
         <div class="barber-name">Bilal</div>
         <div class="barber-exp">3–4 Years of Experience</div>
         <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn ghost">Book with Bilal</a>
+        <a href="tel:+14389928101" class="book-btn">Book with Bilal</a>
       </div>
 
-      <!-- Mouad -->
       <div class="barber-card reveal" data-delay="4">
         <div class="avatar-wrap">
-          <div class="avatar-ring sm">
+          <div class="avatar-ring">
             <img src="Mouad.jpeg" alt="Mouad" />
           </div>
         </div>
@@ -741,13 +641,12 @@
         <div class="barber-name">Mouad</div>
         <div class="barber-exp">3–4 Years of Experience</div>
         <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn ghost">Book with Mouad</a>
+        <a href="tel:+14389928101" class="book-btn">Book with Mouad</a>
       </div>
 
-      <!-- Lotfi -->
       <div class="barber-card reveal" data-delay="5">
         <div class="avatar-wrap">
-          <div class="avatar-ring sm">
+          <div class="avatar-ring">
             <img src="Lotfi.webp" alt="Lotfi" />
           </div>
         </div>
@@ -755,7 +654,7 @@
         <div class="barber-name">Lotfi</div>
         <div class="barber-exp">3–4 Years of Experience</div>
         <div class="barber-divider"></div>
-        <a href="tel:+14389928101" class="book-btn ghost">Book with Lotfi</a>
+        <a href="tel:+14389928101" class="book-btn">Book with Lotfi</a>
       </div>
 
     </div>

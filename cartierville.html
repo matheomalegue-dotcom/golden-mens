@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Your Barber — Cartierville | Golden Mens</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --black:  #07090D;
+      --black2: #0E1118;
+      --gold:   #C9A048;
+      --gold2:  #A07830;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: white;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 1240px;
+      z-index: 100;
+      background: rgba(7, 9, 13, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 14px;
+      border: 1px solid rgba(201, 160, 72, 0.2);
+    }
+
+    .nav-inner {
+      padding: 0 28px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    .btn-nav {
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #C9A048 0%, #A07830 100%);
+      color: #07090D;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ─────────────────────────────── */
+    .page-hero {
+      padding: 160px 40px 100px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(201,160,72,0.4), transparent);
+    }
+
+    .location-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(201, 160, 72, 0.75);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .location-eyebrow::before,
+    .location-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(201, 160, 72, 0.45);
+    }
+
+    .page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: white;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .page-title .accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .location-address {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+    }
+    .location-address svg { color: rgba(201,160,72,0.6); }
+
+    .hero-rule {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
+      margin: 32px auto 0;
+    }
+
+    /* ── TIER SECTION ─────────────────────── */
+    .tier-section {
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .tier-header::before,
+    .tier-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.2));
+    }
+    .tier-header::after {
+      background: linear-gradient(to left, transparent, rgba(201,160,72,0.2));
+    }
+
+    .tier-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .tier-badge-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .tier-badge-label.pro {
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tier-badge-label.standard { color: rgba(255,255,255,0.55); }
+
+    .tier-badge-years {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── PRO CARD (featured) ──────────────── */
+    .pro-grid {
+      display: flex;
+      justify-content: center;
+    }
+
+    .barber-card-pro {
+      position: relative;
+      width: 340px;
+      background:
+        linear-gradient(127deg, rgba(255,255,255,0.025) 0%, transparent 40%),
+        linear-gradient(218deg, transparent 45%, rgba(180,180,190,0.03) 46%, transparent 52%),
+        #0B0B0E;
+      border: 1px solid rgba(201,160,72,0.28);
+      border-radius: 24px;
+      padding: 52px 44px 44px;
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, border-color 0.3s;
+      box-shadow:
+        0 0 0 1px rgba(201,160,72,0.06),
+        0 0 60px rgba(201,160,72,0.12),
+        0 24px 64px rgba(0,0,0,0.6);
+    }
+
+    .barber-card-pro::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.7), transparent);
+    }
+
+    .barber-card-pro:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,160,72,0.50);
+      box-shadow:
+        0 0 0 1px rgba(201,160,72,0.10),
+        0 0 80px rgba(201,160,72,0.20),
+        0 32px 80px rgba(0,0,0,0.7);
+    }
+
+    .pro-crown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .pro-crown-line {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.5));
+    }
+    .pro-crown-line.right {
+      background: linear-gradient(to left, transparent, rgba(201,160,72,0.5));
+    }
+
+    .pro-crown-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      color: var(--gold);
+      opacity: 0.85;
+    }
+
+    /* ── AVATAR RING ──────────────────────── */
+    .avatar-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .avatar-glow {
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,160,72,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .avatar-ring {
+      position: relative;
+      border-radius: 50%;
+      padding: 3px;
+      background: conic-gradient(
+        from 220deg,
+        #E2BC62 0deg,
+        #D4AE5A 20deg,
+        #C9A048 45deg,
+        #8A6022 90deg,
+        #3A2800 130deg,
+        #07090D 165deg,
+        #0A0C10 185deg,
+        #07090D 205deg,
+        #251A00 250deg,
+        #6B4A14 295deg,
+        #B08838 330deg,
+        #C9A048 350deg,
+        #E2BC62 360deg
+      );
+      box-shadow:
+        0 0 28px rgba(201,160,72,0.30),
+        0 0 60px rgba(201,160,72,0.12);
+    }
+
+    .avatar-ring.sm {
+      padding: 2px;
+    }
+
+    .avatar-ring img {
+      display: block;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 3px solid var(--black);
+    }
+
+    .avatar-ring.lg img {
+      width: 180px;
+      height: 180px;
+    }
+
+    .avatar-ring.sm img {
+      width: 130px;
+      height: 130px;
+      border-width: 2px;
+    }
+
+    .barber-tier-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .barber-tier-tag.pro {
+      background: linear-gradient(135deg, rgba(201,160,72,0.18) 0%, rgba(201,160,72,0.08) 100%);
+      border: 1px solid rgba(201,160,72,0.40);
+      color: var(--gold);
+    }
+    .barber-tier-tag.pro::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .barber-tier-tag.standard {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.45);
+    }
+
+    .barber-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .barber-card-pro .barber-name { font-size: 28px; }
+
+    .barber-exp {
+      font-size: 11px;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .barber-divider {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
+      margin: 0 auto 28px;
+    }
+
+    .book-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
+      color: #07090D;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.22) inset,
+        0 6px 24px rgba(201,160,72,0.40),
+        0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .book-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .book-btn:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.18) inset,
+        0 10px 32px rgba(201,160,72,0.55),
+        0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .book-btn.ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: none;
+    }
+    .book-btn.ghost:hover {
+      border-color: rgba(201,160,72,0.5);
+      color: var(--gold);
+      box-shadow: none;
+      transform: translateY(-1px);
+    }
+    .book-btn.ghost::before { display: none; }
+
+    /* ── BARBER GRID ──────────────────────── */
+    .barbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .barber-card {
+      position: relative;
+      background:
+        linear-gradient(127deg, rgba(255,255,255,0.018) 0%, transparent 40%),
+        #0B0B0E;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 28px 36px;
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .barber-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.3), transparent);
+    }
+
+    .barber-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201,160,72,0.28);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,160,72,0.08);
+    }
+
+    /* ── SCROLL REVEAL ────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal[data-delay="1"] { transition-delay: 0.08s; }
+    .reveal[data-delay="2"] { transition-delay: 0.16s; }
+    .reveal[data-delay="3"] { transition-delay: 0.24s; }
+    .reveal[data-delay="4"] { transition-delay: 0.32s; }
+    .reveal[data-delay="5"] { transition-delay: 0.40s; }
+    .reveal[data-delay="6"] { transition-delay: 0.48s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .anim {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+    .anim-fade {
+      opacity: 0;
+      animation: fadeIn 0.9s ease 0.1s forwards;
+    }
+
+    /* ── BOTTOM SPACING ───────────────────── */
+    .page-bottom { height: 120px; }
+
+    /* ── GRAIN ────────────────────────────── */
+    .page-grain {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 220px 220px;
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-grain"></div>
+
+  <!-- ── NAV ─────────────────────────────── -->
+  <nav class="anim-fade">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Golden Mens" style="height: 64px; width: auto; display: block; mix-blend-mode: screen;" />
+      </a>
+
+      <a href="index.html" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/>
+          <polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Golden Mens
+      </a>
+
+      <a href="tel:+14389928101" class="btn-nav">Book Now</a>
+    </div>
+  </nav>
+
+
+  <!-- ── PAGE HERO ─────────────────────────── -->
+  <div class="page-hero">
+    <div class="location-eyebrow anim">Golden Mens — Cartierville</div>
+    <h1 class="page-title anim">
+      You're At<br>
+      <span class="accent">Cartierville</span>
+    </h1>
+    <p class="page-subtitle anim">Now choose your barber before booking</p>
+    <div class="location-address anim">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      6007 Boul Gouin O, Montréal, QC H4J 2M8
+    </div>
+    <div class="hero-rule"></div>
+  </div>
+
+
+  <!-- ── BARBER PRO ─────────────────────────── -->
+  <div class="tier-section">
+
+    <div class="tier-header reveal">
+      <div class="tier-badge">
+        <span class="tier-badge-label pro">Barber Pro</span>
+        <span class="tier-badge-years">5+ Years of Experience</span>
+      </div>
+    </div>
+
+    <div class="pro-grid">
+      <div class="barber-card-pro reveal">
+
+        <!-- Decorative crown ornament -->
+        <div class="pro-crown">
+          <div class="pro-crown-line"></div>
+          <div class="pro-crown-icon">
+            <!-- Gold scissors SVG -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"/>
+              <circle cx="6" cy="18" r="3"/>
+              <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+              <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+              <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <div class="pro-crown-line right"></div>
+        </div>
+
+        <!-- Avatar -->
+        <div class="avatar-wrap">
+          <div class="avatar-glow"></div>
+          <div class="avatar-ring lg">
+            <img src="Gouna.png" alt="Gouna" />
+          </div>
+        </div>
+
+        <!-- Info -->
+        <span class="barber-tier-tag pro">Barber Pro</span>
+        <div class="barber-name">Gouna</div>
+        <div class="barber-exp">5+ Years of Experience</div>
+        <div class="barber-divider"></div>
+
+        <a href="tel:+14389928101" class="book-btn">
+          Book with Gouna
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ── BARBERS ─────────────────────────────── -->
+  <div class="tier-section" style="padding-top: 20px;">
+
+    <div class="tier-header reveal">
+      <div class="tier-badge">
+        <span class="tier-badge-label standard">Barber</span>
+        <span class="tier-badge-years">3–4 Years of Experience</span>
+      </div>
+    </div>
+
+    <div class="barbers-grid">
+
+      <!-- Taha -->
+      <div class="barber-card reveal">
+        <div class="avatar-wrap">
+          <div class="avatar-ring sm">
+            <img src="Taha.webp" alt="Taha" />
+          </div>
+        </div>
+        <span class="barber-tier-tag standard">Barber</span>
+        <div class="barber-name">Taha</div>
+        <div class="barber-exp">3–4 Years of Experience</div>
+        <div class="barber-divider"></div>
+        <a href="tel:+14389928101" class="book-btn ghost">Book with Taha</a>
+      </div>
+
+      <!-- Cezar -->
+      <div class="barber-card reveal" data-delay="1">
+        <div class="avatar-wrap">
+          <div class="avatar-ring sm">
+            <img src="Cezar.png" alt="Cezar" />
+          </div>
+        </div>
+        <span class="barber-tier-tag standard">Barber</span>
+        <div class="barber-name">Cezar</div>
+        <div class="barber-exp">3–4 Years of Experience</div>
+        <div class="barber-divider"></div>
+        <a href="tel:+14389928101" class="book-btn ghost">Book with Cezar</a>
+      </div>
+
+      <!-- Mikey -->
+      <div class="barber-card reveal" data-delay="2">
+        <div class="avatar-wrap">
+          <div class="avatar-ring sm">
+            <img src="Mikey.jpeg" alt="Mikey" />
+          </div>
+        </div>
+        <span class="barber-tier-tag standard">Barber</span>
+        <div class="barber-name">Mikey</div>
+        <div class="barber-exp">3–4 Years of Experience</div>
+        <div class="barber-divider"></div>
+        <a href="tel:+14389928101" class="book-btn ghost">Book with Mikey</a>
+      </div>
+
+      <!-- Bilal -->
+      <div class="barber-card reveal" data-delay="3">
+        <div class="avatar-wrap">
+          <div class="avatar-ring sm">
+            <img src="Bilal.jpeg" alt="Bilal" />
+          </div>
+        </div>
+        <span class="barber-tier-tag standard">Barber</span>
+        <div class="barber-name">Bilal</div>
+        <div class="barber-exp">3–4 Years of Experience</div>
+        <div class="barber-divider"></div>
+        <a href="tel:+14389928101" class="book-btn ghost">Book with Bilal</a>
+      </div>
+
+      <!-- Mouad -->
+      <div class="barber-card reveal" data-delay="4">
+        <div class="avatar-wrap">
+          <div class="avatar-ring sm">
+            <img src="Mouad.jpeg" alt="Mouad" />
+          </div>
+        </div>
+        <span class="barber-tier-tag standard">Barber</span>
+        <div class="barber-name">Mouad</div>
+        <div class="barber-exp">3–4 Years of Experience</div>
+        <div class="barber-divider"></div>
+        <a href="tel:+14389928101" class="book-btn ghost">Book with Mouad</a>
+      </div>
+
+      <!-- Lotfi -->
+      <div class="barber-card reveal" data-delay="5">
+        <div class="avatar-wrap">
+          <div class="avatar-ring sm">
+            <img src="Lotfi.webp" alt="Lotfi" />
+          </div>
+        </div>
+        <span class="barber-tier-tag standard">Barber</span>
+        <div class="barber-name">Lotfi</div>
+        <div class="barber-exp">3–4 Years of Experience</div>
+        <div class="barber-divider"></div>
+        <a href="tel:+14389928101" class="book-btn ghost">Book with Lotfi</a>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="page-bottom"></div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 40) {
+        nav.style.borderColor = 'rgba(201, 160, 72, 0.30)';
+        nav.style.background = 'rgba(7, 9, 13, 0.96)';
+      } else {
+        nav.style.borderColor = 'rgba(201, 160, 72, 0.20)';
+        nav.style.background = 'rgba(7, 9, 13, 0.88)';
+      }
+    });
+  </script>
+
+</body>
+</html>

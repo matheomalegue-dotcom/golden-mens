@@ -137,9 +137,19 @@
       font-weight: 900;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: white;
       line-height: 1.05;
       margin-bottom: 16px;
+      text-shadow:
+        0 2px 12px rgba(0,0,0,0.7),
+        0 6px 40px rgba(0,0,0,0.45),
+        0 0 80px rgba(201,160,72,0.08);
+    }
+
+    .page-title .title-main {
+      background: linear-gradient(170deg, #FFFFFF 0%, #F0ECE4 55%, #D8D0C0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .page-title .accent {
@@ -148,10 +158,11 @@
       font-weight: 400;
       text-transform: none;
       letter-spacing: 0;
-      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      background: linear-gradient(135deg, #EDD07A 0%, #D4AE5A 35%, #C9A048 60%, #A07830 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      filter: drop-shadow(0 2px 16px rgba(201,160,72,0.35));
     }
 
     .page-subtitle {
@@ -160,24 +171,25 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       font-weight: 500;
-      margin-bottom: 28px;
+      margin-bottom: 0;
     }
 
     .location-address {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
       font-weight: 400;
+      margin-bottom: 20px;
     }
-    .location-address svg { color: rgba(201,160,72,0.55); }
+    .location-address svg { color: rgba(201,160,72,0.45); }
 
     .hero-rule {
       width: 60px;
       height: 1px;
       background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
-      margin: 28px auto 0;
+      margin: 20px auto 0;
     }
 
     /* ── TIER SECTION ─────────────────────── */
@@ -619,12 +631,12 @@
   <!-- ── PAGE HERO ─────────────────────────── -->
   <div class="page-hero">
     <div class="location-eyebrow anim">Golden Mens — Cartierville</div>
-    <h1 class="page-title anim">Choose Your <span class="accent">Experience</span></h1>
-    <p class="page-subtitle anim">Which service are you looking for?</p>
     <div class="location-address anim">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       6007 Boul Gouin O, Montréal, QC H4J 2M8
     </div>
+    <h1 class="page-title anim"><span class="title-main">Choose Your </span><span class="accent">Experience</span></h1>
+    <p class="page-subtitle anim">Which service are you looking for?</p>
     <div class="hero-rule"></div>
   </div>
 

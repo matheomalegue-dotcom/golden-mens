@@ -895,7 +895,7 @@
 
     .salon-card {
       position: relative;
-      height: 620px;
+      height: 460px;
       border-radius: 20px;
       overflow: hidden;
       cursor: pointer;
@@ -1019,17 +1019,15 @@
 
     .salon-cta {
       display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
       padding: 14px 28px;
       background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
       color: #07090D;
       border-radius: 6px;
-      font-size: 11px;
-      font-weight: 800;
       text-decoration: none;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
       position: relative;
       overflow: hidden;
       transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
@@ -1047,7 +1045,21 @@
       pointer-events: none;
     }
 
-    .salon-cta svg { transition: transform 0.25s ease; }
+    .salon-cta-main {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #07090D;
+    }
+
+    .salon-cta-sub {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(7,9,13,0.62);
+      text-transform: none;
+    }
 
     .salon-cta:hover {
       transform: translateY(-2px) scale(1.015);
@@ -1057,7 +1069,6 @@
         0 4px 12px rgba(0,0,0,0.6);
     }
 
-    .salon-cta:hover svg { transform: translateX(3px); }
     .salon-cta:active { transform: translateY(0) scale(0.99); }
 
     .services-header {
@@ -1554,19 +1565,15 @@
         <div class="salon-card-overlay"></div>
         <div class="salon-card-border"></div>
         <div class="salon-content">
-          <span class="salon-tag">Montréal</span>
-          <h3 class="salon-name">Cartier<span class="accent">ville</span></h3>
+          <h3 class="salon-name">Cartierville</h3>
           <div class="salon-divider"></div>
           <p class="salon-address">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             6007 Boul Gouin O<br>Montréal, QC H4J 2M8
           </p>
-          <a href="https://maps.google.com/?q=6007+Boul+Gouin+O+Montreal+QC" target="_blank" class="salon-cta">
-            Get Directions
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
+          <a href="#contact" class="salon-cta">
+            <span class="salon-cta-main">I Choose This One</span>
+            <span class="salon-cta-sub">Choose my barber</span>
           </a>
         </div>
       </div>
@@ -1577,19 +1584,15 @@
         <div class="salon-card-overlay"></div>
         <div class="salon-card-border"></div>
         <div class="salon-content">
-          <span class="salon-tag">Châteauguay</span>
-          <h3 class="salon-name">Château<span class="accent">guay</span></h3>
+          <h3 class="salon-name">Châteauguay</h3>
           <div class="salon-divider"></div>
           <p class="salon-address">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             62 Bd Salaberry S, Suite B<br>Châteauguay, QC J6J 4J3
           </p>
-          <a href="https://maps.google.com/?q=62+Bd+Salaberry+S+Chateauguay+QC" target="_blank" class="salon-cta">
-            Get Directions
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
+          <a href="#contact" class="salon-cta">
+            <span class="salon-cta-main">I Choose This One</span>
+            <span class="salon-cta-sub">Choose my barber</span>
           </a>
         </div>
       </div>

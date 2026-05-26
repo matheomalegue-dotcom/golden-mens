@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Your Experience — Châteauguay | Golden Mens</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --black:  #07090D;
+      --black2: #0E1118;
+      --gold:   #C9A048;
+      --gold2:  #A07830;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: white;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 1240px;
+      z-index: 100;
+      background: rgba(7, 9, 13, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 14px;
+      border: 1px solid rgba(201, 160, 72, 0.2);
+    }
+
+    .nav-inner {
+      padding: 0 28px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav-inner .logo {
+      position: absolute;
+      left: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    .btn-nav {
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #C9A048 0%, #A07830 100%);
+      color: #07090D;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ─────────────────────────────── */
+    .page-hero {
+      padding: 160px 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(201,160,72,0.4), transparent);
+    }
+
+    .reviews-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 9px 20px 9px 14px;
+      margin-bottom: 22px;
+    }
+
+    .reviews-stars {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      filter: drop-shadow(0 0 5px rgba(201,160,72,0.5));
+    }
+
+    .reviews-text {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      white-space: nowrap;
+    }
+
+    .reviews-text strong {
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .location-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(201, 160, 72, 0.75);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .location-eyebrow::before,
+    .location-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(201, 160, 72, 0.45);
+    }
+
+    .page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .page-title .title-main {
+      background: linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 78%, #7A7468 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.55));
+    }
+
+    .page-title .accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, #EDD07A 0%, #D4AE5A 35%, #C9A048 60%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 16px rgba(201,160,72,0.35));
+    }
+
+    .page-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+
+    .hero-rule {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
+      margin: 20px auto 0;
+    }
+
+    /* ── TIER SECTION ─────────────────────── */
+    .tier-section {
+      padding: 8px 40px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .tier-header::before,
+    .tier-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.2));
+    }
+    .tier-header::after {
+      background: linear-gradient(to left, transparent, rgba(201,160,72,0.2));
+    }
+
+    .tier-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .tier-badge-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .tier-badge-label.pro {
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tier-badge-label.standard { color: rgba(255,255,255,0.55); }
+
+    .tier-badge-years {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── SERVICE GRIDS ─────────────────────── */
+    .services-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .services-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ── SERVICE CARD ─────────────────────── */
+    .service-card {
+      position: relative;
+      background:
+        linear-gradient(127deg, rgba(255,255,255,0.018) 0%, transparent 40%),
+        #0B0B0E;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 36px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.3), transparent);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,160,72,0.22);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(201,160,72,0.07);
+    }
+
+    /* PRO card gold border */
+    .pro-card {
+      border-color: rgba(201,160,72,0.28);
+      box-shadow:
+        0 0 0 1px rgba(201,160,72,0.05),
+        0 0 50px rgba(201,160,72,0.09),
+        0 20px 60px rgba(0,0,0,0.45);
+    }
+    .pro-card::before {
+      width: 100px;
+      background: linear-gradient(to right, transparent, rgba(201,160,72,0.55), transparent);
+    }
+    .pro-card:hover {
+      border-color: rgba(201,160,72,0.50);
+      box-shadow:
+        0 0 70px rgba(201,160,72,0.16),
+        0 28px 72px rgba(0,0,0,0.6);
+    }
+
+    /* ── CARD TIER TAG ─────────────────────── */
+    .service-tier-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      align-self: flex-start;
+    }
+
+    .service-tier-tag.pro {
+      background: linear-gradient(135deg, rgba(201,160,72,0.18) 0%, rgba(201,160,72,0.08) 100%);
+      border: 1px solid rgba(201,160,72,0.40);
+      color: var(--gold);
+    }
+    .service-tier-tag.pro::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .service-tier-tag.standard {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── CARD NAME & META ─────────────────── */
+    .service-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .service-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .service-duration {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .service-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    .service-price {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #A07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-divider {
+      width: 32px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(201,160,72,0.4), transparent);
+      margin-bottom: 20px;
+    }
+
+    /* ── DETAILS TOGGLE ─────────────────────── */
+    .details-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+    .details-toggle:hover {
+      border-color: rgba(201,160,72,0.35);
+      color: rgba(201,160,72,0.8);
+    }
+
+    .details-toggle .chevron {
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      flex-shrink: 0;
+    }
+    .details-toggle.open .chevron {
+      transform: rotate(180deg);
+    }
+    .details-toggle.open {
+      border-color: rgba(201,160,72,0.3);
+      color: rgba(201,160,72,0.75);
+    }
+
+    /* ── DETAILS DROPDOWN ─────────────────── */
+    .details-panel {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      opacity: 0;
+      margin-bottom: 0;
+    }
+    .details-panel.open {
+      max-height: 200px;
+      opacity: 1;
+      margin-bottom: 20px;
+    }
+
+    .details-list {
+      list-style: none;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .details-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+
+    .details-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(201,160,72,0.55);
+      flex-shrink: 0;
+    }
+
+    /* ── BOOK BUTTON ─────────────────────── */
+    .book-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      background: linear-gradient(135deg, #D4AE5A 0%, #C9A048 50%, #9D7728 100%);
+      color: #07090D;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.22) inset,
+        0 6px 24px rgba(201,160,72,0.40),
+        0 2px 8px rgba(0,0,0,0.5);
+      margin-top: auto;
+    }
+
+    .book-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .book-btn:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.18) inset,
+        0 10px 32px rgba(201,160,72,0.55),
+        0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .book-btn:active { transform: translateY(0) scale(0.99); }
+
+    /* ── SCROLL REVEAL ────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition:
+        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal[data-delay="1"] { transition-delay: 0.08s; }
+    .reveal[data-delay="2"] { transition-delay: 0.16s; }
+    .reveal[data-delay="3"] { transition-delay: 0.24s; }
+    .reveal[data-delay="4"] { transition-delay: 0.32s; }
+    .reveal[data-delay="5"] { transition-delay: 0.40s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .anim {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+    .anim-fade {
+      opacity: 0;
+      animation: fadeIn 0.9s ease 0.1s forwards;
+    }
+
+    /* ── SCROLL ARROWS ────────────────────── */
+    .scroll-arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 0 0 16px;
+    }
+
+    .scroll-arrow {
+      width: 18px;
+      height: 18px;
+      border-right: 2px solid rgba(201,160,72,0.5);
+      border-bottom: 2px solid rgba(201,160,72,0.5);
+      transform: rotate(45deg);
+      animation: arrowBounce 1.6s ease-in-out infinite;
+    }
+    .scroll-arrow:nth-child(2) {
+      animation-delay: 0.18s;
+      border-color: rgba(201,160,72,0.32);
+    }
+    .scroll-arrow:nth-child(3) {
+      animation-delay: 0.36s;
+      border-color: rgba(201,160,72,0.16);
+    }
+
+    @keyframes arrowBounce {
+      0%, 60%, 100% { opacity: 0; transform: rotate(45deg) translate(-4px, -4px); }
+      30%            { opacity: 1; transform: rotate(45deg) translate(0, 0); }
+    }
+
+    .page-bottom { height: 120px; }
+
+    .page-grain {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 220px 220px;
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-grain"></div>
+
+  <!-- ── NAV ─────────────────────────────── -->
+  <nav class="anim-fade">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Golden Mens" style="height: 64px; width: auto; display: block; mix-blend-mode: screen;" />
+      </a>
+
+      <a href="index.html" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"/>
+          <polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Back to Golden Mens
+      </a>
+
+    </div>
+  </nav>
+
+
+  <!-- ── PAGE HERO ─────────────────────────── -->
+  <div class="page-hero">
+    <div class="reviews-badge anim">
+      <div class="reviews-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AE5A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AE5A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AE5A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AE5A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AE5A"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="reviews-text">Trusted by <strong>857 clients</strong></span>
+    </div>
+    <div class="location-eyebrow anim">Golden Mens — Châteauguay</div>
+    <h1 class="page-title anim"><span class="title-main">Choose Your </span><span class="accent">Experience</span></h1>
+    <p class="page-subtitle anim">Which service are you looking for?</p>
+    <div class="hero-rule"></div>
+  </div>
+
+
+  <!-- ── BARBER PRO TIER ─────────────────────── -->
+  <div class="tier-section">
+
+    <div class="tier-header reveal">
+      <div class="tier-badge">
+        <span class="tier-badge-label pro">Barber Pro</span>
+        <span class="tier-badge-years">5+ Years of Experience</span>
+      </div>
+    </div>
+
+    <div class="services-grid-3">
+
+      <!-- Pro Haircut -->
+      <div class="service-card pro-card reveal">
+        <span class="service-tier-tag pro">Barber Pro</span>
+        <div class="service-name">Pro Haircut</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$45</span>
+        </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Pro Haircut & Beard Line-Up -->
+      <div class="service-card pro-card reveal" data-delay="1">
+        <span class="service-tier-tag pro">Barber Pro</span>
+        <div class="service-name">Pro Haircut & Beard Line-Up</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$50</span>
+        </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Beard Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Pro Haircut Under 18 -->
+      <div class="service-card pro-card reveal" data-delay="2">
+        <span class="service-tier-tag pro">Barber Pro</span>
+        <div class="service-name">Pro Haircut — Under 18</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$40</span>
+        </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── BARBER TIER ─────────────────────────── -->
+  <div class="tier-section" style="padding-top: 10px;">
+
+    <div class="tier-header reveal">
+      <div class="tier-badge">
+        <span class="tier-badge-label standard">Barber</span>
+        <span class="tier-badge-years">3–4 Years of Experience</span>
+      </div>
+    </div>
+
+    <div class="services-grid-2">
+
+      <!-- Haircut -->
+      <div class="service-card reveal">
+        <span class="service-tier-tag standard">Barber</span>
+        <div class="service-name">Haircut</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$30</span>
+        </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Haircut & Beard Line-Up -->
+      <div class="service-card reveal" data-delay="1">
+        <span class="service-tier-tag standard">Barber</span>
+        <div class="service-name">Haircut & Beard Line-Up</div>
+        <div class="service-meta">
+          <span class="service-duration">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 min
+          </span>
+          <div class="service-meta-dot"></div>
+          <span class="service-price">$40</span>
+        </div>
+        <div class="service-divider"></div>
+        <button class="details-toggle" onclick="toggleDetails(this)">
+          Show Details
+          <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel">
+          <ul class="details-list">
+            <li>Haircut</li>
+            <li>Razor Line-Up</li>
+            <li>Beard Line-Up</li>
+            <li>Products & After-Shave</li>
+          </ul>
+        </div>
+        <a href="tel:+14389928101" class="book-btn">
+          Book This Service
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="page-bottom"></div>
+
+  <script>
+    function toggleDetails(btn) {
+      const panel = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      btn.classList.toggle('open', !isOpen);
+      panel.classList.toggle('open', !isOpen);
+      btn.childNodes[0].textContent = isOpen ? ' Show Details' : ' Hide Details';
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 40) {
+        nav.style.borderColor = 'rgba(201, 160, 72, 0.30)';
+        nav.style.background = 'rgba(7, 9, 13, 0.96)';
+      } else {
+        nav.style.borderColor = 'rgba(201, 160, 72, 0.20)';
+        nav.style.background = 'rgba(7, 9, 13, 0.88)';
+      }
+    });
+  </script>
+
+</body>
+</html>

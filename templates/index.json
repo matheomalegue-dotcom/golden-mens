@@ -39,6 +39,10 @@
         "b2": "lorreto-professional-curl-enhancer-cream-39-99-29-00",
         "b3": "lorreto-professional-curl-enhancer-cream-39-99-29-00"
       }
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
     }
   },
   "order": [
@@ -47,6 +51,7 @@
     "work",
     "services",
     "locations",
-    "products"
+    "products",
+    "reviews"
   ]
 }

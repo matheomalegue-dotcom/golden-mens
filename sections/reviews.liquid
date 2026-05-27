@@ -1,0 +1,243 @@
+{% style %}
+.reviews-section {
+  padding: 100px 0 120px;
+  overflow: hidden;
+}
+.reviews-header {
+  text-align: center;
+  margin-bottom: 72px;
+  padding: 0 40px;
+}
+.reviews-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(201,160,72,0.75);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.reviews-eyebrow::before, .reviews-eyebrow::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: rgba(201,160,72,0.45);
+}
+.reviews-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(26px, 4vw, 50px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: white;
+  margin-bottom: 16px;
+}
+.reviews-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+}
+.reviews-rating-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 1px solid rgba(201,160,72,0.15);
+  border-radius: 2px;
+}
+.reviews-rating-stars {
+  display: flex;
+  gap: 3px;
+  color: #EDD07A;
+  font-size: 14px;
+}
+.reviews-rating-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.reviews-rating-score {
+  font-size: 13px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #EDD07A 0%, #C9A048 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.reviews-row {
+  margin-bottom: 24px;
+  position: relative;
+}
+.reviews-row:last-child {
+  margin-bottom: 0;
+}
+.reviews-row::before,
+.reviews-row::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.reviews-row::before {
+  left: 0;
+  background: linear-gradient(to right, #07090D, transparent);
+}
+.reviews-row::after {
+  right: 0;
+  background: linear-gradient(to left, #07090D, transparent);
+}
+.reviews-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee-left 55s linear infinite;
+}
+.reviews-track--reverse {
+  animation: marquee-right 60s linear infinite;
+}
+.reviews-track:hover,
+.reviews-track--reverse:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.review-card {
+  width: 320px;
+  flex-shrink: 0;
+  background: rgba(14,17,24,0.85);
+  border: 1px solid rgba(201,160,72,0.10);
+  border-radius: 3px;
+  padding: 28px;
+  transition: border-color 0.3s ease;
+  position: relative;
+}
+.review-card:hover {
+  border-color: rgba(201,160,72,0.22);
+}
+.review-card-quote {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 56px;
+  line-height: 1;
+  color: rgba(201,160,72,0.06);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
+}
+.review-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+.review-stars span {
+  color: #EDD07A;
+  font-size: 13px;
+}
+.review-text {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 20px;
+}
+.review-divider {
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(201,160,72,0.35), transparent);
+  margin-bottom: 16px;
+}
+.review-author {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+{% endstyle %}
+
+<section class="reviews-section" id="reviews">
+  <div class="reviews-header">
+    <div class="reviews-eyebrow reveal">Testimonials</div>
+    <h2 class="reviews-title reveal" data-delay="1">What Our Clients <span class="accent">Have To Say</span></h2>
+    <p class="reviews-sub reveal" data-delay="2">200+ five-star reviews across Montreal locations</p>
+    <div class="reviews-rating-summary reveal" data-delay="3">
+      <div class="reviews-rating-stars">★★★★★</div>
+      <span class="reviews-rating-score">5.0</span>
+      <span class="reviews-rating-text">· Google Reviews</span>
+    </div>
+  </div>
+
+  {%- comment -%} Row 1 — scrolls left {%- endcomment -%}
+  <div class="reviews-row">
+    <div class="reviews-track">
+      {%- comment -%}— set A —{%- endcomment -%}
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Came here for a haircut after not wanting to switch barbers for six months and my experience did not disappoint. The owner Gouna was amazing and very skilled. 100% recommend this place.</p><div class="review-divider"></div><div class="review-author">Masroor Ashraf</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Hands down, the best barbershop I've ever been to! The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional.</p><div class="review-divider"></div><div class="review-author">Nabil Kendri</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Had my third cut here and they are killing it. Consistent quality and laser eye attention to detail. I will never get my hair cut anywhere else in Montreal.</p><div class="review-divider"></div><div class="review-author">Jon Werber</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing barbers, and INCREDIBLE with kids!!!! They KNOW how to make kids happy and comfortable here. Awesome vibes and cuts are done to perfection. They don't rush!</p><div class="review-divider"></div><div class="review-author">Maariya K.</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every time.</p><div class="review-divider"></div><div class="review-author">Kevin Costa</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing staff, everyone was super friendly and makes you feel like home. They provide top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back!</p><div class="review-divider"></div><div class="review-author">Farhaan Mohammad</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Golden Cuts is one of the best barber shops I've been to. The staff is incredibly professional and skilled, making every visit a pleasant experience.</p><div class="review-divider"></div><div class="review-author">Elsaid Elghetawy</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again.</p><div class="review-divider"></div><div class="review-author">Nicolas</div></div>
+      {%- comment -%}— set B (duplicate for seamless loop) —{%- endcomment -%}
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Came here for a haircut after not wanting to switch barbers for six months and my experience did not disappoint. The owner Gouna was amazing and very skilled. 100% recommend this place.</p><div class="review-divider"></div><div class="review-author">Masroor Ashraf</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Hands down, the best barbershop I've ever been to! The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional.</p><div class="review-divider"></div><div class="review-author">Nabil Kendri</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Had my third cut here and they are killing it. Consistent quality and laser eye attention to detail. I will never get my hair cut anywhere else in Montreal.</p><div class="review-divider"></div><div class="review-author">Jon Werber</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing barbers, and INCREDIBLE with kids!!!! They KNOW how to make kids happy and comfortable here. Awesome vibes and cuts are done to perfection. They don't rush!</p><div class="review-divider"></div><div class="review-author">Maariya K.</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every time.</p><div class="review-divider"></div><div class="review-author">Kevin Costa</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing staff, everyone was super friendly and makes you feel like home. They provide top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back!</p><div class="review-divider"></div><div class="review-author">Farhaan Mohammad</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Golden Cuts is one of the best barber shops I've been to. The staff is incredibly professional and skilled, making every visit a pleasant experience.</p><div class="review-divider"></div><div class="review-author">Elsaid Elghetawy</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again.</p><div class="review-divider"></div><div class="review-author">Nicolas</div></div>
+    </div>
+  </div>
+
+  {%- comment -%} Row 2 — scrolls right {%- endcomment -%}
+  <div class="reviews-row">
+    <div class="reviews-track reviews-track--reverse">
+      {%- comment -%}— set A —{%- endcomment -%}
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">First time and had a great haircut here. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled.</p><div class="review-divider"></div><div class="review-author">Jeremy Spiridon</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Incredible service. I've never left Golden Mens Cutz disappointed. The barbers are super respectful, passionate, and incredibly dedicated. I recommend everyone go for a haircut that will change your life.</p><div class="review-divider"></div><div class="review-author">Ali Zedan</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Maz & Gouna best owners, barbershop is super nice, vibes are great and they really know how to cut hair. Young entrepreneurs are killing it!!!</p><div class="review-divider"></div><div class="review-author">Div Kowlessur</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">I've been going to Gouna ever since the shop has been open. Honestly never been disappointed. He is always punctual with a positive attitude. The atmosphere is unique compared to any other barbershop in Montreal.</p><div class="review-divider"></div><div class="review-author">Murtaza Masud</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">One of, if not the best place to get a haircut in Montreal. Good service, good atmosphere, and especially good cuts. The barbers take their job very seriously.</p><div class="review-divider"></div><div class="review-author">AK</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My textured taper on my straight hair with Gouna was absolutely perfect. In just 20 minutes! The staff were incredibly friendly to me as a newcomer. I was a little anxious and they put me completely at ease.</p><div class="review-divider"></div><div class="review-author">Philippe</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Probably the best barber shop I've been to in Montreal, very clean environment and talented barbers. The cut never disappoints. I'd highly recommend!</p><div class="review-divider"></div><div class="review-author">Sadhurthikan Malarvannan</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My second time at this barber shop. Mickey has always been a sharp guy with his fades and cuts on my hair especially that I have salt and pepper. Highly recommend him.</p><div class="review-divider"></div><div class="review-author">Social Limousine</div></div>
+      {%- comment -%}— set B (duplicate for seamless loop) —{%- endcomment -%}
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">First time and had a great haircut here. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled.</p><div class="review-divider"></div><div class="review-author">Jeremy Spiridon</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Incredible service. I've never left Golden Mens Cutz disappointed. The barbers are super respectful, passionate, and incredibly dedicated. I recommend everyone go for a haircut that will change your life.</p><div class="review-divider"></div><div class="review-author">Ali Zedan</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Maz & Gouna best owners, barbershop is super nice, vibes are great and they really know how to cut hair. Young entrepreneurs are killing it!!!</p><div class="review-divider"></div><div class="review-author">Div Kowlessur</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">I've been going to Gouna ever since the shop has been open. Honestly never been disappointed. He is always punctual with a positive attitude. The atmosphere is unique compared to any other barbershop in Montreal.</p><div class="review-divider"></div><div class="review-author">Murtaza Masud</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">One of, if not the best place to get a haircut in Montreal. Good service, good atmosphere, and especially good cuts. The barbers take their job very seriously.</p><div class="review-divider"></div><div class="review-author">AK</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My textured taper on my straight hair with Gouna was absolutely perfect. In just 20 minutes! The staff were incredibly friendly to me as a newcomer. I was a little anxious and they put me completely at ease.</p><div class="review-divider"></div><div class="review-author">Philippe</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Probably the best barber shop I've been to in Montreal, very clean environment and talented barbers. The cut never disappoints. I'd highly recommend!</p><div class="review-divider"></div><div class="review-author">Sadhurthikan Malarvannan</div></div>
+      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My second time at this barber shop. Mickey has always been a sharp guy with his fades and cuts on my hair especially that I have salt and pepper. Highly recommend him.</p><div class="review-divider"></div><div class="review-author">Social Limousine</div></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Reviews", "settings": [] }
+{% endschema %}

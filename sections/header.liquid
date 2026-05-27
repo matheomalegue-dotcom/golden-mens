@@ -1,0 +1,42 @@
+{% if request.path == '/' or request.path == '' %}
+
+<nav class="anim-fade">
+  <div class="nav-inner">
+    <a href="{{ routes.root_url }}" class="logo">
+      <img src="{{ 'logo.png' | asset_url }}" alt="Golden Mens" style="height:64px;width:auto;display:block;mix-blend-mode:screen;">
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <a href="tel:+14389928101" class="nav-phone">✦ (438) 992-8101</a>
+      <a href="#locations" class="btn-nav">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+{% else %}
+
+<nav class="anim-fade">
+  <div class="nav-inner nav-inner--subpage">
+    <a href="{{ routes.root_url }}" class="logo">
+      <img src="{{ 'logo.png' | asset_url }}" alt="Golden Mens" style="height:64px;width:auto;display:block;mix-blend-mode:screen;">
+    </a>
+    <a href="{{ routes.root_url }}" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Golden Mens
+    </a>
+  </div>
+</nav>
+
+{% endif %}
+
+{% schema %}
+{ "name": "Header", "settings": [] }
+{% endschema %}

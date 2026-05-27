@@ -1,0 +1,47 @@
+{% style %}
+  .services { background-image: url('{{ 'background.png' | asset_url }}'); }
+{% endstyle %}
+
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="services-eyebrow reveal">Our Services</div>
+    <h2 class="services-title reveal" data-delay="1">The Shop <span class="accent">Specialities</span></h2>
+    <p class="services-sub reveal" data-delay="2">Crafted for the modern gentleman</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <img src="{{ 'hair.jpg' | asset_url }}" alt="Haircuts & Hairstyling">
+      <div class="service-card-overlay"></div>
+      <div class="service-card-border"></div>
+      <div class="service-content">
+        <span class="service-number">01 — Service</span>
+        <h3 class="service-name">Haircuts &amp; <span class="accent">Hairstyling</span></h3>
+        <div class="service-divider"></div>
+        <p class="service-desc">Precision fades, tapers, and signature cuts tailored to your style. Every line clean, every detail intentional — from classic to contemporary.</p>
+        <a href="#locations" class="service-cta">
+          Book Now
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="service-card reveal" data-delay="1">
+      <img src="{{ 'beard.jpg' | asset_url }}" alt="Beard Styling">
+      <div class="service-card-overlay"></div>
+      <div class="service-card-border"></div>
+      <div class="service-content">
+        <span class="service-number">02 — Service</span>
+        <h3 class="service-name">Beard <span class="accent">Styling</span></h3>
+        <div class="service-divider"></div>
+        <p class="service-desc">Expert shaping, sculpting, and refining. Whether full beard or precise outline, we craft the silhouette that frames your face with authority.</p>
+        <a href="#locations" class="service-cta">
+          Book Now
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Services", "settings": [] }
+{% endschema %}

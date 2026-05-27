@@ -1,0 +1,47 @@
+<section class="salons" id="locations">
+  <div class="salons-header">
+    <div class="salons-eyebrow reveal">Our Locations</div>
+    <h2 class="salons-title reveal" data-delay="1">Choose Your <span class="accent">Salon</span></h2>
+    <p class="salons-sub reveal" data-delay="2">Two locations across Greater Montreal</p>
+  </div>
+  <div class="salons-grid">
+    <div class="salon-card reveal">
+      <img src="{{ 'cartierville.png' | asset_url }}" alt="Golden Mens Cartierville">
+      <div class="salon-card-overlay"></div>
+      <div class="salon-card-border"></div>
+      <div class="salon-content">
+        <h3 class="salon-name">Cartierville</h3>
+        <div class="salon-divider"></div>
+        <p class="salon-address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          6007 Boul Gouin O<br>Montréal, QC H4J 2M8
+        </p>
+        <a href="{{ pages['cartierville'].url }}" class="salon-cta">
+          <span class="salon-cta-main">Choose This One</span>
+          <span class="salon-cta-sub">Choose my barber →</span>
+        </a>
+      </div>
+    </div>
+    <div class="salon-card reveal" data-delay="1">
+      <img src="{{ 'chateauguay.png' | asset_url }}" alt="Golden Mens Châteauguay">
+      <div class="salon-card-overlay"></div>
+      <div class="salon-card-border"></div>
+      <div class="salon-content">
+        <h3 class="salon-name">Châteauguay</h3>
+        <div class="salon-divider"></div>
+        <p class="salon-address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          62 Bd Salaberry S, Suite B<br>Châteauguay, QC J6J 4J3
+        </p>
+        <a href="{{ pages['chateauguay'].url }}" class="salon-cta">
+          <span class="salon-cta-main">Choose This One</span>
+          <span class="salon-cta-sub">Choose my barber →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Locations", "settings": [] }
+{% endschema %}

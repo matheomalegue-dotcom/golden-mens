@@ -1,0 +1,33 @@
+<section class="work" id="gallery">
+  <div class="work-header">
+    <div class="work-eyebrow reveal">Our Work</div>
+    <h2 class="work-title reveal" data-delay="1">Crafted With <span class="accent">Precision</span></h2>
+    <p class="work-sub reveal" data-delay="2">Every cut, a signature</p>
+  </div>
+  <div class="carousel-mask">
+    <div class="carousel-viewport">
+      <div class="carousel-track track-fwd">
+        {% assign imgs1 = '4175,4176,4177,4178,4179,4180,4181,4182' | split: ',' %}
+        {% for n in imgs1 %}
+          <div class="work-card"><img src="{{ 'IMG_' | append: n | append: '.jpg' | asset_url }}" alt="Haircut" loading="lazy"></div>
+        {% endfor %}
+        {% for n in imgs1 %}
+          <div class="work-card"><img src="{{ 'IMG_' | append: n | append: '.jpg' | asset_url }}" alt="Haircut" loading="lazy"></div>
+        {% endfor %}
+      </div>
+      <div class="carousel-track track-rev">
+        {% assign imgs2 = '4183,4184,4185,4175,4176,4177,4178,4179' | split: ',' %}
+        {% for n in imgs2 %}
+          <div class="work-card"><img src="{{ 'IMG_' | append: n | append: '.jpg' | asset_url }}" alt="Haircut" loading="lazy"></div>
+        {% endfor %}
+        {% for n in imgs2 %}
+          <div class="work-card"><img src="{{ 'IMG_' | append: n | append: '.jpg' | asset_url }}" alt="Haircut" loading="lazy"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Our Work", "settings": [] }
+{% endschema %}

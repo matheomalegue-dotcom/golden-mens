@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "page-services-chateauguay", "settings": {} }
+  },
+  "order": ["main"]
+}

@@ -1,117 +1,240 @@
 {% style %}
+
+/* ─── Section ─── */
 .reviews-section {
-  padding: 100px 0 120px;
+  position: relative;
+  padding: 120px 0 140px;
   overflow: hidden;
+  background: #07090D;
 }
+.reviews-section-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(201,160,72,0.06) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.reviews-section-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Header ─── */
 .reviews-header {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  margin-bottom: 72px;
   padding: 0 40px;
+  margin-bottom: 72px;
+}
+.reviews-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  color: rgba(201,160,72,0.4);
 }
 .reviews-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 10px;
-  font-weight: 500;
-  color: rgba(201,160,72,0.75);
-  letter-spacing: 0.28em;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: rgba(201,160,72,0.6);
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
-.reviews-eyebrow::before, .reviews-eyebrow::after {
+.reviews-eyebrow::before,
+.reviews-eyebrow::after {
   content: '';
   display: block;
-  width: 28px;
+  width: 48px;
   height: 1px;
-  background: rgba(201,160,72,0.45);
+  background: linear-gradient(to right, transparent, rgba(201,160,72,0.35));
 }
-.reviews-title {
+.reviews-eyebrow::after {
+  background: linear-gradient(to left, transparent, rgba(201,160,72,0.35));
+}
+.reviews-headline {
+  line-height: 1;
+  margin-bottom: 36px;
+}
+.reviews-headline-top {
+  display: block;
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(26px, 4vw, 50px);
+  font-size: clamp(38px, 5.5vw, 76px);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: white;
-  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 0.95;
 }
-.reviews-sub {
-  font-size: 14px;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.06em;
-}
-.reviews-rating-summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: 1px solid rgba(201,160,72,0.15);
-  border-radius: 2px;
-}
-.reviews-rating-stars {
-  display: flex;
-  gap: 3px;
-  color: #EDD07A;
-  font-size: 14px;
-}
-.reviews-rating-text {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-}
-.reviews-rating-score {
-  font-size: 13px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #EDD07A 0%, #C9A048 100%);
+.reviews-headline-bottom {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 6vw, 84px);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.0;
+  background: linear-gradient(135deg, #EDD07A 0%, #C9A048 45%, #9B7225 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-top: 6px;
+}
+.reviews-stats {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid rgba(201,160,72,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.reviews-stat {
+  padding: 14px 28px;
+  text-align: center;
+}
+.reviews-stat + .reviews-stat {
+  border-left: 1px solid rgba(201,160,72,0.12);
+}
+.reviews-stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  background: linear-gradient(135deg, #EDD07A, #C9A048);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  display: block;
+}
+.reviews-stat-label {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-top: 4px;
+  display: block;
 }
 
-.reviews-row {
-  margin-bottom: 24px;
+/* ─── Featured pull-quote ─── */
+.reviews-pullquote {
   position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto 84px;
+  padding: 52px 64px;
+  text-align: center;
 }
-.reviews-row:last-child {
-  margin-bottom: 0;
+.reviews-pullquote::before,
+.reviews-pullquote::after {
+  content: '';
+  position: absolute;
+  left: 64px; right: 64px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,160,72,0.2), rgba(201,160,72,0.2), transparent);
 }
+.reviews-pullquote::before { top: 0; }
+.reviews-pullquote::after  { bottom: 0; }
+.reviews-pullquote-openmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 100px;
+  line-height: 0.6;
+  background: linear-gradient(180deg, rgba(201,160,72,0.18), rgba(201,160,72,0.04));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 8px;
+  user-select: none;
+}
+.reviews-pullquote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.8vw, 30px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+}
+.reviews-pullquote-text em {
+  color: rgba(201,160,72,0.88);
+  font-style: italic;
+}
+.reviews-pullquote-byline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+.reviews-pullquote-dash {
+  width: 32px;
+  height: 1px;
+  background: rgba(201,160,72,0.3);
+}
+.reviews-pullquote-author {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(201,160,72,0.55);
+}
+
+/* ─── Carousel ─── */
+.reviews-rows {
+  position: relative;
+  z-index: 1;
+}
+.reviews-row {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 18px;
+}
+.reviews-row:last-child { margin-bottom: 0; }
 .reviews-row::before,
 .reviews-row::after {
   content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
+  top: 0; bottom: 0;
+  width: 180px;
   z-index: 2;
   pointer-events: none;
 }
 .reviews-row::before {
   left: 0;
-  background: linear-gradient(to right, #07090D, transparent);
+  background: linear-gradient(to right, #07090D 15%, transparent 100%);
 }
 .reviews-row::after {
   right: 0;
-  background: linear-gradient(to left, #07090D, transparent);
+  background: linear-gradient(to left, #07090D 15%, transparent 100%);
 }
 .reviews-track {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   width: max-content;
-  animation: marquee-left 55s linear infinite;
+  animation: marquee-left 70s linear infinite;
+  padding: 10px 0;
 }
 .reviews-track--reverse {
-  animation: marquee-right 60s linear infinite;
+  animation: marquee-right 80s linear infinite;
 }
 .reviews-track:hover,
 .reviews-track--reverse:hover {
   animation-play-state: paused;
 }
-
 @keyframes marquee-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -121,120 +244,283 @@
   to   { transform: translateX(0); }
 }
 
+/* ─── Review Card ─── */
 .review-card {
-  width: 320px;
+  width: 370px;
   flex-shrink: 0;
-  background: rgba(14,17,24,0.85);
-  border: 1px solid rgba(201,160,72,0.10);
-  border-radius: 3px;
-  padding: 28px;
-  transition: border-color 0.3s ease;
   position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid rgba(201,160,72,0.07);
+  background: linear-gradient(148deg, rgba(17,19,25,0.98) 0%, rgba(9,11,15,1) 100%);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+  cursor: default;
+}
+/* gold top bar */
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(201,160,72,0.1) 0%, rgba(237,208,122,0.85) 40%, rgba(237,208,122,0.85) 60%, rgba(201,160,72,0.1) 100%);
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+/* corner glow */
+.review-card::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 130px; height: 130px;
+  background: radial-gradient(circle at top right, rgba(201,160,72,0.055), transparent 65%);
+  pointer-events: none;
 }
 .review-card:hover {
-  border-color: rgba(201,160,72,0.22);
+  border-color: rgba(201,160,72,0.16);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 60px rgba(201,160,72,0.04);
+  transform: translateY(-4px);
 }
-.review-card-quote {
+.review-card:hover::before { opacity: 1; }
+
+/* card grain */
+.review-card-grain {
   position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: 56px;
-  line-height: 1;
-  color: rgba(201,160,72,0.06);
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.02;
   pointer-events: none;
-  user-select: none;
+  z-index: 0;
 }
-.review-stars {
+
+.review-card-inner {
+  position: relative;
+  z-index: 1;
+  padding: 32px 34px 28px;
+}
+
+.review-card-top {
   display: flex;
-  gap: 3px;
-  margin-bottom: 16px;
-}
-.review-stars span {
-  color: #EDD07A;
-  font-size: 13px;
-}
-.review-text {
-  font-size: 13.5px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.72);
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
-.review-divider {
-  width: 28px;
-  height: 1px;
-  background: linear-gradient(to right, rgba(201,160,72,0.35), transparent);
-  margin-bottom: 16px;
+.review-card-stars {
+  display: flex;
+  gap: 3px;
 }
-.review-author {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+.review-card-stars span {
+  font-size: 10px;
+  color: #EDD07A;
+  text-shadow: 0 0 10px rgba(237,208,122,0.45);
+}
+.review-card-google {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(201,160,72,0.3);
 }
+.review-card-google svg { opacity: 0.4; }
+
+.review-card-qmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  line-height: 0.65;
+  color: rgba(201,160,72,0.1);
+  display: block;
+  margin-bottom: 12px;
+  font-style: italic;
+  user-select: none;
+}
+
+.review-card-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18.5px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.76);
+  margin-bottom: 28px;
+}
+
+.review-card-foot {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(201,160,72,0.08);
+}
+.review-card-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(201,160,72,0.14), rgba(201,160,72,0.04));
+  border: 1px solid rgba(201,160,72,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+  color: rgba(201,160,72,0.75);
+  flex-shrink: 0;
+  position: relative;
+}
+.review-card-meta { flex: 1; min-width: 0; }
+.review-card-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.58);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.review-card-verified {
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(201,160,72,0.32);
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .reviews-header { padding: 0 24px; }
+  .reviews-pullquote { padding: 40px 28px; }
+  .reviews-pullquote::before,
+  .reviews-pullquote::after { left: 28px; right: 28px; }
+  .reviews-stats { flex-direction: row; }
+  .review-card { width: 300px; }
+  .review-card-inner { padding: 24px 22px 22px; }
+  .review-card-text { font-size: 16.5px; }
+}
+
 {% endstyle %}
 
 <section class="reviews-section" id="reviews">
+  <div class="reviews-section-glow"></div>
+  <div class="reviews-section-grain"></div>
+
   <div class="reviews-header">
-    <div class="reviews-eyebrow reveal">Testimonials</div>
-    <h2 class="reviews-title reveal" data-delay="1">What Our Clients <span class="accent">Have To Say</span></h2>
-    <p class="reviews-sub reveal" data-delay="2">200+ five-star reviews across Montreal locations</p>
-    <div class="reviews-rating-summary reveal" data-delay="3">
-      <div class="reviews-rating-stars">★★★★★</div>
-      <span class="reviews-rating-score">5.0</span>
-      <span class="reviews-rating-text">· Google Reviews</span>
+    <div class="reviews-icon reveal">
+      <svg width="72" height="32" viewBox="0 0 72 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="8"  r="7.5" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="10" cy="24" r="7.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M16.5 11 L26 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M16.5 21 L26 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="26" cy="16" r="2" fill="currentColor" opacity="0.7"/>
+        <path d="M27.5 15.2 L68 8"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M27.5 16.8 L68 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="reviews-eyebrow reveal">Client Testimonials</div>
+    <div class="reviews-headline reveal" data-delay="1">
+      <span class="reviews-headline-top">What Our Clients</span>
+      <span class="reviews-headline-bottom">Have To Say</span>
+    </div>
+    <div class="reviews-stats reveal" data-delay="2">
+      <div class="reviews-stat">
+        <span class="reviews-stat-number">200+</span>
+        <span class="reviews-stat-label">Reviews</span>
+      </div>
+      <div class="reviews-stat">
+        <span class="reviews-stat-number">5.0</span>
+        <span class="reviews-stat-label">Average Rating</span>
+      </div>
+      <div class="reviews-stat">
+        <span class="reviews-stat-number">★★★★★</span>
+        <span class="reviews-stat-label">Google Verified</span>
+      </div>
     </div>
   </div>
 
-  {%- comment -%} Row 1 — scrolls left {%- endcomment -%}
-  <div class="reviews-row">
-    <div class="reviews-track">
-      {%- comment -%}— set A —{%- endcomment -%}
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Came here for a haircut after not wanting to switch barbers for six months and my experience did not disappoint. The owner Gouna was amazing and very skilled. 100% recommend this place.</p><div class="review-divider"></div><div class="review-author">Masroor Ashraf</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Hands down, the best barbershop I've ever been to! The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional.</p><div class="review-divider"></div><div class="review-author">Nabil Kendri</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Had my third cut here and they are killing it. Consistent quality and laser eye attention to detail. I will never get my hair cut anywhere else in Montreal.</p><div class="review-divider"></div><div class="review-author">Jon Werber</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing barbers, and INCREDIBLE with kids!!!! They KNOW how to make kids happy and comfortable here. Awesome vibes and cuts are done to perfection. They don't rush!</p><div class="review-divider"></div><div class="review-author">Maariya K.</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every time.</p><div class="review-divider"></div><div class="review-author">Kevin Costa</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing staff, everyone was super friendly and makes you feel like home. They provide top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back!</p><div class="review-divider"></div><div class="review-author">Farhaan Mohammad</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Golden Cuts is one of the best barber shops I've been to. The staff is incredibly professional and skilled, making every visit a pleasant experience.</p><div class="review-divider"></div><div class="review-author">Elsaid Elghetawy</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again.</p><div class="review-divider"></div><div class="review-author">Nicolas</div></div>
-      {%- comment -%}— set B (duplicate for seamless loop) —{%- endcomment -%}
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Came here for a haircut after not wanting to switch barbers for six months and my experience did not disappoint. The owner Gouna was amazing and very skilled. 100% recommend this place.</p><div class="review-divider"></div><div class="review-author">Masroor Ashraf</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Hands down, the best barbershop I've ever been to! The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional.</p><div class="review-divider"></div><div class="review-author">Nabil Kendri</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Had my third cut here and they are killing it. Consistent quality and laser eye attention to detail. I will never get my hair cut anywhere else in Montreal.</p><div class="review-divider"></div><div class="review-author">Jon Werber</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing barbers, and INCREDIBLE with kids!!!! They KNOW how to make kids happy and comfortable here. Awesome vibes and cuts are done to perfection. They don't rush!</p><div class="review-divider"></div><div class="review-author">Maariya K.</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every time.</p><div class="review-divider"></div><div class="review-author">Kevin Costa</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Amazing staff, everyone was super friendly and makes you feel like home. They provide top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back!</p><div class="review-divider"></div><div class="review-author">Farhaan Mohammad</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Golden Cuts is one of the best barber shops I've been to. The staff is incredibly professional and skilled, making every visit a pleasant experience.</p><div class="review-divider"></div><div class="review-author">Elsaid Elghetawy</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again.</p><div class="review-divider"></div><div class="review-author">Nicolas</div></div>
+  <div class="reviews-pullquote reveal">
+    <span class="reviews-pullquote-openmark">"</span>
+    <p class="reviews-pullquote-text">There's a version of you before you walked in, and <em>a version of you after.</em> I've never left Golden Mens disappointed. The barbers are passionate, dedicated — I recommend everyone go for a haircut that will change your life.</p>
+    <div class="reviews-pullquote-byline">
+      <div class="reviews-pullquote-dash"></div>
+      <span class="reviews-pullquote-author">Ali Zedan · Google Review</span>
+      <div class="reviews-pullquote-dash"></div>
     </div>
   </div>
 
-  {%- comment -%} Row 2 — scrolls right {%- endcomment -%}
-  <div class="reviews-row">
-    <div class="reviews-track reviews-track--reverse">
-      {%- comment -%}— set A —{%- endcomment -%}
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">First time and had a great haircut here. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled.</p><div class="review-divider"></div><div class="review-author">Jeremy Spiridon</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Incredible service. I've never left Golden Mens Cutz disappointed. The barbers are super respectful, passionate, and incredibly dedicated. I recommend everyone go for a haircut that will change your life.</p><div class="review-divider"></div><div class="review-author">Ali Zedan</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Maz & Gouna best owners, barbershop is super nice, vibes are great and they really know how to cut hair. Young entrepreneurs are killing it!!!</p><div class="review-divider"></div><div class="review-author">Div Kowlessur</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">I've been going to Gouna ever since the shop has been open. Honestly never been disappointed. He is always punctual with a positive attitude. The atmosphere is unique compared to any other barbershop in Montreal.</p><div class="review-divider"></div><div class="review-author">Murtaza Masud</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">One of, if not the best place to get a haircut in Montreal. Good service, good atmosphere, and especially good cuts. The barbers take their job very seriously.</p><div class="review-divider"></div><div class="review-author">AK</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My textured taper on my straight hair with Gouna was absolutely perfect. In just 20 minutes! The staff were incredibly friendly to me as a newcomer. I was a little anxious and they put me completely at ease.</p><div class="review-divider"></div><div class="review-author">Philippe</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Probably the best barber shop I've been to in Montreal, very clean environment and talented barbers. The cut never disappoints. I'd highly recommend!</p><div class="review-divider"></div><div class="review-author">Sadhurthikan Malarvannan</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My second time at this barber shop. Mickey has always been a sharp guy with his fades and cuts on my hair especially that I have salt and pepper. Highly recommend him.</p><div class="review-divider"></div><div class="review-author">Social Limousine</div></div>
-      {%- comment -%}— set B (duplicate for seamless loop) —{%- endcomment -%}
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">First time and had a great haircut here. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled.</p><div class="review-divider"></div><div class="review-author">Jeremy Spiridon</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Incredible service. I've never left Golden Mens Cutz disappointed. The barbers are super respectful, passionate, and incredibly dedicated. I recommend everyone go for a haircut that will change your life.</p><div class="review-divider"></div><div class="review-author">Ali Zedan</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Maz & Gouna best owners, barbershop is super nice, vibes are great and they really know how to cut hair. Young entrepreneurs are killing it!!!</p><div class="review-divider"></div><div class="review-author">Div Kowlessur</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">I've been going to Gouna ever since the shop has been open. Honestly never been disappointed. He is always punctual with a positive attitude. The atmosphere is unique compared to any other barbershop in Montreal.</p><div class="review-divider"></div><div class="review-author">Murtaza Masud</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">One of, if not the best place to get a haircut in Montreal. Good service, good atmosphere, and especially good cuts. The barbers take their job very seriously.</p><div class="review-divider"></div><div class="review-author">AK</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My textured taper on my straight hair with Gouna was absolutely perfect. In just 20 minutes! The staff were incredibly friendly to me as a newcomer. I was a little anxious and they put me completely at ease.</p><div class="review-divider"></div><div class="review-author">Philippe</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">Probably the best barber shop I've been to in Montreal, very clean environment and talented barbers. The cut never disappoints. I'd highly recommend!</p><div class="review-divider"></div><div class="review-author">Sadhurthikan Malarvannan</div></div>
-      <div class="review-card"><div class="review-card-quote">"</div><div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="review-text">My second time at this barber shop. Mickey has always been a sharp guy with his fades and cuts on my hair especially that I have salt and pepper. Highly recommend him.</p><div class="review-divider"></div><div class="review-author">Social Limousine</div></div>
+  <div class="reviews-rows">
+
+    {%- comment -%} ── ROW 1 · scrolls left ── {%- endcomment -%}
+    <div class="reviews-row">
+      <div class="reviews-track">
+
+        {%- comment -%} SET A {%- endcomment -%}
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Came here after not wanting to switch barbers for six months — my experience did not disappoint. Gouna was amazing and very skilled. If you're looking for a new place, 100% recommend.</p><div class="review-card-foot"><div class="review-card-avatar">M</div><div class="review-card-meta"><div class="review-card-name">Masroor Ashraf</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Hands down, the best barbershop I've ever been to. The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional.</p><div class="review-card-foot"><div class="review-card-avatar">N</div><div class="review-card-meta"><div class="review-card-name">Nabil Kendri</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Consistent quality and laser eye attention to detail. The only thing I don't like is that they don't have a shop in Detroit. I will never get my hair cut anywhere else in Montreal.</p><div class="review-card-foot"><div class="review-card-avatar">J</div><div class="review-card-meta"><div class="review-card-name">Jon Werber</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Amazing barbers, and INCREDIBLE with kids! They know how to make kids happy and comfortable. Awesome vibes and cuts done to absolute perfection. They never rush.</p><div class="review-card-foot"><div class="review-card-avatar">M</div><div class="review-card-meta"><div class="review-card-name">Maariya K.</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every single time.</p><div class="review-card-foot"><div class="review-card-avatar">K</div><div class="review-card-meta"><div class="review-card-name">Kevin Costa</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Amazing staff — everyone was super friendly and makes you feel like home. Top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back.</p><div class="review-card-foot"><div class="review-card-avatar">F</div><div class="review-card-meta"><div class="review-card-name">Farhaan Mohammad</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">One of the best barber shops I've been to. I've been a customer for a while and they never fail to impress. The staff is incredibly professional and skilled.</p><div class="review-card-foot"><div class="review-card-avatar">E</div><div class="review-card-meta"><div class="review-card-name">Elsaid Elghetawy</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again.</p><div class="review-card-foot"><div class="review-card-avatar">N</div><div class="review-card-meta"><div class="review-card-name">Nicolas</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        {%- comment -%} SET B — duplicate for seamless loop {%- endcomment -%}
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Came here after not wanting to switch barbers for six months — my experience did not disappoint. Gouna was amazing and very skilled. If you're looking for a new place, 100% recommend.</p><div class="review-card-foot"><div class="review-card-avatar">M</div><div class="review-card-meta"><div class="review-card-name">Masroor Ashraf</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Hands down, the best barbershop I've ever been to. The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional.</p><div class="review-card-foot"><div class="review-card-avatar">N</div><div class="review-card-meta"><div class="review-card-name">Nabil Kendri</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Consistent quality and laser eye attention to detail. The only thing I don't like is that they don't have a shop in Detroit. I will never get my hair cut anywhere else in Montreal.</p><div class="review-card-foot"><div class="review-card-avatar">J</div><div class="review-card-meta"><div class="review-card-name">Jon Werber</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Amazing barbers, and INCREDIBLE with kids! They know how to make kids happy and comfortable. Awesome vibes and cuts done to absolute perfection. They never rush.</p><div class="review-card-foot"><div class="review-card-avatar">M</div><div class="review-card-meta"><div class="review-card-name">Maariya K.</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every single time.</p><div class="review-card-foot"><div class="review-card-avatar">K</div><div class="review-card-meta"><div class="review-card-name">Kevin Costa</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Amazing staff — everyone was super friendly and makes you feel like home. Top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back.</p><div class="review-card-foot"><div class="review-card-avatar">F</div><div class="review-card-meta"><div class="review-card-name">Farhaan Mohammad</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">One of the best barber shops I've been to. I've been a customer for a while and they never fail to impress. The staff is incredibly professional and skilled.</p><div class="review-card-foot"><div class="review-card-avatar">E</div><div class="review-card-meta"><div class="review-card-name">Elsaid Elghetawy</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again.</p><div class="review-card-foot"><div class="review-card-avatar">N</div><div class="review-card-meta"><div class="review-card-name">Nicolas</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+      </div>
     </div>
+
+    {%- comment -%} ── ROW 2 · scrolls right ── {%- endcomment -%}
+    <div class="reviews-row">
+      <div class="reviews-track reviews-track--reverse">
+
+        {%- comment -%} SET A {%- endcomment -%}
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">First time here and had a great haircut. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled.</p><div class="review-card-foot"><div class="review-card-avatar">J</div><div class="review-card-meta"><div class="review-card-name">Jeremy Spiridon</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Maz & Gouna best owners — the barbershop is super nice, the vibes are great and they really know how to cut hair. Young entrepreneurs killing it!</p><div class="review-card-foot"><div class="review-card-avatar">D</div><div class="review-card-meta"><div class="review-card-name">Div Kowlessur</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">I've been going to Gouna ever since the shop opened. Honestly never been disappointed. He is always punctual with a positive attitude. The atmosphere is unlike any other barbershop in Montreal.</p><div class="review-card-foot"><div class="review-card-avatar">M</div><div class="review-card-meta"><div class="review-card-name">Murtaza Masud</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">One of, if not the best place to get a haircut in Montreal. Good service, good atmosphere, and especially good cuts. The barbers take their job very seriously.</p><div class="review-card-foot"><div class="review-card-avatar">A</div><div class="review-card-meta"><div class="review-card-name">AK</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">My textured taper on straight hair with Gouna was absolutely perfect. In just 20 minutes. The staff were incredibly friendly to me as a newcomer — I felt immediately at ease.</p><div class="review-card-foot"><div class="review-card-avatar">P</div><div class="review-card-meta"><div class="review-card-name">Philippe</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Probably the best barber shop I've been to in Montreal. Very clean environment and talented barbers. The cut never disappoints. I'd highly recommend to everyone.</p><div class="review-card-foot"><div class="review-card-avatar">S</div><div class="review-card-meta"><div class="review-card-name">Sadhurthikan M.</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">My second time here — Mickey has always been sharp with his fades and cuts, especially that I have salt and pepper hair. He handles it perfectly every time. Highly recommend.</p><div class="review-card-foot"><div class="review-card-avatar">S</div><div class="review-card-meta"><div class="review-card-name">Social Limousine</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">My first time coming here and I really enjoyed the professionalism. The place is spotless, love the style especially the chairs. Gouna had great recommendations on the cut. Will be back.</p><div class="review-card-foot"><div class="review-card-avatar">J</div><div class="review-card-meta"><div class="review-card-name">Joe Vvv</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+        {%- comment -%} SET B — duplicate for seamless loop {%- endcomment -%}
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">First time here and had a great haircut. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled.</p><div class="review-card-foot"><div class="review-card-avatar">J</div><div class="review-card-meta"><div class="review-card-name">Jeremy Spiridon</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Maz & Gouna best owners — the barbershop is super nice, the vibes are great and they really know how to cut hair. Young entrepreneurs killing it!</p><div class="review-card-foot"><div class="review-card-avatar">D</div><div class="review-card-meta"><div class="review-card-name">Div Kowlessur</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">I've been going to Gouna ever since the shop opened. Honestly never been disappointed. He is always punctual with a positive attitude. The atmosphere is unlike any other barbershop in Montreal.</p><div class="review-card-foot"><div class="review-card-avatar">M</div><div class="review-card-meta"><div class="review-card-name">Murtaza Masud</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">One of, if not the best place to get a haircut in Montreal. Good service, good atmosphere, and especially good cuts. The barbers take their job very seriously.</p><div class="review-card-foot"><div class="review-card-avatar">A</div><div class="review-card-meta"><div class="review-card-name">AK</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">My textured taper on straight hair with Gouna was absolutely perfect. In just 20 minutes. The staff were incredibly friendly to me as a newcomer — I felt immediately at ease.</p><div class="review-card-foot"><div class="review-card-avatar">P</div><div class="review-card-meta"><div class="review-card-name">Philippe</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">Probably the best barber shop I've been to in Montreal. Very clean environment and talented barbers. The cut never disappoints. I'd highly recommend to everyone.</p><div class="review-card-foot"><div class="review-card-avatar">S</div><div class="review-card-meta"><div class="review-card-name">Sadhurthikan M.</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">My second time here — Mickey has always been sharp with his fades and cuts, especially that I have salt and pepper hair. He handles it perfectly every time. Highly recommend.</p><div class="review-card-foot"><div class="review-card-avatar">S</div><div class="review-card-meta"><div class="review-card-name">Social Limousine</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+        <div class="review-card"><div class="review-card-grain"></div><div class="review-card-inner"><div class="review-card-top"><div class="review-card-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="review-card-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11h8.533c.044.385.067.78.067 1.184 0 5.394-3.621 9.227-9.067 9.227C5.918 21.411 2 17.493 2 12S5.918 2.589 11.533 2.589c2.648 0 4.865.976 6.567 2.567l-2.666 2.567C14.234 6.726 12.977 6.148 11.533 6.148c-3.043 0-5.533 2.49-5.533 5.534 0 3.044 2.49 5.534 5.533 5.534 2.557 0 4.29-1.29 4.891-3.083H11.533L12 11z"/></svg>Google</div></div><span class="review-card-qmark">"</span><p class="review-card-text">My first time coming here and I really enjoyed the professionalism. The place is spotless, love the style especially the chairs. Gouna had great recommendations on the cut. Will be back.</p><div class="review-card-foot"><div class="review-card-avatar">J</div><div class="review-card-meta"><div class="review-card-name">Joe Vvv</div><div class="review-card-verified">Verified Google Review</div></div></div></div></div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 

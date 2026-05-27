@@ -202,6 +202,28 @@
   background: rgba(201,160,72,0.1);
   color: #EDD07A;
 }
+.products-cta {
+  text-align: center;
+  margin-top: 64px;
+}
+.products-view-all {
+  display: inline-block;
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #C9A048 0%, #EDD07A 50%, #A07830 100%);
+  color: #07090D;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.products-view-all:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
 @media (max-width: 900px) {
   .products-grid { grid-template-columns: repeat(2, 1fr); }
   .products-section { padding: 80px 20px 100px; }
@@ -328,6 +350,10 @@
         {%- endif -%}
       {%- endfor -%}
     </div>
+  </div>
+
+  <div class="products-cta reveal">
+    <a href="/collections/all" class="products-view-all">View All Products</a>
   </div>
 </section>
 

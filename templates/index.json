@@ -1,11 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero":      { "type": "hero",      "settings": {} },
-    "hours":     { "type": "hours",     "settings": {} },
-    "work":      { "type": "work",      "settings": {} },
-    "services":  { "type": "services",  "settings": {} },
-    "locations": { "type": "locations", "settings": {} },
-    "products": { "type": "products", "settings": { "bs1": "lorreto-professional-curl-enhancer-cream-39-99-29-00", "bs2": "", "bs3": "", "b1": "", "b2": "", "b3": "" } }
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "hours": {
+      "type": "hours",
+      "settings": {}
+    },
+    "work": {
+      "type": "work",
+      "settings": {}
+    },
+    "services": {
+      "type": "services",
+      "settings": {}
+    },
+    "locations": {
+      "type": "locations",
+      "settings": {}
+    },
+    "products": {
+      "type": "products",
+      "settings": {
+        "bs1": "lorreto-professional-curl-enhancer-cream-39-99-29-00",
+        "bs2": "",
+        "bs3": "",
+        "b1": "",
+        "b2": "",
+        "b3": ""
+      }
+    }
   },
-  "order": ["hero", "hours", "work", "services", "locations", "products"]
+  "order": [
+    "hero",
+    "hours",
+    "work",
+    "services",
+    "locations",
+    "products"
+  ]
 }

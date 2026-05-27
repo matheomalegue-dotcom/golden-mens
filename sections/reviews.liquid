@@ -8,97 +8,20 @@
   background: #020406;
 }
 
-/* ─── Museum spotlight ─── */
-.reviews-spotlight {
+/* ─── Spotlight canvas ─── */
+.reviews-spotlight-wrap {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
 }
-
-/* Glowing point source at top center */
-.reviews-spotlight-source {
+.reviews-spotlight-canvas {
   position: absolute;
-  top: -3px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255,252,220,0.95);
-  box-shadow:
-    0 0 10px 7px rgba(255,252,210,0.45),
-    0 0 36px 24px rgba(255,248,190,0.22),
-    0 0 80px 55px rgba(201,160,72,0.10);
-  animation: spotlight-source-pulse 3.8s ease-in-out infinite;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-@keyframes spotlight-source-pulse {
-  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); box-shadow: 0 0 10px 7px rgba(255,252,210,0.45), 0 0 36px 24px rgba(255,248,190,0.22), 0 0 80px 55px rgba(201,160,72,0.10); }
-  50%       { opacity: 0.65; transform: translateX(-50%) scale(0.8); box-shadow: 0 0 6px 4px rgba(255,252,210,0.30), 0 0 22px 14px rgba(255,248,190,0.14), 0 0 55px 38px rgba(201,160,72,0.06); }
-}
-
-/* Outer beam cone — wide triangle */
-.reviews-spotlight-cone {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-    rgba(255,252,220,0.18) 0%,
-    rgba(255,248,200,0.09) 18%,
-    rgba(240,215,150,0.05) 42%,
-    rgba(201,160,72,0.025) 68%,
-    transparent 100%
-  );
-  clip-path: polygon(48.5% 0%, 51.5% 0%, 80% 100%, 20% 100%);
-  animation: cone-breathe 4.4s ease-in-out infinite;
-}
-@keyframes cone-breathe {
-  0%   { opacity: 1;    clip-path: polygon(48.5% 0%, 51.5% 0%, 80% 100%, 20% 100%); }
-  35%  { opacity: 0.72; clip-path: polygon(48.2% 0%, 51.2% 0%, 77% 100%, 17% 100%); }
-  68%  { opacity: 0.88; clip-path: polygon(48.8% 0%, 51.8% 0%, 83% 100%, 23% 100%); }
-  100% { opacity: 1;    clip-path: polygon(48.5% 0%, 51.5% 0%, 80% 100%, 20% 100%); }
-}
-
-/* Inner core beam — tighter and brighter */
-.reviews-spotlight-core {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-    rgba(255,255,235,0.28) 0%,
-    rgba(255,252,210,0.11) 22%,
-    rgba(255,248,190,0.04) 52%,
-    transparent 80%
-  );
-  clip-path: polygon(49.3% 0%, 50.7% 0%, 65% 100%, 35% 100%);
-  animation: cone-breathe 4.4s ease-in-out infinite 0.6s;
-}
-
-/* Scattered haze around the beam */
-.reviews-spotlight-haze {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 30% 52% at 50% 4%, rgba(255,248,200,0.08) 0%, transparent 100%);
-  animation: haze-drift 6.2s ease-in-out infinite;
-}
-@keyframes haze-drift {
-  0%, 100% { opacity: 1;    transform: translateX(0px); }
-  42%       { opacity: 0.65; transform: translateX(3px); }
-  75%       { opacity: 0.85; transform: translateX(-2px); }
-}
-
-/* Warm floor pool where cards sit */
-.reviews-spotlight-pool {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 58% 38% at 50% 62%, rgba(201,160,72,0.08) 0%, transparent 78%);
-  animation: pool-pulse 5.8s ease-in-out infinite 1.2s;
-}
-@keyframes pool-pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.55; }
-}
-
-/* Side wing vignettes */
 .reviews-spotlight-wings {
   position: absolute;
   inset: 0;
@@ -331,13 +254,11 @@
   display: flex;
   flex-direction: column;
 }
-/* Dark base — slightly different per card */
 .review-polaroid:nth-child(4n+1) .review-polaroid-photo { background: #09090D; }
 .review-polaroid:nth-child(4n+2) .review-polaroid-photo { background: #0A0B0F; }
 .review-polaroid:nth-child(4n+3) .review-polaroid-photo { background: #080A0C; }
 .review-polaroid:nth-child(4n)   .review-polaroid-photo { background: #0B0A0E; }
 
-/* Grain texture */
 .review-polaroid-grain {
   position: absolute;
   inset: 0;
@@ -347,7 +268,6 @@
   pointer-events: none;
   mix-blend-mode: screen;
 }
-/* Burn vignette — edges dark, center lit */
 .review-polaroid-burn {
   position: absolute;
   inset: 0;
@@ -355,7 +275,6 @@
   z-index: 2;
   pointer-events: none;
 }
-/* Warm inner light — film light-leak feel */
 .review-polaroid-glow {
   position: absolute;
   bottom: 0; left: 0;
@@ -364,7 +283,6 @@
   z-index: 2;
   pointer-events: none;
 }
-/* Top-right cold light */
 .review-polaroid-glow2 {
   position: absolute;
   top: 0; right: 0;
@@ -373,7 +291,6 @@
   z-index: 2;
   pointer-events: none;
 }
-/* Glossy surface sheen at the top */
 .review-polaroid-sheen {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -409,7 +326,7 @@
   flex: 1;
 }
 
-/* ─── Polaroid white caption strip ─── */
+/* ─── Caption strip ─── */
 .review-polaroid-caption {
   height: 68px;
   display: flex;
@@ -421,7 +338,6 @@
   border-top: 0.5px solid rgba(0,0,0,0.06);
   position: relative;
 }
-/* Inner shadow at top of caption (paper thickness feel) */
 .review-polaroid-caption::before {
   content: '';
   position: absolute;
@@ -452,7 +368,6 @@
   color: rgba(43,30,15,0.36);
 }
 
-/* Bottom edge of polaroid (the thick white strip) */
 .review-polaroid-bottom-edge {
   height: 5px;
   background: linear-gradient(180deg, #E8DCC8, #DDD0BA);
@@ -470,12 +385,9 @@
 {% endstyle %}
 
 <section class="reviews-section" id="reviews">
-  <div class="reviews-spotlight" aria-hidden="true">
-    <div class="reviews-spotlight-source"></div>
-    <div class="reviews-spotlight-cone"></div>
-    <div class="reviews-spotlight-core"></div>
-    <div class="reviews-spotlight-haze"></div>
-    <div class="reviews-spotlight-pool"></div>
+
+  <div class="reviews-spotlight-wrap" aria-hidden="true">
+    <canvas class="reviews-spotlight-canvas"></canvas>
     <div class="reviews-spotlight-wings"></div>
   </div>
 
@@ -521,7 +433,7 @@
 
         <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"The cut was absolutely amazing, more crispy than a Mc chicken. The first fantastic haircut I've had in my entire lifetime. Definitely coming again."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Nicolas</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        {%- comment -%} Duplicate set B for seamless loop {%- endcomment -%}
+        {%- comment -%} Duplicate set B {%- endcomment -%}
         <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Came here after not wanting to switch barbers for six months — my experience did not disappoint. Gouna was amazing and very skilled. 100% recommend."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Masroor Ashraf</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
         <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Hands down, the best barbershop I've ever been to. Always spotless, welcoming atmosphere, and staff that is incredibly skilled and professional."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Nabil Kendri</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
         <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Laser eye attention to detail. They don't have a shop in Detroit and I hate them for it — I will never get my hair cut anywhere else in Montreal."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Jon Werber</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
@@ -569,6 +481,265 @@
 
   </div>
 </section>
+
+<script>
+(function () {
+  var section = document.querySelector('.reviews-section');
+  var canvas  = section && section.querySelector('.reviews-spotlight-canvas');
+  if (!canvas || !canvas.getContext) return;
+
+  var ctx = canvas.getContext('2d');
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  /* Logical (CSS-pixel) dimensions */
+  var W, H, cx, beamH;
+  var HALF_RAD = 22 * Math.PI / 180;   /* cone half-angle */
+  var PARTICLE_N = 110;
+  var particles = [];
+
+  /* Offscreen canvas for the grain texture — drawn in logical px */
+  var grainOff = document.createElement('canvas');
+  var gCtx = grainOff.getContext('2d');
+
+  /* ── helpers ── */
+  function hw(y) { return Math.max(1.5, y * Math.tan(HALF_RAD)); }
+
+  function inCone(x, y) {
+    return y >= 0 && y <= beamH && Math.abs(x - cx) <= hw(y) * 1.02;
+  }
+
+  function randInCone() {
+    var y = Math.random() * beamH;
+    /* weight toward axis */
+    var t = Math.pow(Math.random(), 0.55);
+    var x = cx + (Math.random() < 0.5 ? -1 : 1) * t * hw(y);
+    return { x: x, y: y };
+  }
+
+  /* ── particle factory ── */
+  function mkParticle(aged) {
+    var pos    = randInCone();
+    var mLife  = 180 + Math.random() * 280;
+    var fade   = 30 + Math.random() * 30;
+    return {
+      x:          pos.x,
+      y:          pos.y,
+      vx:         (Math.random() - 0.5) * 0.22,
+      vy:         -(Math.random() * 0.30 + 0.04),
+      sz:         Math.random() * 1.5 + 0.4,
+      op:         0,
+      maxOp:      Math.random() * 0.52 + 0.14,
+      life:       aged ? Math.floor(Math.random() * mLife) : 0,
+      maxLife:    mLife,
+      fade:       fade
+    };
+  }
+
+  for (var i = 0; i < PARTICLE_N; i++) particles.push(mkParticle(true));
+
+  /* ── resize / init ── */
+  function resize() {
+    var header = section.querySelector('.reviews-header');
+    W = section.offsetWidth;
+    H = section.offsetHeight;
+
+    /* stop beam at the bottom of the headline block */
+    var hl = section.querySelector('.reviews-headline');
+    beamH = hl
+      ? hl.offsetTop + hl.offsetHeight + 55
+      : (header ? header.offsetTop + header.offsetHeight + 20 : H * 0.44);
+
+    /* main canvas — device pixels */
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    /* grain offscreen — logical pixels */
+    grainOff.width  = W;
+    grainOff.height = H;
+    gCtx.setTransform(1, 0, 0, 1, 0, 0);
+
+    cx = W / 2;
+    bakeGrain();
+  }
+
+  /* ── grain texture bake ── */
+  function bakeGrain() {
+    gCtx.clearRect(0, 0, W, H);
+    var N = 520;
+    for (var i = 0; i < N; i++) {
+      var y   = Math.random() * beamH;
+      var x   = cx + (Math.random() * 2 - 1) * hw(y);
+      var dr  = y / beamH;                            /* 0=source, 1=bottom */
+      var brt = 1 - dr * 0.6;
+      var a   = (Math.random() * 0.11 + 0.02) * brt * brt;
+      var sz  = Math.random() * 0.9 + 0.15;
+      gCtx.beginPath();
+      gCtx.arc(x, y, sz, 0, 6.2832);
+      gCtx.fillStyle = 'rgba(255,252,210,' + a.toFixed(3) + ')';
+      gCtx.fill();
+    }
+  }
+
+  /* ── draw cone/beam ── */
+  function drawBeam(t) {
+    var bw   = hw(beamH);
+    var p1   = 0.82 + 0.18 * Math.sin(t * 0.52);     /* outer pulse */
+    var p2   = 0.78 + 0.22 * Math.sin(t * 0.39 + 1.05); /* core pulse */
+
+    /* outer haze */
+    var og = ctx.createLinearGradient(0, 0, 0, beamH);
+    og.addColorStop(0,    'rgba(255,252,215,' + (0.15 * p1).toFixed(3) + ')');
+    og.addColorStop(0.22, 'rgba(255,248,200,' + (0.06 * p1).toFixed(3) + ')');
+    og.addColorStop(0.60, 'rgba(240,210,140,' + (0.025 * p1).toFixed(3) + ')');
+    og.addColorStop(1,    'rgba(201,160,72,0)');
+    ctx.beginPath();
+    ctx.moveTo(cx - 2, 0);
+    ctx.lineTo(cx + 2, 0);
+    ctx.lineTo(cx + bw, beamH);
+    ctx.lineTo(cx - bw, beamH);
+    ctx.closePath();
+    ctx.fillStyle = og;
+    ctx.fill();
+
+    /* inner core — tighter, brighter */
+    var iw  = bw * 0.30;
+    var ih  = beamH * 0.80;
+    var ig  = ctx.createLinearGradient(0, 0, 0, ih);
+    ig.addColorStop(0,    'rgba(255,255,235,' + (0.26 * p2).toFixed(3) + ')');
+    ig.addColorStop(0.28, 'rgba(255,250,215,' + (0.09 * p2).toFixed(3) + ')');
+    ig.addColorStop(0.75, 'rgba(255,248,195,' + (0.02 * p2).toFixed(3) + ')');
+    ig.addColorStop(1,    'rgba(255,245,190,0)');
+    ctx.beginPath();
+    ctx.moveTo(cx - 1.5, 0);
+    ctx.lineTo(cx + 1.5, 0);
+    ctx.lineTo(cx + iw, ih);
+    ctx.lineTo(cx - iw, ih);
+    ctx.closePath();
+    ctx.fillStyle = ig;
+    ctx.fill();
+  }
+
+  /* ── composite grain clipped to cone ── */
+  function drawGrain() {
+    var bw = hw(beamH);
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(cx - 2, 0);
+    ctx.lineTo(cx + 2, 0);
+    ctx.lineTo(cx + bw, beamH);
+    ctx.lineTo(cx - bw, beamH);
+    ctx.closePath();
+    ctx.clip();
+    /* draw the logical-pixel grain canvas at logical size (ctx is dpr-scaled) */
+    ctx.drawImage(grainOff, 0, 0, W, H);
+    ctx.restore();
+  }
+
+  /* ── floating dust particles ── */
+  function tickParticles() {
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.life++;
+      p.x  += p.vx;
+      p.y  += p.vy;
+      /* slight brownian jitter */
+      p.vx += (Math.random() - 0.5) * 0.016;
+      p.vy += (Math.random() - 0.5) * 0.010;
+      p.vx *= 0.993;
+      p.vy *= 0.994;
+
+      if (p.life < p.fade) {
+        p.op = (p.life / p.fade) * p.maxOp;
+      } else if (p.life > p.maxLife - p.fade) {
+        p.op = ((p.maxLife - p.life) / p.fade) * p.maxOp;
+      } else {
+        p.op = p.maxOp;
+      }
+
+      if (p.life >= p.maxLife || !inCone(p.x, p.y)) {
+        particles[i] = mkParticle(false);
+      }
+    }
+  }
+
+  function drawParticles() {
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      if (p.op < 0.005) continue;
+      var r  = p.sz * 4.5;
+      var gr = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
+      gr.addColorStop(0,   'rgba(255,253,220,' + p.op.toFixed(3) + ')');
+      gr.addColorStop(0.4, 'rgba(255,250,208,' + (p.op * 0.38).toFixed(3) + ')');
+      gr.addColorStop(1,   'rgba(255,248,200,0)');
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, 6.2832);
+      ctx.fillStyle = gr;
+      ctx.fill();
+    }
+  }
+
+  /* ── point source bloom at top ── */
+  function drawSource(t) {
+    var pulse = 0.68 + 0.32 * Math.sin(t * 0.88);
+    var bloom = ctx.createRadialGradient(cx, 0, 0, cx, 0, 60);
+    bloom.addColorStop(0,    'rgba(255,252,222,' + (0.72 * pulse).toFixed(2) + ')');
+    bloom.addColorStop(0.10, 'rgba(255,250,210,' + (0.38 * pulse).toFixed(2) + ')');
+    bloom.addColorStop(0.38, 'rgba(255,245,190,' + (0.14 * pulse).toFixed(2) + ')');
+    bloom.addColorStop(1,    'rgba(201,160,72,0)');
+    ctx.beginPath();
+    ctx.arc(cx, 0, 60, 0, 6.2832);
+    ctx.fillStyle = bloom;
+    ctx.fill();
+    /* hard centre dot */
+    ctx.beginPath();
+    ctx.arc(cx, 1, 2.2 * pulse, 0, 6.2832);
+    ctx.fillStyle = 'rgba(255,253,238,' + (0.94 * pulse).toFixed(2) + ')';
+    ctx.fill();
+  }
+
+  /* ── main loop ── */
+  var frame = 0, raf = null;
+
+  function loop() {
+    var t = frame / 60;
+    ctx.clearRect(0, 0, W, H);
+
+    drawBeam(t);
+    drawGrain();
+    tickParticles();
+    drawParticles();
+    drawSource(t);
+
+    /* re-bake grain every 5 frames → shimmer without full flicker */
+    if (frame % 5 === 0) bakeGrain();
+
+    frame++;
+    raf = requestAnimationFrame(loop);
+  }
+
+  /* pause when off-screen */
+  if (typeof IntersectionObserver !== 'undefined') {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { if (!raf) raf = requestAnimationFrame(loop); }
+        else { cancelAnimationFrame(raf); raf = null; }
+      });
+    }, { threshold: 0.01 });
+    io.observe(section);
+  } else {
+    raf = requestAnimationFrame(loop);
+  }
+
+  var resizeT;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(resize, 160);
+  });
+
+  resize();
+})();
+</script>
 
 {% schema %}
 { "name": "Reviews", "settings": [] }

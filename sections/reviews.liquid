@@ -3,86 +3,93 @@
 /* ─── Section ─── */
 .reviews-section {
   position: relative;
-  padding: 120px 0 140px;
+  padding: 130px 0 170px;
   overflow: hidden;
-  background: #07090D;
-}
-.reviews-bg-glow {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  width: 1100px;
-  height: 700px;
-  background: radial-gradient(ellipse, rgba(201,160,72,0.05) 0%, transparent 65%);
-  pointer-events: none;
-  z-index: 0;
+  background: #020406;
 }
 
-/* ─── Masthead header ─── */
+/* ─── Stage spotlight ─── */
+.reviews-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 16% 42% at 50% -1%, rgba(255,248,215,0.16) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 60% at 50% 12%, rgba(201,160,72,0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 82% 55% at 50% 52%, rgba(201,160,72,0.05) 0%, transparent 72%);
+}
+.reviews-spotlight-wings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(to right, #020406 0%, transparent 22%, transparent 78%, #020406 100%),
+    linear-gradient(to bottom, transparent 30%, rgba(2,4,6,0.3) 100%);
+}
+
+/* ─── Header ─── */
 .reviews-header {
   position: relative;
   z-index: 1;
   text-align: center;
   padding: 0 40px;
-  margin-bottom: 80px;
+  margin-bottom: 90px;
 }
-.reviews-mast-top {
+.reviews-mast-line {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
 }
-.reviews-mast-top::before,
-.reviews-mast-top::after {
+.reviews-mast-line::before,
+.reviews-mast-line::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(201,160,72,0.2);
+  background: rgba(201,160,72,0.18);
 }
 .reviews-mast-bar {
   font-family: 'Playfair Display', serif;
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 400;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: rgba(201,160,72,0.4);
-  padding: 0 20px;
+  color: rgba(201,160,72,0.38);
+  padding: 0 22px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   white-space: nowrap;
 }
-.reviews-mast-bar .dot { color: rgba(201,160,72,0.2); font-size: 6px; }
-.reviews-mast-bottom {
+.reviews-mast-bar .ndot { font-size: 5px; color: rgba(201,160,72,0.22); }
+.reviews-mast-double {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 10px;
   margin-bottom: 40px;
 }
-.reviews-mast-bottom::before,
-.reviews-mast-bottom::after {
+.reviews-mast-double::before,
+.reviews-mast-double::after {
   content: '';
   flex: 1;
   height: 2px;
-  background: rgba(201,160,72,0.15);
+  background: rgba(201,160,72,0.13);
 }
-.reviews-mast-bottom-inner {
-  width: 6px;
-  height: 6px;
-  border: 1px solid rgba(201,160,72,0.25);
+.reviews-mast-diamond {
+  width: 5px; height: 5px;
+  border: 1px solid rgba(201,160,72,0.22);
   transform: rotate(45deg);
   flex-shrink: 0;
-  margin: 0 12px;
 }
 .reviews-headline {
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .reviews-headline-top {
   display: block;
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(36px, 5.2vw, 74px);
+  font-size: clamp(34px, 5vw, 72px);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -92,7 +99,7 @@
 .reviews-headline-bottom {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(40px, 5.8vw, 82px);
+  font-size: clamp(38px, 5.5vw, 80px);
   font-weight: 600;
   font-style: italic;
   line-height: 1.0;
@@ -106,17 +113,17 @@
   font-family: 'Playfair Display', serif;
   font-size: 13px;
   font-style: italic;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.22);
   letter-spacing: 0.05em;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 /* ─── Carousel ─── */
 .reviews-rows { position: relative; z-index: 1; }
 .reviews-row {
   overflow: hidden;
-  margin-bottom: 28px;
   position: relative;
+  margin-bottom: 36px;
 }
 .reviews-row:last-child { margin-bottom: 0; }
 .reviews-row::before,
@@ -124,28 +131,28 @@
   content: '';
   position: absolute;
   top: 0; bottom: 0;
-  width: 200px;
+  width: 220px;
   z-index: 2;
   pointer-events: none;
 }
 .reviews-row::before {
   left: 0;
-  background: linear-gradient(to right, #07090D 10%, transparent 100%);
+  background: linear-gradient(to right, #020406 10%, transparent 100%);
 }
 .reviews-row::after {
   right: 0;
-  background: linear-gradient(to left, #07090D 10%, transparent 100%);
+  background: linear-gradient(to left, #020406 10%, transparent 100%);
 }
 .reviews-track {
   display: flex;
-  gap: 32px;
+  gap: 36px;
   width: max-content;
-  animation: marquee-left 80s linear infinite;
-  padding: 20px 0 28px;
+  animation: marquee-left 85s linear infinite;
+  padding: 28px 0 36px;
   align-items: flex-start;
 }
 .reviews-track--reverse {
-  animation: marquee-right 90s linear infinite;
+  animation: marquee-right 95s linear infinite;
 }
 .reviews-track:hover,
 .reviews-track--reverse:hover { animation-play-state: paused; }
@@ -158,207 +165,248 @@
   to   { transform: translateX(0); }
 }
 
-/* ─── Newspaper Clipping ─── */
-.review-clip {
-  width: 310px;
+/* ─── Polaroid card ─── */
+.review-polaroid {
+  width: 224px;
   flex-shrink: 0;
   position: relative;
+  border-radius: 4px;
+  padding: 11px 11px 0;
+  background: linear-gradient(150deg, #F8F3EA 0%, #EDE3D0 100%);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.38),
+    0 8px 22px rgba(0,0,0,0.52),
+    0 22px 55px rgba(0,0,0,0.38),
+    inset 0 1px 0 rgba(255,255,255,0.55),
+    inset 0 -1px 0 rgba(0,0,0,0.06);
+  transition: box-shadow 0.4s ease;
   cursor: default;
+  z-index: 1;
 }
-/* Each clipping is dropped at a slightly different angle */
-.reviews-track > .review-clip:nth-child(8n+1) { transform: rotate(-1.5deg) translateY(3px); }
-.reviews-track > .review-clip:nth-child(8n+2) { transform: rotate(1.2deg)  translateY(-2px); }
-.reviews-track > .review-clip:nth-child(8n+3) { transform: rotate(-0.6deg) translateY(4px); }
-.reviews-track > .review-clip:nth-child(8n+4) { transform: rotate(1.9deg)  translateY(0px); }
-.reviews-track > .review-clip:nth-child(8n+5) { transform: rotate(-1.1deg) translateY(2px); }
-.reviews-track > .review-clip:nth-child(8n+6) { transform: rotate(0.7deg)  translateY(-3px); }
-.reviews-track > .review-clip:nth-child(8n+7) { transform: rotate(-1.8deg) translateY(1px); }
-.reviews-track > .review-clip:nth-child(8n)   { transform: rotate(1.4deg)  translateY(4px); }
+.review-polaroid:hover {
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.42),
+    0 14px 36px rgba(0,0,0,0.62),
+    0 35px 80px rgba(0,0,0,0.48),
+    inset 0 1px 0 rgba(255,255,255,0.55);
+  z-index: 10;
+}
 
-/* The paper */
-.review-clip-paper {
+/* Card rotation — scattered look */
+.reviews-track > .review-polaroid:nth-child(8n+1) { transform: rotate(-2.6deg) translateY(5px); }
+.reviews-track > .review-polaroid:nth-child(8n+2) { transform: rotate(2.3deg)  translateY(-3px); }
+.reviews-track > .review-polaroid:nth-child(8n+3) { transform: rotate(-1.4deg) translateY(7px); }
+.reviews-track > .review-polaroid:nth-child(8n+4) { transform: rotate(3.1deg)  translateY(2px); }
+.reviews-track > .review-polaroid:nth-child(8n+5) { transform: rotate(-2.0deg) translateY(4px); }
+.reviews-track > .review-polaroid:nth-child(8n+6) { transform: rotate(1.6deg)  translateY(-5px); }
+.reviews-track > .review-polaroid:nth-child(8n+7) { transform: rotate(-3.2deg) translateY(3px); }
+.reviews-track > .review-polaroid:nth-child(8n)   { transform: rotate(2.7deg)  translateY(6px); }
+
+/* Scotch tape */
+.review-polaroid-tape {
+  position: absolute;
+  top: -12px;
+  z-index: 6;
+  width: 64px;
+  height: 22px;
+  background: rgba(215,203,165,0.62);
+  border-radius: 2px;
+}
+.review-polaroid-tape::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    rgba(255,255,255,0.07) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  border-radius: 2px;
+}
+.review-polaroid-tape::after {
+  content: '';
+  position: absolute;
+  top: 6px; bottom: 6px;
+  left: 5px; right: 5px;
+  border-top: 0.5px solid rgba(255,255,255,0.35);
+  border-bottom: 0.5px solid rgba(170,155,118,0.25);
+}
+
+/* Tape angle & position per card */
+.review-polaroid:nth-child(8n+1) .review-polaroid-tape { left: 50%; transform: translateX(-50%) rotate(-2.8deg); }
+.review-polaroid:nth-child(8n+2) .review-polaroid-tape { left: 50%; transform: translateX(-50%) rotate(2.1deg); }
+.review-polaroid:nth-child(8n+3) .review-polaroid-tape { left: 50%; transform: translateX(-50%) rotate(-1.3deg); }
+.review-polaroid:nth-child(8n+4) .review-polaroid-tape { left: 50%; transform: translateX(-50%) rotate(3.2deg); }
+.review-polaroid:nth-child(8n+5) .review-polaroid-tape { left: 50%; transform: translateX(-50%) rotate(-2.0deg); }
+.review-polaroid:nth-child(8n+6) .review-polaroid-tape { left: 45%; transform: translateX(-50%) rotate(1.8deg); }
+.review-polaroid:nth-child(8n+7) .review-polaroid-tape { left: 55%; transform: translateX(-50%) rotate(-2.6deg); }
+.review-polaroid:nth-child(8n)   .review-polaroid-tape { left: 50%; transform: translateX(-50%) rotate(2.4deg); }
+
+/* ─── Photo area ─── */
+.review-polaroid-photo {
   position: relative;
-  padding: 20px 22px 18px;
+  border-radius: 3px;
   overflow: hidden;
-  filter: url(#scissors-cut);
-  box-shadow:
-    2px 4px 10px rgba(0,0,0,0.4),
-    5px 12px 30px rgba(0,0,0,0.55),
-    0 0 0 0.5px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-.review-clip:hover .review-clip-paper {
-  box-shadow:
-    3px 6px 14px rgba(0,0,0,0.45),
-    8px 18px 40px rgba(0,0,0,0.62),
-    0 0 0 0.5px rgba(0,0,0,0.12);
-}
-.review-clip:hover {
-  z-index: 2;
-}
-/* Different aged paper tones */
-.review-clip:nth-child(4n+1) .review-clip-paper { background: #F2E8C6; }
-.review-clip:nth-child(4n+2) .review-clip-paper { background: #EDE0BA; }
-.review-clip:nth-child(4n+3) .review-clip-paper { background: #F5EDCD; }
-.review-clip:nth-child(4n)   .review-clip-paper { background: #EAE0BA; }
-
-/* Paper texture grain */
-.review-clip-paper::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.065;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: 0;
-}
-/* Subtle light vignette inside paper */
-.review-clip-paper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.18), transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Tape strip — decorative on some cards */
-.review-clip-tape {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-0.5deg);
-  width: 56px;
-  height: 20px;
-  background: rgba(225,210,165,0.7);
-  z-index: 4;
-  border-radius: 1px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-}
-.review-clip-tape::before {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 1px;
-}
-.review-clip:nth-child(3n) .review-clip-tape { display: block; }
-.review-clip:not(:nth-child(3n)) .review-clip-tape { display: none; }
-
-.review-clip-inner { position: relative; z-index: 1; }
-
-/* Newspaper card header */
-.clip-head {
+  min-height: 210px;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 7px;
+  flex-direction: column;
 }
-.clip-head-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 7.5px;
-  font-weight: 700;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(28,18,6,0.45);
+/* Dark base — slightly different per card */
+.review-polaroid:nth-child(4n+1) .review-polaroid-photo { background: #09090D; }
+.review-polaroid:nth-child(4n+2) .review-polaroid-photo { background: #0A0B0F; }
+.review-polaroid:nth-child(4n+3) .review-polaroid-photo { background: #080A0C; }
+.review-polaroid:nth-child(4n)   .review-polaroid-photo { background: #0B0A0E; }
+
+/* Grain texture */
+.review-polaroid-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
 }
-.clip-head-section {
-  font-family: 'Playfair Display', serif;
-  font-size: 7px;
-  font-style: italic;
-  color: rgba(28,18,6,0.32);
-  letter-spacing: 0.06em;
+/* Burn vignette — edges dark, center lit */
+.review-polaroid-burn {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, transparent 15%, rgba(0,0,0,0.68) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
-.clip-rule-double {
-  border-top: 2px solid rgba(28,18,6,0.28);
-  border-bottom: 1px solid rgba(28,18,6,0.14);
-  padding-bottom: 0;
-  height: 0;
-  margin: 6px 0 12px;
+/* Warm inner light — film light-leak feel */
+.review-polaroid-glow {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 110px; height: 110px;
+  background: radial-gradient(circle at 0% 100%, rgba(201,160,72,0.12), transparent 70%);
+  z-index: 2;
+  pointer-events: none;
 }
-.clip-stars {
+/* Top-right cold light */
+.review-polaroid-glow2 {
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle at 100% 0%, rgba(180,200,240,0.06), transparent 70%);
+  z-index: 2;
+  pointer-events: none;
+}
+/* Glossy surface sheen at the top */
+.review-polaroid-sheen {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.review-polaroid-photo-inner {
+  position: relative;
+  z-index: 3;
+  padding: 18px 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.review-polaroid-stars {
   font-size: 10px;
-  color: #8B6510;
-  letter-spacing: 1.5px;
+  color: #EDD07A;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px rgba(237,208,122,0.6), 0 0 4px rgba(237,208,122,0.4);
   display: block;
-  margin-bottom: 11px;
-  text-shadow: 0 0 6px rgba(139,101,16,0.2);
 }
-.clip-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 14.5px;
+.review-polaroid-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
   font-style: italic;
   font-weight: 400;
-  line-height: 1.62;
-  color: #1B1206;
-  margin-bottom: 13px;
-  letter-spacing: 0.01em;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.84);
+  flex: 1;
 }
-.clip-rule-thin {
-  height: 1px;
-  background: rgba(28,18,6,0.16);
-  margin-bottom: 10px;
-}
-.clip-foot {
+
+/* ─── Polaroid white caption strip ─── */
+.review-polaroid-caption {
+  height: 62px;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 10px;
+  border-top: 0.5px solid rgba(0,0,0,0.06);
+  position: relative;
 }
-.clip-author {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 7.5px;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(28,18,6,0.65);
-  line-height: 1.4;
+/* Inner shadow at top of caption (paper thickness feel) */
+.review-polaroid-caption::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 8px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), transparent);
+  pointer-events: none;
 }
-.clip-source {
-  font-family: 'Playfair Display', serif;
-  font-size: 6.5px;
+.review-polaroid-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14.5px;
   font-style: italic;
-  color: rgba(28,18,6,0.32);
-  letter-spacing: 0.06em;
-  text-align: right;
+  font-weight: 600;
+  color: #2B1E0F;
+  letter-spacing: 0.03em;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+}
+.review-polaroid-source {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(43,30,15,0.36);
+}
+
+/* Bottom edge of polaroid (the thick white strip) */
+.review-polaroid-bottom-edge {
+  height: 4px;
+  background: linear-gradient(180deg, #E8DCC8, #DDD0BA);
+  border-radius: 0 0 4px 4px;
+  margin: 0 -11px;
 }
 
 @media (max-width: 768px) {
   .reviews-header { padding: 0 24px; }
-  .review-clip { width: 260px; }
-  .clip-text { font-size: 13px; }
+  .review-polaroid { width: 190px; }
+  .review-polaroid-photo { min-height: 175px; }
+  .review-polaroid-text { font-size: 13.5px; }
 }
 
 {% endstyle %}
 
 <section class="reviews-section" id="reviews">
-
-  <div class="reviews-bg-glow"></div>
-
-  {%- comment -%} SVG scissors-cut filter — embedded once, used by all cards {%- endcomment -%}
-  <svg style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <filter id="scissors-cut" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB">
-        <feTurbulence type="turbulence" baseFrequency="0.033 0.016" numOctaves="3" seed="6" result="noise"/>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-    </defs>
-  </svg>
+  <div class="reviews-spotlight"></div>
+  <div class="reviews-spotlight-wings"></div>
 
   <div class="reviews-header">
-    <div class="reviews-mast-top reveal">
+    <div class="reviews-mast-line reveal">
       <span class="reviews-mast-bar">
         <span>The Golden Mens Gazette</span>
-        <span class="dot">◆</span>
-        <span>Montréal, QC</span>
-        <span class="dot">◆</span>
+        <span class="ndot">◆</span>
+        <span>Montréal</span>
+        <span class="ndot">◆</span>
         <span>Est. 2019</span>
       </span>
     </div>
-    <div class="reviews-mast-bottom reveal">
-      <div class="reviews-mast-bottom-inner"></div>
+    <div class="reviews-mast-double reveal">
+      <div class="reviews-mast-diamond"></div>
     </div>
     <div class="reviews-headline reveal" data-delay="1">
       <span class="reviews-headline-top">What Our Clients</span>
@@ -369,68 +417,68 @@
 
   <div class="reviews-rows">
 
-    {%- comment -%} ── ROW 1 scrolls left ── {%- endcomment -%}
+    {%- comment -%} ── ROW 1 · scrolls left ── {%- endcomment -%}
     <div class="reviews-row">
       <div class="reviews-track">
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Came here after not wanting to switch barbers for six months — my experience did not disappoint. Gouna was amazing and very skilled. If you're looking for a new place, 100% recommend."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Masroor Ashraf</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Came here after not wanting to switch barbers for six months — my experience did not disappoint. Gouna was amazing and very skilled. 100% recommend."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Masroor Ashraf</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Hands down, the best barbershop I've ever been to. The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Nabil Kendri</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Hands down, the best barbershop I've ever been to. Always spotless, welcoming atmosphere, and staff that is incredibly skilled and professional."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Nabil Kendri</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Consistent quality and laser eye attention to detail. The only thing I don't like is they don't have a shop in Detroit. I will never get my hair cut anywhere else in Montreal."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Jon Werber</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Laser eye attention to detail. They don't have a shop in Detroit and I hate them for it — I will never get my hair cut anywhere else in Montreal."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Jon Werber</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Amazing barbers, and INCREDIBLE with kids! They know how to make kids comfortable. Awesome vibes and cuts done to absolute perfection. They never rush."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Maariya K.</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"INCREDIBLE with kids! They know how to make children happy and comfortable. Awesome vibes and cuts done to absolute perfection. They never rush."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Maariya K.</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every single time."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Kevin Costa</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Been going to Taha after long hospital shifts. The man will bless you with an amazing cut. Super consistent and detailed every single time."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Kevin Costa</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Amazing staff — everyone was super friendly and makes you feel like home. Top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Farhaan Mohammad</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Everyone was super friendly and makes you feel at home. Top tier quality for haircuts. By far the best place I've been to in Montreal — 100% going back."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Farhaan Mohammad</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"I've been a customer for a while and they never fail to impress. The staff is incredibly professional and skilled, making every visit a pleasant experience."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Elsaid Elghetawy</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"I've been a customer for a while and they never fail to impress. The staff is incredibly professional and skilled, making every visit a pleasure."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Elsaid Elghetawy</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Nicolas</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"The cut was absolutely amazing, more crispy than a Mc chicken. The first fantastic haircut I've had in my entire lifetime. Definitely coming again."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Nicolas</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        {%- comment -%} Duplicate set B {%- endcomment -%}
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Came here after not wanting to switch barbers for six months — my experience did not disappoint. Gouna was amazing and very skilled. If you're looking for a new place, 100% recommend."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Masroor Ashraf</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Hands down, the best barbershop I've ever been to. The place is always spotless, the atmosphere is welcoming, and the staff is incredibly skilled and professional."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Nabil Kendri</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Consistent quality and laser eye attention to detail. The only thing I don't like is they don't have a shop in Detroit. I will never get my hair cut anywhere else in Montreal."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Jon Werber</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Amazing barbers, and INCREDIBLE with kids! They know how to make kids comfortable. Awesome vibes and cuts done to absolute perfection. They never rush."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Maariya K.</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Been going to Taha after my long shifts at the hospital. The man will bless you with an amazing cut. Super consistent and detailed every single time."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Kevin Costa</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Amazing staff — everyone was super friendly and makes you feel like home. Top tier quality for haircuts. By far the best place I've been to in Montreal, 100% going back."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Farhaan Mohammad</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"I've been a customer for a while and they never fail to impress. The staff is incredibly professional and skilled, making every visit a pleasant experience."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Elsaid Elghetawy</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"The cut was absolutely amazing, more crispy than a Mc chicken. It's the first fantastic haircut I've had in my lifetime. Definitely coming here again."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Nicolas</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        {%- comment -%} Duplicate set B for seamless loop {%- endcomment -%}
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Came here after not wanting to switch barbers for six months — my experience did not disappoint. Gouna was amazing and very skilled. 100% recommend."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Masroor Ashraf</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Hands down, the best barbershop I've ever been to. Always spotless, welcoming atmosphere, and staff that is incredibly skilled and professional."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Nabil Kendri</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Laser eye attention to detail. They don't have a shop in Detroit and I hate them for it — I will never get my hair cut anywhere else in Montreal."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Jon Werber</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"INCREDIBLE with kids! They know how to make children happy and comfortable. Awesome vibes and cuts done to absolute perfection. They never rush."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Maariya K.</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Been going to Taha after long hospital shifts. The man will bless you with an amazing cut. Super consistent and detailed every single time."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Kevin Costa</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Everyone was super friendly and makes you feel at home. Top tier quality for haircuts. By far the best place I've been to in Montreal — 100% going back."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Farhaan Mohammad</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"I've been a customer for a while and they never fail to impress. The staff is incredibly professional and skilled, making every visit a pleasure."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Elsaid Elghetawy</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"The cut was absolutely amazing, more crispy than a Mc chicken. The first fantastic haircut I've had in my entire lifetime. Definitely coming again."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Nicolas</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
       </div>
     </div>
 
-    {%- comment -%} ── ROW 2 scrolls right ── {%- endcomment -%}
+    {%- comment -%} ── ROW 2 · scrolls right ── {%- endcomment -%}
     <div class="reviews-row">
       <div class="reviews-track reviews-track--reverse">
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"First time here and had a great haircut. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Jeremy Spiridon</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"First time here and had a great haircut. The barber took his time to make sure everything was perfect, and the result was exactly what I wanted."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Jeremy Spiridon</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"I've never left Golden Mens disappointed. The barbers are super respectful, passionate, incredibly dedicated. There's a version of you before you walked in, and a version after."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Ali Zedan</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"There's a version of you before you walk in, and a version after. I've never left Golden Mens disappointed. A haircut that changes your life."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Ali Zedan</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Maz & Gouna best owners — the barbershop is super nice, vibes are great and they really know how to cut hair. Young entrepreneurs absolutely killing it."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Div Kowlessur</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Maz & Gouna best owners — super nice shop, great vibes, they really know how to cut hair. Young entrepreneurs absolutely killing it!"</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Div Kowlessur</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"I've been going to Gouna ever since the shop opened. Honestly never been disappointed. Always punctual with a positive attitude. The atmosphere is unlike any other barbershop in Montreal."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Murtaza Masud</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Going to Gouna since day one. Honestly never disappointed — always punctual, positive. The atmosphere is unlike any other barbershop in Montreal."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Murtaza Masud</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"One of, if not the best place to get a haircut in Montreal. Good service, great atmosphere, and especially good cuts. The barbers take their job very seriously."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">AK</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"One of, if not the best place for a haircut in Montreal. Good service, great atmosphere, good cuts. The barbers take their craft very seriously."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">AK</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"My textured taper with Gouna was absolutely perfect. In just 20 minutes. The staff were incredibly friendly to me as a newcomer — I felt immediately at ease."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Philippe</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"My textured taper with Gouna was absolutely perfect. In just 20 minutes. Staff incredibly friendly to me as a newcomer — I felt immediately at ease."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Philippe</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Probably the best barber shop I've been to in Montreal. Very clean environment and talented barbers. The cut never disappoints. I'd highly recommend to everyone."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Sadhurthikan M.</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Probably the best barber shop in Montreal. Very clean environment and talented barbers. The cut never disappoints. I'd highly recommend to everyone."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Sadhurthikan M.</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"My first time coming here and I really enjoyed the professionalism. The place is spotless, love the style. Gouna had great recommendations on the cut. Definitely coming back."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Joe Vvv</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Mickey has always been sharp with his fades, especially on my salt and pepper hair. My second time here and he handles it perfectly every time."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Social Limousine</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
         {%- comment -%} Duplicate set B {%- endcomment -%}
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"First time here and had a great haircut. The barber really took his time to make sure everything was perfect, and the result was exactly what I wanted. Professional, friendly, and skilled."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Jeremy Spiridon</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"I've never left Golden Mens disappointed. The barbers are super respectful, passionate, incredibly dedicated. There's a version of you before you walked in, and a version after."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Ali Zedan</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Maz & Gouna best owners — the barbershop is super nice, vibes are great and they really know how to cut hair. Young entrepreneurs absolutely killing it."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Div Kowlessur</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"I've been going to Gouna ever since the shop opened. Honestly never been disappointed. Always punctual with a positive attitude. The atmosphere is unlike any other barbershop in Montreal."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Murtaza Masud</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"One of, if not the best place to get a haircut in Montreal. Good service, great atmosphere, and especially good cuts. The barbers take their job very seriously."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">AK</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"My textured taper with Gouna was absolutely perfect. In just 20 minutes. The staff were incredibly friendly to me as a newcomer — I felt immediately at ease."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Philippe</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"Probably the best barber shop I've been to in Montreal. Very clean environment and talented barbers. The cut never disappoints. I'd highly recommend to everyone."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Sadhurthikan M.</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
-        <div class="review-clip"><div class="review-clip-tape"></div><div class="review-clip-paper"><div class="review-clip-inner"><div class="clip-head"><span class="clip-head-name">Golden Mens Gazette</span><span class="clip-head-section">Client Review</span></div><div class="clip-rule-double"></div><span class="clip-stars">★★★★★</span><p class="clip-text">"My first time coming here and I really enjoyed the professionalism. The place is spotless, love the style. Gouna had great recommendations on the cut. Definitely coming back."</p><div class="clip-rule-thin"></div><div class="clip-foot"><span class="clip-author">Joe Vvv</span><span class="clip-source">Verified Google Review</span></div></div></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"First time here and had a great haircut. The barber took his time to make sure everything was perfect, and the result was exactly what I wanted."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Jeremy Spiridon</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"There's a version of you before you walk in, and a version after. I've never left Golden Mens disappointed. A haircut that changes your life."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Ali Zedan</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Maz & Gouna best owners — super nice shop, great vibes, they really know how to cut hair. Young entrepreneurs absolutely killing it!"</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Div Kowlessur</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Going to Gouna since day one. Honestly never disappointed — always punctual, positive. The atmosphere is unlike any other barbershop in Montreal."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Murtaza Masud</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"One of, if not the best place for a haircut in Montreal. Good service, great atmosphere, good cuts. The barbers take their craft very seriously."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">AK</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"My textured taper with Gouna was absolutely perfect. In just 20 minutes. Staff incredibly friendly to me as a newcomer — I felt immediately at ease."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Philippe</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Probably the best barber shop in Montreal. Very clean environment and talented barbers. The cut never disappoints. I'd highly recommend to everyone."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Sadhurthikan M.</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
+        <div class="review-polaroid"><div class="review-polaroid-tape"></div><div class="review-polaroid-photo"><div class="review-polaroid-grain"></div><div class="review-polaroid-burn"></div><div class="review-polaroid-glow"></div><div class="review-polaroid-glow2"></div><div class="review-polaroid-sheen"></div><div class="review-polaroid-photo-inner"><span class="review-polaroid-stars">★★★★★</span><p class="review-polaroid-text">"Mickey has always been sharp with his fades, especially on my salt and pepper hair. My second time here and he handles it perfectly every time."</p></div></div><div class="review-polaroid-caption"><div class="review-polaroid-name">Social Limousine</div><div class="review-polaroid-source">Verified Google Review</div></div><div class="review-polaroid-bottom-edge"></div></div>
 
       </div>
     </div>

@@ -8,25 +8,103 @@
   background: #020406;
 }
 
-/* ─── Stage spotlight ─── */
+/* ─── Museum spotlight ─── */
 .reviews-spotlight {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(ellipse 16% 42% at 50% -1%, rgba(255,248,215,0.16) 0%, transparent 100%),
-    radial-gradient(ellipse 50% 60% at 50% 12%, rgba(201,160,72,0.09) 0%, transparent 65%),
-    radial-gradient(ellipse 82% 55% at 50% 52%, rgba(201,160,72,0.05) 0%, transparent 72%);
+  overflow: hidden;
 }
+
+/* Glowing point source at top center */
+.reviews-spotlight-source {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,252,220,0.95);
+  box-shadow:
+    0 0 10px 7px rgba(255,252,210,0.45),
+    0 0 36px 24px rgba(255,248,190,0.22),
+    0 0 80px 55px rgba(201,160,72,0.10);
+  animation: spotlight-source-pulse 3.8s ease-in-out infinite;
+}
+@keyframes spotlight-source-pulse {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); box-shadow: 0 0 10px 7px rgba(255,252,210,0.45), 0 0 36px 24px rgba(255,248,190,0.22), 0 0 80px 55px rgba(201,160,72,0.10); }
+  50%       { opacity: 0.65; transform: translateX(-50%) scale(0.8); box-shadow: 0 0 6px 4px rgba(255,252,210,0.30), 0 0 22px 14px rgba(255,248,190,0.14), 0 0 55px 38px rgba(201,160,72,0.06); }
+}
+
+/* Outer beam cone — wide triangle */
+.reviews-spotlight-cone {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(255,252,220,0.18) 0%,
+    rgba(255,248,200,0.09) 18%,
+    rgba(240,215,150,0.05) 42%,
+    rgba(201,160,72,0.025) 68%,
+    transparent 100%
+  );
+  clip-path: polygon(48.5% 0%, 51.5% 0%, 80% 100%, 20% 100%);
+  animation: cone-breathe 4.4s ease-in-out infinite;
+}
+@keyframes cone-breathe {
+  0%   { opacity: 1;    clip-path: polygon(48.5% 0%, 51.5% 0%, 80% 100%, 20% 100%); }
+  35%  { opacity: 0.72; clip-path: polygon(48.2% 0%, 51.2% 0%, 77% 100%, 17% 100%); }
+  68%  { opacity: 0.88; clip-path: polygon(48.8% 0%, 51.8% 0%, 83% 100%, 23% 100%); }
+  100% { opacity: 1;    clip-path: polygon(48.5% 0%, 51.5% 0%, 80% 100%, 20% 100%); }
+}
+
+/* Inner core beam — tighter and brighter */
+.reviews-spotlight-core {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(255,255,235,0.28) 0%,
+    rgba(255,252,210,0.11) 22%,
+    rgba(255,248,190,0.04) 52%,
+    transparent 80%
+  );
+  clip-path: polygon(49.3% 0%, 50.7% 0%, 65% 100%, 35% 100%);
+  animation: cone-breathe 4.4s ease-in-out infinite 0.6s;
+}
+
+/* Scattered haze around the beam */
+.reviews-spotlight-haze {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 30% 52% at 50% 4%, rgba(255,248,200,0.08) 0%, transparent 100%);
+  animation: haze-drift 6.2s ease-in-out infinite;
+}
+@keyframes haze-drift {
+  0%, 100% { opacity: 1;    transform: translateX(0px); }
+  42%       { opacity: 0.65; transform: translateX(3px); }
+  75%       { opacity: 0.85; transform: translateX(-2px); }
+}
+
+/* Warm floor pool where cards sit */
+.reviews-spotlight-pool {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 58% 38% at 50% 62%, rgba(201,160,72,0.08) 0%, transparent 78%);
+  animation: pool-pulse 5.8s ease-in-out infinite 1.2s;
+}
+@keyframes pool-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+/* Side wing vignettes */
 .reviews-spotlight-wings {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  z-index: 0;
   background:
-    linear-gradient(to right, #020406 0%, transparent 22%, transparent 78%, #020406 100%),
-    linear-gradient(to bottom, transparent 30%, rgba(2,4,6,0.3) 100%);
+    linear-gradient(to right, #020406 0%, transparent 18%, transparent 82%, #020406 100%),
+    linear-gradient(to bottom, transparent 28%, rgba(2,4,6,0.28) 100%);
 }
 
 /* ─── Header ─── */
@@ -123,7 +201,7 @@
 .reviews-row {
   overflow: hidden;
   position: relative;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 .reviews-row:last-child { margin-bottom: 0; }
 .reviews-row::before,
@@ -145,14 +223,14 @@
 }
 .reviews-track {
   display: flex;
-  gap: 36px;
+  gap: 40px;
   width: max-content;
-  animation: marquee-left 85s linear infinite;
-  padding: 28px 0 36px;
+  animation: marquee-left 95s linear infinite;
+  padding: 32px 0 40px;
   align-items: flex-start;
 }
 .reviews-track--reverse {
-  animation: marquee-right 95s linear infinite;
+  animation: marquee-right 108s linear infinite;
 }
 .reviews-track:hover,
 .reviews-track--reverse:hover { animation-play-state: paused; }
@@ -167,11 +245,11 @@
 
 /* ─── Polaroid card ─── */
 .review-polaroid {
-  width: 224px;
+  width: 316px;
   flex-shrink: 0;
   position: relative;
   border-radius: 4px;
-  padding: 11px 11px 0;
+  padding: 13px 13px 0;
   background: linear-gradient(150deg, #F8F3EA 0%, #EDE3D0 100%);
   box-shadow:
     0 2px 6px rgba(0,0,0,0.38),
@@ -205,10 +283,10 @@
 /* Scotch tape */
 .review-polaroid-tape {
   position: absolute;
-  top: -12px;
+  top: -13px;
   z-index: 6;
-  width: 64px;
-  height: 22px;
+  width: 80px;
+  height: 24px;
   background: rgba(215,203,165,0.62);
   border-radius: 2px;
 }
@@ -228,8 +306,8 @@
 .review-polaroid-tape::after {
   content: '';
   position: absolute;
-  top: 6px; bottom: 6px;
-  left: 5px; right: 5px;
+  top: 7px; bottom: 7px;
+  left: 6px; right: 6px;
   border-top: 0.5px solid rgba(255,255,255,0.35);
   border-bottom: 0.5px solid rgba(170,155,118,0.25);
 }
@@ -249,7 +327,7 @@
   position: relative;
   border-radius: 3px;
   overflow: hidden;
-  min-height: 210px;
+  min-height: 255px;
   display: flex;
   flex-direction: column;
 }
@@ -281,7 +359,7 @@
 .review-polaroid-glow {
   position: absolute;
   bottom: 0; left: 0;
-  width: 110px; height: 110px;
+  width: 130px; height: 130px;
   background: radial-gradient(circle at 0% 100%, rgba(201,160,72,0.12), transparent 70%);
   z-index: 2;
   pointer-events: none;
@@ -290,7 +368,7 @@
 .review-polaroid-glow2 {
   position: absolute;
   top: 0; right: 0;
-  width: 80px; height: 80px;
+  width: 95px; height: 95px;
   background: radial-gradient(circle at 100% 0%, rgba(180,200,240,0.06), transparent 70%);
   z-index: 2;
   pointer-events: none;
@@ -308,14 +386,14 @@
 .review-polaroid-photo-inner {
   position: relative;
   z-index: 3;
-  padding: 18px 16px 20px;
+  padding: 20px 18px 22px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 .review-polaroid-stars {
-  font-size: 10px;
+  font-size: 11px;
   color: #EDD07A;
   letter-spacing: 2px;
   text-shadow: 0 0 12px rgba(237,208,122,0.6), 0 0 4px rgba(237,208,122,0.4);
@@ -323,23 +401,23 @@
 }
 .review-polaroid-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
+  font-size: 18px;
   font-style: italic;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.6;
   color: rgba(255,255,255,0.84);
   flex: 1;
 }
 
 /* ─── Polaroid white caption strip ─── */
 .review-polaroid-caption {
-  height: 62px;
+  height: 68px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 0 10px;
+  gap: 5px;
+  padding: 0 12px;
   border-top: 0.5px solid rgba(0,0,0,0.06);
   position: relative;
 }
@@ -354,7 +432,7 @@
 }
 .review-polaroid-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 14.5px;
+  font-size: 15px;
   font-style: italic;
   font-weight: 600;
   color: #2B1E0F;
@@ -367,7 +445,7 @@
 }
 .review-polaroid-source {
   font-family: 'Montserrat', sans-serif;
-  font-size: 6.5px;
+  font-size: 7px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -376,24 +454,30 @@
 
 /* Bottom edge of polaroid (the thick white strip) */
 .review-polaroid-bottom-edge {
-  height: 4px;
+  height: 5px;
   background: linear-gradient(180deg, #E8DCC8, #DDD0BA);
   border-radius: 0 0 4px 4px;
-  margin: 0 -11px;
+  margin: 0 -13px;
 }
 
 @media (max-width: 768px) {
   .reviews-header { padding: 0 24px; }
-  .review-polaroid { width: 190px; }
-  .review-polaroid-photo { min-height: 175px; }
-  .review-polaroid-text { font-size: 13.5px; }
+  .review-polaroid { width: 268px; }
+  .review-polaroid-photo { min-height: 218px; }
+  .review-polaroid-text { font-size: 16px; }
 }
 
 {% endstyle %}
 
 <section class="reviews-section" id="reviews">
-  <div class="reviews-spotlight"></div>
-  <div class="reviews-spotlight-wings"></div>
+  <div class="reviews-spotlight" aria-hidden="true">
+    <div class="reviews-spotlight-source"></div>
+    <div class="reviews-spotlight-cone"></div>
+    <div class="reviews-spotlight-core"></div>
+    <div class="reviews-spotlight-haze"></div>
+    <div class="reviews-spotlight-pool"></div>
+    <div class="reviews-spotlight-wings"></div>
+  </div>
 
   <div class="reviews-header">
     <div class="reviews-mast-line reveal">

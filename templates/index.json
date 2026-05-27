@@ -5,7 +5,7 @@
     "work":      { "type": "work",      "settings": {} },
     "services":  { "type": "services",  "settings": {} },
     "locations": { "type": "locations", "settings": {} },
-    "products": { "type": "products", "settings": { "bestsellers_handle": "best-sellers", "bundles_handle": "bundles" } }
+    "products": { "type": "products", "settings": { "bs1": "lorreto-professional-curl-enhancer-cream-39-99-29-00", "bs2": "", "bs3": "", "b1": "", "b2": "", "b3": "" } }
   },
   "order": ["hero", "hours", "work", "services", "locations", "products"]
 }

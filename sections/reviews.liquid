@@ -8,26 +8,20 @@
   background: #020406;
 }
 
-/* ─── Spotlight canvas ─── */
-.reviews-spotlight-wrap {
+/* ─── Gold background glow behind headline ─── */
+.reviews-glow {
   position: absolute;
-  inset: 0;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse 55% 52% at 50% 38%,
+    rgba(201,160,72,0.18) 0%,
+    rgba(201,160,72,0.09) 30%,
+    rgba(180,130,50,0.04) 60%,
+    transparent 100%);
   pointer-events: none;
   z-index: 0;
-}
-.reviews-spotlight-canvas {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-.reviews-spotlight-wings {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, #020406 0%, transparent 22%, transparent 78%, #020406 100%),
-    linear-gradient(to bottom, transparent 35%, rgba(2,4,6,0.55) 100%);
 }
 
 /* ─── Header ─── */
@@ -51,10 +45,6 @@
   letter-spacing: -0.03em;
   color: #fff;
   line-height: 0.95;
-  text-shadow:
-    0 0 120px rgba(255,248,210,0.55),
-    0 0 50px rgba(255,245,200,0.30),
-    0 0 18px rgba(255,242,190,0.18);
 }
 .reviews-headline-bottom {
   display: block;
@@ -63,12 +53,11 @@
   font-weight: 600;
   font-style: italic;
   line-height: 1.0;
-  background: linear-gradient(135deg, #F5DC8A 0%, #EDD07A 35%, #C9A048 65%, #9B7225 100%);
+  background: linear-gradient(135deg, #EDD07A 0%, #C9A048 45%, #9B7225 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-top: 4px;
-  filter: drop-shadow(0 0 28px rgba(237,208,122,0.45)) drop-shadow(0 0 8px rgba(201,160,72,0.30));
 }
 .reviews-header-sub {
   font-family: 'Playfair Display', serif;
@@ -346,10 +335,7 @@
 
 <section class="reviews-section" id="reviews">
 
-  <div class="reviews-spotlight-wrap" aria-hidden="true">
-    <canvas class="reviews-spotlight-canvas"></canvas>
-    <div class="reviews-spotlight-wings"></div>
-  </div>
+  <div class="reviews-glow" aria-hidden="true"></div>
 
   <div class="reviews-header">
     <div class="reviews-headline reveal" data-delay="1">
@@ -429,255 +415,6 @@
 
   </div>
 </section>
-
-<script>
-(function () {
-  var section = document.querySelector('.reviews-section');
-  var canvas  = section && section.querySelector('.reviews-spotlight-canvas');
-  if (!canvas || !canvas.getContext) return;
-
-  var ctx = canvas.getContext('2d');
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-  var W, H, cx, beamH;
-  /* wide cone — ~80° total opening so light actually covers the headline */
-  var HALF_RAD = 40 * Math.PI / 180;
-  var PARTICLE_N = 180;
-  var particles = [];
-
-  var grainOff = document.createElement('canvas');
-  var gCtx = grainOff.getContext('2d');
-
-  function hw(y) { return Math.max(2, y * Math.tan(HALF_RAD)); }
-
-  function inCone(x, y) {
-    return y >= 0 && y <= beamH && Math.abs(x - cx) <= hw(y) * 1.02;
-  }
-
-  function randInCone() {
-    var y = Math.random() * beamH;
-    var x = cx + (Math.random() * 2 - 1) * hw(y);
-    return { x: x, y: y };
-  }
-
-  function mkParticle(aged) {
-    var pos   = randInCone();
-    var mLife = 500 + Math.random() * 700;
-    var fade  = 100 + Math.random() * 100;
-    return {
-      x:       pos.x,
-      y:       pos.y,
-      vx:      (Math.random() - 0.5) * 0.028,
-      vy:      -(Math.random() * 0.038 + 0.006),
-      sz:      Math.random() * 1.4 + 0.6,    /* visible but not huge */
-      op:      0,
-      maxOp:   Math.random() * 0.22 + 0.08,  /* clearly visible grey */
-      life:    aged ? Math.floor(Math.random() * mLife) : 0,
-      maxLife: mLife,
-      fade:    fade
-    };
-  }
-
-  for (var i = 0; i < PARTICLE_N; i++) particles.push(mkParticle(true));
-
-  function resize() {
-    W = section.offsetWidth;
-    H = section.offsetHeight;
-
-    var hl = section.querySelector('.reviews-headline');
-    var header = section.querySelector('.reviews-header');
-    beamH = hl
-      ? hl.offsetTop + hl.offsetHeight + 40
-      : (header ? header.offsetTop + header.offsetHeight + 20 : H * 0.44);
-
-    canvas.width  = W * dpr;
-    canvas.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    grainOff.width  = W;
-    grainOff.height = H;
-    gCtx.setTransform(1, 0, 0, 1, 0, 0);
-
-    cx = W / 2;
-    bakeGrain();
-  }
-
-  /* baked once — no re-bake in the loop, no shimmer/sparkle */
-  function bakeGrain() {
-    gCtx.clearRect(0, 0, W, H);
-    var N = 380;
-    for (var i = 0; i < N; i++) {
-      var y  = Math.random() * beamH;
-      var x  = cx + (Math.random() * 2 - 1) * hw(y);
-      var dr = y / beamH;
-      var a  = (Math.random() * 0.055 + 0.01) * (1 - dr * 0.55);
-      var sz = Math.random() * 0.7 + 0.1;
-      gCtx.beginPath();
-      gCtx.arc(x, y, sz, 0, 6.2832);
-      gCtx.fillStyle = 'rgba(220,215,200,' + a.toFixed(3) + ')';
-      gCtx.fill();
-    }
-  }
-
-  function drawBeam(t) {
-    var bw = hw(beamH);
-    var p1 = 0.92 + 0.08 * Math.sin(t * 0.18);
-    var p2 = 0.90 + 0.10 * Math.sin(t * 0.13 + 0.8);
-
-    /* wide outer wash */
-    var og = ctx.createLinearGradient(0, 0, 0, beamH);
-    og.addColorStop(0,    'rgba(255,250,215,' + (0.32 * p1).toFixed(3) + ')');
-    og.addColorStop(0.15, 'rgba(255,248,205,' + (0.20 * p1).toFixed(3) + ')');
-    og.addColorStop(0.45, 'rgba(248,235,175,' + (0.13 * p1).toFixed(3) + ')');
-    og.addColorStop(0.78, 'rgba(235,215,155,' + (0.08 * p1).toFixed(3) + ')');
-    og.addColorStop(1,    'rgba(201,160,72,0)');
-    ctx.beginPath();
-    ctx.moveTo(cx - 4, 0);
-    ctx.lineTo(cx + 4, 0);
-    ctx.lineTo(cx + bw, beamH);
-    ctx.lineTo(cx - bw, beamH);
-    ctx.closePath();
-    ctx.fillStyle = og;
-    ctx.fill();
-
-    /* inner brighter core */
-    var iw = bw * 0.48;
-    var ih = beamH;
-    var ig = ctx.createLinearGradient(0, 0, 0, ih);
-    ig.addColorStop(0,    'rgba(255,253,232,' + (0.28 * p2).toFixed(3) + ')');
-    ig.addColorStop(0.28, 'rgba(255,251,218,' + (0.16 * p2).toFixed(3) + ')');
-    ig.addColorStop(0.62, 'rgba(255,248,200,' + (0.08 * p2).toFixed(3) + ')');
-    ig.addColorStop(0.90, 'rgba(255,245,190,' + (0.03 * p2).toFixed(3) + ')');
-    ig.addColorStop(1,    'rgba(255,245,190,0)');
-    ctx.beginPath();
-    ctx.moveTo(cx - 3, 0);
-    ctx.lineTo(cx + 3, 0);
-    ctx.lineTo(cx + iw, ih);
-    ctx.lineTo(cx - iw, ih);
-    ctx.closePath();
-    ctx.fillStyle = ig;
-    ctx.fill();
-
-    /* focal splash — radial pool of light exactly at the headline */
-    var splashR = bw * 0.72;
-    var sg = ctx.createRadialGradient(cx, beamH, 0, cx, beamH, splashR);
-    sg.addColorStop(0,   'rgba(255,252,222,' + (0.18 * p1).toFixed(3) + ')');
-    sg.addColorStop(0.4, 'rgba(255,248,205,' + (0.09 * p1).toFixed(3) + ')');
-    sg.addColorStop(1,   'rgba(248,235,170,0)');
-    ctx.save();
-    ctx.scale(1, 0.28);
-    ctx.beginPath();
-    ctx.arc(cx, beamH / 0.28, splashR, 0, 6.2832);
-    ctx.fillStyle = sg;
-    ctx.fill();
-    ctx.restore();
-  }
-
-  function drawGrain() {
-    var bw = hw(beamH);
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(cx - 4, 0);
-    ctx.lineTo(cx + 4, 0);
-    ctx.lineTo(cx + bw, beamH);
-    ctx.lineTo(cx - bw, beamH);
-    ctx.closePath();
-    ctx.clip();
-    ctx.drawImage(grainOff, 0, 0, W, H);
-    ctx.restore();
-  }
-
-  function tickParticles() {
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      p.life++;
-      p.x += p.vx;
-      p.y += p.vy;
-      /* near-zero brownian — almost imperceptible */
-      p.vx += (Math.random() - 0.5) * 0.004;
-      p.vy += (Math.random() - 0.5) * 0.003;
-      p.vx *= 0.996;
-      p.vy *= 0.997;
-
-      if (p.life < p.fade) {
-        p.op = (p.life / p.fade) * p.maxOp;
-      } else if (p.life > p.maxLife - p.fade) {
-        p.op = ((p.maxLife - p.life) / p.fade) * p.maxOp;
-      } else {
-        p.op = p.maxOp;
-      }
-
-      if (p.life >= p.maxLife || !inCone(p.x, p.y)) {
-        particles[i] = mkParticle(false);
-      }
-    }
-  }
-
-  function drawParticles() {
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      if (p.op < 0.004) continue;
-      /* tiny solid grey dot — no glow, no radial gradient */
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.sz, 0, 6.2832);
-      ctx.fillStyle = 'rgba(195,188,172,' + p.op.toFixed(3) + ')';
-      ctx.fill();
-    }
-  }
-
-  function drawSource(t) {
-    /* very slow, subtle pulse at the light source */
-    var pulse = 0.85 + 0.15 * Math.sin(t * 0.20);
-    var bloom = ctx.createRadialGradient(cx, 0, 0, cx, 0, 55);
-    bloom.addColorStop(0,    'rgba(255,252,222,' + (0.60 * pulse).toFixed(2) + ')');
-    bloom.addColorStop(0.12, 'rgba(255,250,210,' + (0.28 * pulse).toFixed(2) + ')');
-    bloom.addColorStop(0.45, 'rgba(255,245,190,' + (0.08 * pulse).toFixed(2) + ')');
-    bloom.addColorStop(1,    'rgba(201,160,72,0)');
-    ctx.beginPath();
-    ctx.arc(cx, 0, 55, 0, 6.2832);
-    ctx.fillStyle = bloom;
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(cx, 1, 1.8 * pulse, 0, 6.2832);
-    ctx.fillStyle = 'rgba(255,253,238,' + (0.88 * pulse).toFixed(2) + ')';
-    ctx.fill();
-  }
-
-  var frame = 0, raf = null;
-
-  function loop() {
-    var t = frame / 60;
-    ctx.clearRect(0, 0, W, H);
-    drawBeam(t);
-    drawGrain();
-    tickParticles();
-    drawParticles();
-    drawSource(t);
-    frame++;
-    raf = requestAnimationFrame(loop);
-  }
-
-  if (typeof IntersectionObserver !== 'undefined') {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) { if (!raf) raf = requestAnimationFrame(loop); }
-        else { cancelAnimationFrame(raf); raf = null; }
-      });
-    }, { threshold: 0.01 });
-    io.observe(section);
-  } else {
-    raf = requestAnimationFrame(loop);
-  }
-
-  var resizeT;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeT);
-    resizeT = setTimeout(resize, 160);
-  });
-
-  resize();
-})();
-</script>
 
 {% schema %}
 { "name": "Reviews", "settings": [] }

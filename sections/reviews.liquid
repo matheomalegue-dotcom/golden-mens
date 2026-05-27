@@ -26,8 +26,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, #020406 0%, transparent 18%, transparent 82%, #020406 100%),
-    linear-gradient(to bottom, transparent 28%, rgba(2,4,6,0.28) 100%);
+    linear-gradient(to right, #020406 0%, transparent 22%, transparent 78%, #020406 100%),
+    linear-gradient(to bottom, transparent 35%, rgba(2,4,6,0.55) 100%);
 }
 
 /* ─── Header ─── */
@@ -37,51 +37,6 @@
   text-align: center;
   padding: 0 40px;
   margin-bottom: 90px;
-}
-.reviews-mast-line {
-  display: flex;
-  align-items: center;
-  margin-bottom: 9px;
-}
-.reviews-mast-line::before,
-.reviews-mast-line::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(201,160,72,0.18);
-}
-.reviews-mast-bar {
-  font-family: 'Playfair Display', serif;
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: rgba(201,160,72,0.38);
-  padding: 0 22px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  white-space: nowrap;
-}
-.reviews-mast-bar .ndot { font-size: 5px; color: rgba(201,160,72,0.22); }
-.reviews-mast-double {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-.reviews-mast-double::before,
-.reviews-mast-double::after {
-  content: '';
-  flex: 1;
-  height: 2px;
-  background: rgba(201,160,72,0.13);
-}
-.reviews-mast-diamond {
-  width: 5px; height: 5px;
-  border: 1px solid rgba(201,160,72,0.22);
-  transform: rotate(45deg);
-  flex-shrink: 0;
 }
 .reviews-headline {
   line-height: 1;
@@ -96,6 +51,10 @@
   letter-spacing: -0.03em;
   color: #fff;
   line-height: 0.95;
+  text-shadow:
+    0 0 120px rgba(255,248,210,0.55),
+    0 0 50px rgba(255,245,200,0.30),
+    0 0 18px rgba(255,242,190,0.18);
 }
 .reviews-headline-bottom {
   display: block;
@@ -104,11 +63,12 @@
   font-weight: 600;
   font-style: italic;
   line-height: 1.0;
-  background: linear-gradient(135deg, #EDD07A 0%, #C9A048 45%, #9B7225 100%);
+  background: linear-gradient(135deg, #F5DC8A 0%, #EDD07A 35%, #C9A048 65%, #9B7225 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-top: 4px;
+  filter: drop-shadow(0 0 28px rgba(237,208,122,0.45)) drop-shadow(0 0 8px rgba(201,160,72,0.30));
 }
 .reviews-header-sub {
   font-family: 'Playfair Display', serif;
@@ -392,18 +352,6 @@
   </div>
 
   <div class="reviews-header">
-    <div class="reviews-mast-line reveal">
-      <span class="reviews-mast-bar">
-        <span>The Golden Mens Gazette</span>
-        <span class="ndot">◆</span>
-        <span>Montréal</span>
-        <span class="ndot">◆</span>
-        <span>Est. 2019</span>
-      </span>
-    </div>
-    <div class="reviews-mast-double reveal">
-      <div class="reviews-mast-diamond"></div>
-    </div>
     <div class="reviews-headline reveal" data-delay="1">
       <span class="reviews-headline-top">What Our Clients</span>
       <span class="reviews-headline-bottom">Have To Say</span>
@@ -514,18 +462,16 @@
 
   function mkParticle(aged) {
     var pos   = randInCone();
-    /* long life = very slow apparent movement */
-    var mLife = 600 + Math.random() * 800;
-    var fade  = 120 + Math.random() * 120;
+    var mLife = 500 + Math.random() * 700;
+    var fade  = 100 + Math.random() * 100;
     return {
       x:       pos.x,
       y:       pos.y,
-      /* extremely slow drift — like dust in still air */
-      vx:      (Math.random() - 0.5) * 0.025,
-      vy:      -(Math.random() * 0.035 + 0.005),
-      sz:      Math.random() * 0.45 + 0.15,   /* tiny, like a tick */
+      vx:      (Math.random() - 0.5) * 0.028,
+      vy:      -(Math.random() * 0.038 + 0.006),
+      sz:      Math.random() * 1.4 + 0.6,    /* visible but not huge */
       op:      0,
-      maxOp:   Math.random() * 0.10 + 0.03,   /* very faint grey */
+      maxOp:   Math.random() * 0.22 + 0.08,  /* clearly visible grey */
       life:    aged ? Math.floor(Math.random() * mLife) : 0,
       maxLife: mLife,
       fade:    fade
@@ -575,16 +521,15 @@
 
   function drawBeam(t) {
     var bw = hw(beamH);
-    /* very gentle, slow pulse — barely noticeable */
     var p1 = 0.92 + 0.08 * Math.sin(t * 0.18);
     var p2 = 0.90 + 0.10 * Math.sin(t * 0.13 + 0.8);
 
-    /* wide soft wash — makes headline actually glow */
+    /* wide outer wash */
     var og = ctx.createLinearGradient(0, 0, 0, beamH);
-    og.addColorStop(0,    'rgba(255,250,215,' + (0.22 * p1).toFixed(3) + ')');
-    og.addColorStop(0.18, 'rgba(255,248,205,' + (0.12 * p1).toFixed(3) + ')');
-    og.addColorStop(0.50, 'rgba(248,235,175,' + (0.065 * p1).toFixed(3) + ')');
-    og.addColorStop(0.82, 'rgba(230,210,140,' + (0.022 * p1).toFixed(3) + ')');
+    og.addColorStop(0,    'rgba(255,250,215,' + (0.32 * p1).toFixed(3) + ')');
+    og.addColorStop(0.15, 'rgba(255,248,205,' + (0.20 * p1).toFixed(3) + ')');
+    og.addColorStop(0.45, 'rgba(248,235,175,' + (0.13 * p1).toFixed(3) + ')');
+    og.addColorStop(0.78, 'rgba(235,215,155,' + (0.08 * p1).toFixed(3) + ')');
     og.addColorStop(1,    'rgba(201,160,72,0)');
     ctx.beginPath();
     ctx.moveTo(cx - 4, 0);
@@ -595,13 +540,14 @@
     ctx.fillStyle = og;
     ctx.fill();
 
-    /* softer inner brightening */
-    var iw = bw * 0.42;
-    var ih = beamH * 0.88;
+    /* inner brighter core */
+    var iw = bw * 0.48;
+    var ih = beamH;
     var ig = ctx.createLinearGradient(0, 0, 0, ih);
-    ig.addColorStop(0,    'rgba(255,253,230,' + (0.18 * p2).toFixed(3) + ')');
-    ig.addColorStop(0.30, 'rgba(255,250,215,' + (0.07 * p2).toFixed(3) + ')');
-    ig.addColorStop(0.70, 'rgba(255,248,200,' + (0.018 * p2).toFixed(3) + ')');
+    ig.addColorStop(0,    'rgba(255,253,232,' + (0.28 * p2).toFixed(3) + ')');
+    ig.addColorStop(0.28, 'rgba(255,251,218,' + (0.16 * p2).toFixed(3) + ')');
+    ig.addColorStop(0.62, 'rgba(255,248,200,' + (0.08 * p2).toFixed(3) + ')');
+    ig.addColorStop(0.90, 'rgba(255,245,190,' + (0.03 * p2).toFixed(3) + ')');
     ig.addColorStop(1,    'rgba(255,245,190,0)');
     ctx.beginPath();
     ctx.moveTo(cx - 3, 0);
@@ -611,6 +557,20 @@
     ctx.closePath();
     ctx.fillStyle = ig;
     ctx.fill();
+
+    /* focal splash — radial pool of light exactly at the headline */
+    var splashR = bw * 0.72;
+    var sg = ctx.createRadialGradient(cx, beamH, 0, cx, beamH, splashR);
+    sg.addColorStop(0,   'rgba(255,252,222,' + (0.18 * p1).toFixed(3) + ')');
+    sg.addColorStop(0.4, 'rgba(255,248,205,' + (0.09 * p1).toFixed(3) + ')');
+    sg.addColorStop(1,   'rgba(248,235,170,0)');
+    ctx.save();
+    ctx.scale(1, 0.28);
+    ctx.beginPath();
+    ctx.arc(cx, beamH / 0.28, splashR, 0, 6.2832);
+    ctx.fillStyle = sg;
+    ctx.fill();
+    ctx.restore();
   }
 
   function drawGrain() {

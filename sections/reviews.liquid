@@ -491,18 +491,16 @@
   var ctx = canvas.getContext('2d');
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-  /* Logical (CSS-pixel) dimensions */
   var W, H, cx, beamH;
-  var HALF_RAD = 22 * Math.PI / 180;   /* cone half-angle */
-  var PARTICLE_N = 110;
+  /* wide cone — ~80° total opening so light actually covers the headline */
+  var HALF_RAD = 40 * Math.PI / 180;
+  var PARTICLE_N = 180;
   var particles = [];
 
-  /* Offscreen canvas for the grain texture — drawn in logical px */
   var grainOff = document.createElement('canvas');
   var gCtx = grainOff.getContext('2d');
 
-  /* ── helpers ── */
-  function hw(y) { return Math.max(1.5, y * Math.tan(HALF_RAD)); }
+  function hw(y) { return Math.max(2, y * Math.tan(HALF_RAD)); }
 
   function inCone(x, y) {
     return y >= 0 && y <= beamH && Math.abs(x - cx) <= hw(y) * 1.02;
@@ -510,51 +508,46 @@
 
   function randInCone() {
     var y = Math.random() * beamH;
-    /* weight toward axis */
-    var t = Math.pow(Math.random(), 0.55);
-    var x = cx + (Math.random() < 0.5 ? -1 : 1) * t * hw(y);
+    var x = cx + (Math.random() * 2 - 1) * hw(y);
     return { x: x, y: y };
   }
 
-  /* ── particle factory ── */
   function mkParticle(aged) {
-    var pos    = randInCone();
-    var mLife  = 180 + Math.random() * 280;
-    var fade   = 30 + Math.random() * 30;
+    var pos   = randInCone();
+    /* long life = very slow apparent movement */
+    var mLife = 600 + Math.random() * 800;
+    var fade  = 120 + Math.random() * 120;
     return {
-      x:          pos.x,
-      y:          pos.y,
-      vx:         (Math.random() - 0.5) * 0.22,
-      vy:         -(Math.random() * 0.30 + 0.04),
-      sz:         Math.random() * 1.5 + 0.4,
-      op:         0,
-      maxOp:      Math.random() * 0.52 + 0.14,
-      life:       aged ? Math.floor(Math.random() * mLife) : 0,
-      maxLife:    mLife,
-      fade:       fade
+      x:       pos.x,
+      y:       pos.y,
+      /* extremely slow drift — like dust in still air */
+      vx:      (Math.random() - 0.5) * 0.025,
+      vy:      -(Math.random() * 0.035 + 0.005),
+      sz:      Math.random() * 0.45 + 0.15,   /* tiny, like a tick */
+      op:      0,
+      maxOp:   Math.random() * 0.10 + 0.03,   /* very faint grey */
+      life:    aged ? Math.floor(Math.random() * mLife) : 0,
+      maxLife: mLife,
+      fade:    fade
     };
   }
 
   for (var i = 0; i < PARTICLE_N; i++) particles.push(mkParticle(true));
 
-  /* ── resize / init ── */
   function resize() {
-    var header = section.querySelector('.reviews-header');
     W = section.offsetWidth;
     H = section.offsetHeight;
 
-    /* stop beam at the bottom of the headline block */
     var hl = section.querySelector('.reviews-headline');
+    var header = section.querySelector('.reviews-header');
     beamH = hl
-      ? hl.offsetTop + hl.offsetHeight + 55
+      ? hl.offsetTop + hl.offsetHeight + 40
       : (header ? header.offsetTop + header.offsetHeight + 20 : H * 0.44);
 
-    /* main canvas — device pixels */
     canvas.width  = W * dpr;
     canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    /* grain offscreen — logical pixels */
     grainOff.width  = W;
     grainOff.height = H;
     gCtx.setTransform(1, 0, 0, 1, 0, 0);
@@ -563,56 +556,56 @@
     bakeGrain();
   }
 
-  /* ── grain texture bake ── */
+  /* baked once — no re-bake in the loop, no shimmer/sparkle */
   function bakeGrain() {
     gCtx.clearRect(0, 0, W, H);
-    var N = 520;
+    var N = 380;
     for (var i = 0; i < N; i++) {
-      var y   = Math.random() * beamH;
-      var x   = cx + (Math.random() * 2 - 1) * hw(y);
-      var dr  = y / beamH;                            /* 0=source, 1=bottom */
-      var brt = 1 - dr * 0.6;
-      var a   = (Math.random() * 0.11 + 0.02) * brt * brt;
-      var sz  = Math.random() * 0.9 + 0.15;
+      var y  = Math.random() * beamH;
+      var x  = cx + (Math.random() * 2 - 1) * hw(y);
+      var dr = y / beamH;
+      var a  = (Math.random() * 0.055 + 0.01) * (1 - dr * 0.55);
+      var sz = Math.random() * 0.7 + 0.1;
       gCtx.beginPath();
       gCtx.arc(x, y, sz, 0, 6.2832);
-      gCtx.fillStyle = 'rgba(255,252,210,' + a.toFixed(3) + ')';
+      gCtx.fillStyle = 'rgba(220,215,200,' + a.toFixed(3) + ')';
       gCtx.fill();
     }
   }
 
-  /* ── draw cone/beam ── */
   function drawBeam(t) {
-    var bw   = hw(beamH);
-    var p1   = 0.82 + 0.18 * Math.sin(t * 0.52);     /* outer pulse */
-    var p2   = 0.78 + 0.22 * Math.sin(t * 0.39 + 1.05); /* core pulse */
+    var bw = hw(beamH);
+    /* very gentle, slow pulse — barely noticeable */
+    var p1 = 0.92 + 0.08 * Math.sin(t * 0.18);
+    var p2 = 0.90 + 0.10 * Math.sin(t * 0.13 + 0.8);
 
-    /* outer haze */
+    /* wide soft wash — makes headline actually glow */
     var og = ctx.createLinearGradient(0, 0, 0, beamH);
-    og.addColorStop(0,    'rgba(255,252,215,' + (0.15 * p1).toFixed(3) + ')');
-    og.addColorStop(0.22, 'rgba(255,248,200,' + (0.06 * p1).toFixed(3) + ')');
-    og.addColorStop(0.60, 'rgba(240,210,140,' + (0.025 * p1).toFixed(3) + ')');
+    og.addColorStop(0,    'rgba(255,250,215,' + (0.22 * p1).toFixed(3) + ')');
+    og.addColorStop(0.18, 'rgba(255,248,205,' + (0.12 * p1).toFixed(3) + ')');
+    og.addColorStop(0.50, 'rgba(248,235,175,' + (0.065 * p1).toFixed(3) + ')');
+    og.addColorStop(0.82, 'rgba(230,210,140,' + (0.022 * p1).toFixed(3) + ')');
     og.addColorStop(1,    'rgba(201,160,72,0)');
     ctx.beginPath();
-    ctx.moveTo(cx - 2, 0);
-    ctx.lineTo(cx + 2, 0);
+    ctx.moveTo(cx - 4, 0);
+    ctx.lineTo(cx + 4, 0);
     ctx.lineTo(cx + bw, beamH);
     ctx.lineTo(cx - bw, beamH);
     ctx.closePath();
     ctx.fillStyle = og;
     ctx.fill();
 
-    /* inner core — tighter, brighter */
-    var iw  = bw * 0.30;
-    var ih  = beamH * 0.80;
-    var ig  = ctx.createLinearGradient(0, 0, 0, ih);
-    ig.addColorStop(0,    'rgba(255,255,235,' + (0.26 * p2).toFixed(3) + ')');
-    ig.addColorStop(0.28, 'rgba(255,250,215,' + (0.09 * p2).toFixed(3) + ')');
-    ig.addColorStop(0.75, 'rgba(255,248,195,' + (0.02 * p2).toFixed(3) + ')');
+    /* softer inner brightening */
+    var iw = bw * 0.42;
+    var ih = beamH * 0.88;
+    var ig = ctx.createLinearGradient(0, 0, 0, ih);
+    ig.addColorStop(0,    'rgba(255,253,230,' + (0.18 * p2).toFixed(3) + ')');
+    ig.addColorStop(0.30, 'rgba(255,250,215,' + (0.07 * p2).toFixed(3) + ')');
+    ig.addColorStop(0.70, 'rgba(255,248,200,' + (0.018 * p2).toFixed(3) + ')');
     ig.addColorStop(1,    'rgba(255,245,190,0)');
     ctx.beginPath();
-    ctx.moveTo(cx - 1.5, 0);
-    ctx.lineTo(cx + 1.5, 0);
+    ctx.moveTo(cx - 3, 0);
+    ctx.lineTo(cx + 3, 0);
     ctx.lineTo(cx + iw, ih);
     ctx.lineTo(cx - iw, ih);
     ctx.closePath();
@@ -620,34 +613,31 @@
     ctx.fill();
   }
 
-  /* ── composite grain clipped to cone ── */
   function drawGrain() {
     var bw = hw(beamH);
     ctx.save();
     ctx.beginPath();
-    ctx.moveTo(cx - 2, 0);
-    ctx.lineTo(cx + 2, 0);
+    ctx.moveTo(cx - 4, 0);
+    ctx.lineTo(cx + 4, 0);
     ctx.lineTo(cx + bw, beamH);
     ctx.lineTo(cx - bw, beamH);
     ctx.closePath();
     ctx.clip();
-    /* draw the logical-pixel grain canvas at logical size (ctx is dpr-scaled) */
     ctx.drawImage(grainOff, 0, 0, W, H);
     ctx.restore();
   }
 
-  /* ── floating dust particles ── */
   function tickParticles() {
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
       p.life++;
-      p.x  += p.vx;
-      p.y  += p.vy;
-      /* slight brownian jitter */
-      p.vx += (Math.random() - 0.5) * 0.016;
-      p.vy += (Math.random() - 0.5) * 0.010;
-      p.vx *= 0.993;
-      p.vy *= 0.994;
+      p.x += p.vx;
+      p.y += p.vy;
+      /* near-zero brownian — almost imperceptible */
+      p.vx += (Math.random() - 0.5) * 0.004;
+      p.vy += (Math.random() - 0.5) * 0.003;
+      p.vx *= 0.996;
+      p.vy *= 0.997;
 
       if (p.life < p.fade) {
         p.op = (p.life / p.fade) * p.maxOp;
@@ -666,59 +656,47 @@
   function drawParticles() {
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      if (p.op < 0.005) continue;
-      var r  = p.sz * 4.5;
-      var gr = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
-      gr.addColorStop(0,   'rgba(255,253,220,' + p.op.toFixed(3) + ')');
-      gr.addColorStop(0.4, 'rgba(255,250,208,' + (p.op * 0.38).toFixed(3) + ')');
-      gr.addColorStop(1,   'rgba(255,248,200,0)');
+      if (p.op < 0.004) continue;
+      /* tiny solid grey dot — no glow, no radial gradient */
       ctx.beginPath();
-      ctx.arc(p.x, p.y, r, 0, 6.2832);
-      ctx.fillStyle = gr;
+      ctx.arc(p.x, p.y, p.sz, 0, 6.2832);
+      ctx.fillStyle = 'rgba(195,188,172,' + p.op.toFixed(3) + ')';
       ctx.fill();
     }
   }
 
-  /* ── point source bloom at top ── */
   function drawSource(t) {
-    var pulse = 0.68 + 0.32 * Math.sin(t * 0.88);
-    var bloom = ctx.createRadialGradient(cx, 0, 0, cx, 0, 60);
-    bloom.addColorStop(0,    'rgba(255,252,222,' + (0.72 * pulse).toFixed(2) + ')');
-    bloom.addColorStop(0.10, 'rgba(255,250,210,' + (0.38 * pulse).toFixed(2) + ')');
-    bloom.addColorStop(0.38, 'rgba(255,245,190,' + (0.14 * pulse).toFixed(2) + ')');
+    /* very slow, subtle pulse at the light source */
+    var pulse = 0.85 + 0.15 * Math.sin(t * 0.20);
+    var bloom = ctx.createRadialGradient(cx, 0, 0, cx, 0, 55);
+    bloom.addColorStop(0,    'rgba(255,252,222,' + (0.60 * pulse).toFixed(2) + ')');
+    bloom.addColorStop(0.12, 'rgba(255,250,210,' + (0.28 * pulse).toFixed(2) + ')');
+    bloom.addColorStop(0.45, 'rgba(255,245,190,' + (0.08 * pulse).toFixed(2) + ')');
     bloom.addColorStop(1,    'rgba(201,160,72,0)');
     ctx.beginPath();
-    ctx.arc(cx, 0, 60, 0, 6.2832);
+    ctx.arc(cx, 0, 55, 0, 6.2832);
     ctx.fillStyle = bloom;
     ctx.fill();
-    /* hard centre dot */
     ctx.beginPath();
-    ctx.arc(cx, 1, 2.2 * pulse, 0, 6.2832);
-    ctx.fillStyle = 'rgba(255,253,238,' + (0.94 * pulse).toFixed(2) + ')';
+    ctx.arc(cx, 1, 1.8 * pulse, 0, 6.2832);
+    ctx.fillStyle = 'rgba(255,253,238,' + (0.88 * pulse).toFixed(2) + ')';
     ctx.fill();
   }
 
-  /* ── main loop ── */
   var frame = 0, raf = null;
 
   function loop() {
     var t = frame / 60;
     ctx.clearRect(0, 0, W, H);
-
     drawBeam(t);
     drawGrain();
     tickParticles();
     drawParticles();
     drawSource(t);
-
-    /* re-bake grain every 5 frames → shimmer without full flicker */
-    if (frame % 5 === 0) bakeGrain();
-
     frame++;
     raf = requestAnimationFrame(loop);
   }
 
-  /* pause when off-screen */
   if (typeof IntersectionObserver !== 'undefined') {
     var io = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {

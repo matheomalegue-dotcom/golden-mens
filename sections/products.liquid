@@ -1,0 +1,348 @@
+{% style %}
+.products-section {
+  padding: 100px 40px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.products-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.products-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(201,160,72,0.75);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.products-eyebrow::before, .products-eyebrow::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: rgba(201,160,72,0.45);
+}
+.products-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: white;
+  margin-bottom: 16px;
+}
+.products-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+}
+.products-tier {
+  margin-bottom: 72px;
+}
+.products-tier:last-child {
+  margin-bottom: 0;
+}
+.products-tier-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.products-tier-header::before,
+.products-tier-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,160,72,0.2));
+}
+.products-tier-header::after {
+  background: linear-gradient(to left, transparent, rgba(201,160,72,0.2));
+}
+.products-tier-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #EDD07A 0%, #D4AE5A 50%, #A07830 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex-shrink: 0;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.product-card {
+  background: rgba(14,17,24,0.85);
+  border: 1px solid rgba(201,160,72,0.12);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+.product-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,160,72,0.5), transparent);
+  transition: width 0.4s ease;
+}
+.product-card:hover::after {
+  width: 100%;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,160,72,0.25);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 0 40px rgba(201,160,72,0.07);
+}
+.product-img-wrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  position: relative;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.04);
+}
+.product-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(201,160,72,0.2);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.product-img-placeholder svg {
+  opacity: 0.15;
+}
+.product-info {
+  padding: 24px;
+}
+.product-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.product-price {
+  font-size: 20px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #EDD07A 0%, #C9A048 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+.product-divider {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(201,160,72,0.4), transparent);
+  margin-bottom: 20px;
+}
+.product-atc {
+  width: 100%;
+  padding: 13px 16px;
+  background: transparent;
+  border: 1px solid rgba(201,160,72,0.3);
+  color: rgba(201,160,72,0.85);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.product-atc:not(:disabled):hover {
+  background: rgba(201,160,72,0.1);
+  border-color: rgba(201,160,72,0.6);
+  color: #EDD07A;
+}
+.product-atc:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.product-atc.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.product-atc.success {
+  border-color: rgba(201,160,72,0.5);
+  background: rgba(201,160,72,0.1);
+  color: #EDD07A;
+}
+@media (max-width: 900px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-section { padding: 80px 20px 100px; }
+}
+@media (max-width: 600px) {
+  .products-grid { grid-template-columns: 1fr; }
+}
+{% endstyle %}
+
+<section class="products-section" id="products">
+  <div class="products-header">
+    <div class="products-eyebrow reveal">Our Products</div>
+    <h2 class="products-title reveal" data-delay="1">Premium <span class="accent">Grooming</span></h2>
+    <p class="products-sub reveal" data-delay="2">Professional-grade products trusted by our master barbers</p>
+  </div>
+
+  {%- assign bestsellers_col = collections[section.settings.bestsellers_handle] -%}
+  <div class="products-tier">
+    <div class="products-tier-header reveal">
+      <span class="products-tier-label">Best Sellers</span>
+    </div>
+    <div class="products-grid">
+      {%- if bestsellers_col and bestsellers_col.products.size > 0 -%}
+        {%- for product in bestsellers_col.products limit: 3 -%}
+          <div class="product-card reveal" data-delay="{{ forloop.index0 }}">
+            <div class="product-img-wrap">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" loading="lazy">
+              {%- else -%}
+                <div class="product-img-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  No image yet
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="product-info">
+              <div class="product-name">{{ product.title }}</div>
+              <div class="product-price">{{ product.price | money }}</div>
+              <div class="product-divider"></div>
+              {%- if product.available -%}
+                <button class="product-atc" data-variant-id="{{ product.first_available_variant.id }}">
+                  Add to Cart
+                </button>
+              {%- else -%}
+                <button class="product-atc" disabled>Sold Out</button>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..3) -%}
+          <div class="product-card reveal" data-delay="{{ forloop.index0 }}">
+            <div class="product-img-wrap">
+              <div class="product-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Coming Soon
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Best Seller Coming Soon</div>
+              <div class="product-price">—</div>
+              <div class="product-divider"></div>
+              <button class="product-atc" disabled>Coming Soon</button>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- assign bundles_col = collections[section.settings.bundles_handle] -%}
+  <div class="products-tier">
+    <div class="products-tier-header reveal">
+      <span class="products-tier-label">Bundles</span>
+    </div>
+    <div class="products-grid">
+      {%- if bundles_col and bundles_col.products.size > 0 -%}
+        {%- for product in bundles_col.products limit: 3 -%}
+          <div class="product-card reveal" data-delay="{{ forloop.index0 }}">
+            <div class="product-img-wrap">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" loading="lazy">
+              {%- else -%}
+                <div class="product-img-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  No image yet
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="product-info">
+              <div class="product-name">{{ product.title }}</div>
+              <div class="product-price">{{ product.price | money }}</div>
+              <div class="product-divider"></div>
+              {%- if product.available -%}
+                <button class="product-atc" data-variant-id="{{ product.first_available_variant.id }}">
+                  Add to Cart
+                </button>
+              {%- else -%}
+                <button class="product-atc" disabled>Sold Out</button>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..3) -%}
+          <div class="product-card reveal" data-delay="{{ forloop.index0 }}">
+            <div class="product-img-wrap">
+              <div class="product-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Coming Soon
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Bundle Coming Soon</div>
+              <div class="product-price">—</div>
+              <div class="product-divider"></div>
+              <button class="product-atc" disabled>Coming Soon</button>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bestsellers_handle",
+      "label": "Best Sellers Collection Handle",
+      "default": "best-sellers"
+    },
+    {
+      "type": "text",
+      "id": "bundles_handle",
+      "label": "Bundles Collection Handle",
+      "default": "bundles"
+    }
+  ]
+}
+{% endschema %}

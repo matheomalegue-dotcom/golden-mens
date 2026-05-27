@@ -4,7 +4,8 @@
     "hours":     { "type": "hours",     "settings": {} },
     "work":      { "type": "work",      "settings": {} },
     "services":  { "type": "services",  "settings": {} },
-    "locations": { "type": "locations", "settings": {} }
+    "locations": { "type": "locations", "settings": {} },
+    "products": { "type": "products", "settings": { "bestsellers_handle": "best-sellers", "bundles_handle": "bundles" } }
   },
-  "order": ["hero", "hours", "work", "services", "locations"]
+  "order": ["hero", "hours", "work", "services", "locations", "products"]
 }

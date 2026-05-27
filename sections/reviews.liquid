@@ -11,14 +11,15 @@
 /* ─── Gold background glow behind headline ─── */
 .reviews-glow {
   position: absolute;
-  top: 0; left: 50%;
+  top: -60px; left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 600px;
-  background: radial-gradient(ellipse 55% 52% at 50% 38%,
-    rgba(201,160,72,0.18) 0%,
-    rgba(201,160,72,0.09) 30%,
-    rgba(180,130,50,0.04) 60%,
+  width: 140%;
+  max-width: 1600px;
+  height: 820px;
+  background: radial-gradient(ellipse 65% 58% at 50% 36%,
+    rgba(201,160,72,0.22) 0%,
+    rgba(201,160,72,0.12) 28%,
+    rgba(180,130,50,0.055) 55%,
     transparent 100%);
   pointer-events: none;
   z-index: 0;
@@ -43,8 +44,11 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.03em;
-  color: #fff;
   line-height: 0.95;
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 55%, rgba(255,255,255,0.30) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .reviews-headline-bottom {
   display: block;
@@ -53,7 +57,7 @@
   font-weight: 600;
   font-style: italic;
   line-height: 1.0;
-  background: linear-gradient(135deg, #EDD07A 0%, #C9A048 45%, #9B7225 100%);
+  background: linear-gradient(to bottom, #EDD07A 0%, #C9A048 50%, rgba(155,114,37,0.35) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -1,4 +1,10 @@
 {% style %}
+.products-section-wrap {
+  position: relative;
+  background:
+    linear-gradient(to bottom, rgba(2,4,6,0.72) 0%, rgba(2,4,6,0.45) 40%, rgba(2,4,6,0.72) 100%),
+    url("{{ 'background1.jpg' | asset_url }}") center center / cover no-repeat;
+}
 .products-section {
   padding: 100px 40px 120px;
   max-width: 1200px;
@@ -233,6 +239,7 @@
 }
 {% endstyle %}
 
+<div class="products-section-wrap">
 <section class="products-section" id="products">
   <div class="products-header">
     <div class="products-eyebrow reveal">Our Products</div>
@@ -356,6 +363,7 @@
     <a href="/collections/all" class="products-view-all">View All Products</a>
   </div>
 </section>
+</div>
 
 {% schema %}
 {
